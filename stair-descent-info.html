@@ -3,700 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Surprising Benefits of Descending Stairs</title>
+    <title>계단 내려가기의 놀라운 혜택</title>
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Pen+Script&family=Jua&display=swap');
+
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --text-dark: #334155;
+            --text-title: #1e40af;
+            --text-subtitle: #475569;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
         }
-        
+
         body {
-            background-color: #F5F5F7;
-            color: #666666;
-            line-height: 1.6;
-            padding: 40px 20px;
+            font-family: 'Nanum Pen Script', cursive;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background-color: #f8fafc;
+            padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            background-color: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 60px;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: linear-gradient(90deg, var(--color-1), var(--color-5));
+            color: white;
+            border-bottom: 3px dashed #fff;
         }
-        
-        h1 {
+
+        .title {
+            font-family: 'Jua', sans-serif;
             font-size: 32px;
             font-weight: bold;
-            color: #1A1A1A;
-            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--color-2), var(--color-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #7B4AFF;
-            margin-bottom: 30px;
+
+        .source {
+            font-size: 14px;
+            color: white;
+        }
+
+        .source a {
+            color: var(--color-2);
+            text-decoration: none;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: relative;
-            display: inline-block;
+            overflow: hidden;
         }
-        
-        .section-title::after {
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-2), var(--color-4));
+            border-radius: 2px;
+        }
+
+        .section-title {
+            font-family: 'Jua', sans-serif;
+            font-size: 18px;
+            color: var(--text-title);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px dashed var(--color-3);
+            padding-bottom: 8px;
+        }
+
+        .section-title i {
+            background-color: var(--color-3);
+            color: var(--color-1);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+
+        .insight {
+            background-color: rgba(242, 230, 61, 0.1);
+            border-left: 3px solid var(--color-3);
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 16px;
+        }
+
+        .highlight {
+            background-color: var(--color-2);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            width: 50px;
+            height: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 25' stroke='%23593C47' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2,12 Q25,20 48,12 M40,5 L48,12 L40,19'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            margin: 10px auto;
+        }
+
+        .card {
+            border: 2px solid var(--color-1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            background-color: white;
+        }
+
+        .card::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            right: -10px;
             width: 100%;
-            height: 3px;
-            background-color: #7B4AFF;
-            border-radius: 3px;
-        }
-        
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            margin-bottom: 50px;
-            justify-content: center;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            flex: 1 1 300px;
-            max-width: 380px;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(123, 74, 255, 0.1);
-        }
-        
-        .card-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #1A1A1A;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card-emoji {
-            font-size: 28px;
-        }
-        
-        .insight-bar {
-            background-color: #444444;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            position: relative;
-        }
-        
-        .insight-bar::before {
-            content: '💡';
-            margin-right: 10px;
-        }
-        
-        .badge {
-            background-color: #7B4AFF;
-            color: white;
-            font-size: 14px;
-            padding: 4px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        
-        .quote {
-            border-left: 4px solid #7B4AFF;
-            background-color: rgba(123, 74, 255, 0.05);
-            padding: 16px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
-        }
-        
-        .timestamp {
-            background-color: rgba(123, 74, 255, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            color: #7B4AFF;
-            margin-left: 8px;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            background-color: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .comparison-table th, .comparison-table td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid #DDDDDD;
-        }
-        
-        .comparison-table th {
-            background-color: #7B4AFF;
-            color: white;
-            font-size: 18px;
-        }
-        
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .comparison-table tr:nth-child(even) {
-            background-color: rgba(123, 74, 255, 0.03);
-        }
-        
-        .chart-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .donut-chart {
-            width: 180px;
-            height: 180px;
-            position: relative;
-        }
-        
-        .progress-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 20px 0;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: #DDDDDD;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
             height: 100%;
-            background-color: #7B4AFF;
-            border-radius: 5px;
+            border: 2px dashed var(--color-4);
+            border-radius: 10px;
+            z-index: -1;
         }
-        
-        .mindmap-container {
-            background-color: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .central-node {
-            background-color: #7B4AFF;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
+
+        .tag {
             display: inline-block;
-            margin: 0 auto;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            font-size: 18px;
-            z-index: 2;
-            margin-bottom: 50px;
+            background-color: var(--color-4);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
-        
-        .nodes-container {
+
+        .time {
+            font-size: 12px;
+            color: var(--text-subtitle);
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            position: relative;
+            align-items: center;
+            gap: 5px;
         }
-        
-        .node {
-            background-color: white;
-            border: 2px solid #7B4AFF;
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .comparison-item {
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .comparison-item:first-child {
+            background-color: rgba(89, 60, 71, 0.1);
+        }
+
+        .comparison-item:last-child {
+            background-color: rgba(242, 92, 5, 0.1);
+        }
+
+        .comparison-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--color-1);
+        }
+
+        .comparison-content {
+            font-size: 14px;
+        }
+
+        .bubble {
+            position: relative;
+            background-color: rgba(242, 197, 61, 0.2);
             border-radius: 15px;
             padding: 15px;
-            width: 200px;
-            position: relative;
-            z-index: 2;
+            margin: 15px 0;
         }
-        
-        .node-title {
+
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            border-width: 0 10px 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent rgba(242, 197, 61, 0.2) transparent;
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .key-point-number {
+            width: 25px;
+            height: 25px;
+            background-color: var(--color-3);
+            color: var(--color-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            color: #7B4AFF;
-            margin-bottom: 8px;
+            flex-shrink: 0;
         }
-        
-        .connections {
+
+        .key-point-content {
+            flex-grow: 1;
+        }
+
+        .key-point-title {
+            font-weight: bold;
+            color: var(--color-5);
+            margin-bottom: 5px;
+        }
+
+        .mind-map {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .mind-map-center {
+            position: relative;
+            margin: 0 auto;
+            width: 120px;
+            height: 120px;
+            background-color: var(--color-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-1);
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mind-map-branches {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
         }
-        
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #666666;
+
+        .branch {
+            position: absolute;
+            width: 100px;
+            background-color: white;
+            border: 2px solid var(--color-4);
+            border-radius: 8px;
+            padding: 10px;
             font-size: 14px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .highlight {
-            color: #7B4AFF;
-            font-weight: bold;
+
+        .branch:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        
+
+        .branch:nth-child(2) {
+            top: 30%;
+            right: 10%;
+        }
+
+        .branch:nth-child(3) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .branch:nth-child(4) {
+            top: 30%;
+            left: 10%;
+        }
+
+        .branch::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-right: 2px dashed var(--color-4);
+            border-bottom: 2px dashed var(--color-4);
+            z-index: -1;
+        }
+
+        .branch:nth-child(1)::after {
+            top: 100%;
+            left: 50%;
+            transform: rotate(45deg);
+        }
+
+        .branch:nth-child(2)::after {
+            top: 50%;
+            right: 100%;
+            transform: rotate(135deg);
+        }
+
+        .branch:nth-child(3)::after {
+            bottom: 100%;
+            left: 50%;
+            transform: rotate(225deg);
+        }
+
+        .branch:nth-child(4)::after {
+            top: 50%;
+            left: 100%;
+            transform: rotate(315deg);
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--color-1);
+            color: white;
+            font-size: 14px;
+            border-radius: 0 0 24px 24px;
+        }
+
         @media (max-width: 768px) {
-            .card-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .card {
-                max-width: 100%;
-            }
-            
-            .comparison-table {
-                font-size: 14px;
-            }
-            
-            .comparison-table th, .comparison-table td {
-                padding: 10px;
+            .content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>계단 내려가기의 놀라운 효과</h1>
-            <p class="section-title">The Surprising Benefits of Descending Stairs</p>
-            <p>출처: <a href="https://youtu.be/OD21bZ_jJT4" target="_blank">https://youtu.be/OD21bZ_jJT4</a> | ⏱️ 영상 길이: 00:07:54</p>
-        </header>
-        
-        <section>
-            <h2 class="section-title">🎯 핵심 요약</h2>
-            <div class="quote">
-                계단 내려가기는 특히 뼈 건강과 근육 발달에 있어 독특한 이점을 제공하며, 종종 계단 오르기의 장점을 능가합니다. 이 영상은 계단 내려가기를 운동 루틴에 포함시키는 것의 중요성을 강조하는 과학적 연구와 전문가 의견을 조명합니다.
+        <div class="header">
+            <h1 class="title">계단 내려가기의 놀라운 혜택</h1>
+            <div class="source">
+                출처: <a href="https://youtu.be/OD21bZ_jJT4" target="_blank">https://youtu.be/OD21bZ_jJT4</a>
             </div>
-        </section>
-        
-        <section>
-            <h2 class="section-title">🔑 주요 인사이트</h2>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🦴</span>
-                        뼈 건강
-                    </div>
-                    <p>계단 내려가기는 뼈에 더 많은 하중을 가하여 골다공증 예방에 더 효과적일 수 있습니다.<span class="timestamp">[00:28]</span></p>
-                    <p><strong>세부 설명:</strong> 내려가는 동안 증가된 하중은 골밀도를 촉진합니다.</p>
-                    <p><strong>실용적 적용점:</strong> 더 강한 뼈를 위해 루틴에 계단 내려가기를 포함하세요.</p>
+        </div>
+
+        <div class="content">
+            <!-- 첫 번째 컬럼 -->
+            <div class="section">
+                <h2 class="section-title">📌 핵심 요약</h2>
+                <div class="insight">
+                    계단 내려가기는 <span class="highlight">뼈 건강과 근육 발달</span>에 독특한 이점을 제공하며, 종종 계단 오르기의 장점을 능가합니다. 이 영상은 계단 내려가기를 운동 루틴에 포함시키는 중요성을 강조하는 과학적 연구와 전문가 의견을 집중적으로 다룹니다.
                 </div>
+
+                <h3 class="section-title">🔑 주요 인사이트</h3>
                 
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">💪</span>
-                        근육 활성화
-                    </div>
-                    <p>내려가기는 다른 근육 그룹을 참여시키고 근섬유 손상과 후속 성장으로 이어질 수 있는 방식으로 근육을 사용합니다.<span class="timestamp">[02:53]</span></p>
-                    <p><strong>세부 설명:</strong> 내려가는 동안의 원심성 수축은 더 많은 근섬유 손상을 일으켜 더 강력한 근육 회복과 성장으로 이어집니다.</p>
-                    <p><strong>실용적 적용점:</strong> 근육 참여를 최대화하기 위해 통제된 하강에 집중하세요.</p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">📊</span>
-                        연구 결과
-                    </div>
-                    <p>60대 여성 그룹을 대상으로 한 연구에서 12주 동안 계단만 내려간 그룹은 골밀도 증가와 대사 건강 지표 개선을 보였습니다.<span class="timestamp">[04:25]</span></p>
-                    <p><strong>세부 설명:</strong> 이 연구는 계단 내려가기의 실질적인 건강상의 이점을 강조합니다.</p>
-                    <p><strong>실용적 적용점:</strong> 정기적인 계단 내려가기는 노인들에게 특히 유익할 수 있습니다.</p>
-                </div>
-            </div>
-            
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🚶</span>
-                        걷기와 비교
-                    </div>
-                    <p>계단 운동은 걷기보다 허벅지 근육을 더 효과적으로 참여시킵니다.<span class="timestamp">[05:06]</span></p>
-                    <p><strong>세부 설명:</strong> 계단 오르기와 내려가기 모두 특정 근육 그룹에 더 강렬한 운동을 제공합니다.</p>
-                    <p><strong>실용적 적용점:</strong> 더 효과적인 다리 운동을 위해 걷기보다 계단을 선택하세요.</p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🛡️</span>
-                        안전성
-                    </div>
-                    <p>계단 운동은 안전하며, 통증은 보통 휴식으로 해결될 수 있는 근육이나 힘줄 통증의 결과입니다.<span class="timestamp">[06:57]</span></p>
-                    <p><strong>세부 설명:</strong> 무릎 통증에 대한 일반적인 우려를 다루면서, 영상은 통증이 종종 근육 관련이며 관리 가능하다고 설명합니다.</p>
-                    <p><strong>실용적 적용점:</strong> 신체의 신호에 귀를 기울이고 통증을 경험하면 휴식을 취하고 올바른 자세에 집중하세요.</p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">👨‍🏫</span>
-                        전문가 의견
-                    </div>
-                    <p>정형외과 전문가들은 근육량이 많은 개인이 관절 통증을 덜 경험하고 수술에서 더 빨리 회복한다고 지적합니다.<span class="timestamp">[05:49]</span></p>
-                    <p><strong>세부 설명:</strong> 근육량은 전반적인 관절 건강과 회복 능력에 중요한 요소입니다.</p>
-                    <p><strong>실용적 적용점:</strong> 관절 건강을 위한 전략의 일환으로 근육 발달을 우선시하세요.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section>
-            <h2 class="section-title">📊 오르기 vs 내려가기 비교</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>기능</th>
-                        <th>계단 오르기</th>
-                        <th>계단 내려가기</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>근육 활동 유형</strong></td>
-                        <td>구심성 수축 (근육 단축)</td>
-                        <td>원심성 수축 (근육 신장)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>근섬유 손상</strong></td>
-                        <td>중간 수준</td>
-                        <td>더 높음 (더 많은 성장 가능성)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>뼈에 대한 하중</strong></td>
-                        <td>중간 수준</td>
-                        <td>더 높음 (골밀도에 더 좋음)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>칼로리 소모</strong></td>
-                        <td>더 높음</td>
-                        <td>중간 수준</td>
-                    </tr>
-                    <tr>
-                        <td><strong>심박수 증가</strong></td>
-                        <td>더 높음</td>
-                        <td>중간 수준</td>
-                    </tr>
-                    <tr>
-                        <td><strong>운동 난이도</strong></td>
-                        <td>더 높음 (더 힘듦)</td>
-                        <td>낮음 (덜 지침)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>관절 스트레스</strong></td>
-                        <td>낮음</td>
-                        <td>중간 수준 (통제된 하강 필요)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        
-        <section>
-            <h2 class="section-title">📈 데이터 및 통계</h2>
-            <div class="chart-container">
-                <div class="donut-chart">
-                    <svg width="180" height="180" viewBox="0 0 180 180">
-                        <circle cx="90" cy="90" r="70" fill="none" stroke="#DDDDDD" stroke-width="20" />
-                        <circle cx="90" cy="90" r="70" fill="none" stroke="#7B4AFF" stroke-width="20"
-                                stroke-dasharray="439.8 439.8" stroke-dashoffset="110" transform="rotate(-90 90 90)" />
-                        <text x="90" y="90" text-anchor="middle" dominant-baseline="middle" fill="#1A1A1A" font-size="24px" font-weight="bold">75%</text>
-                        <text x="90" y="115" text-anchor="middle" dominant-baseline="middle" fill="#666666" font-size="14px">근육 활성화</text>
-                    </svg>
-                </div>
-                
-                <div class="donut-chart">
-                    <svg width="180" height="180" viewBox="0 0 180 180">
-                        <circle cx="90" cy="90" r="70" fill="none" stroke="#DDDDDD" stroke-width="20" />
-                        <circle cx="90" cy="90" r="70" fill="none" stroke="#7B4AFF" stroke-width="20"
-                                stroke-dasharray="439.8 439.8" stroke-dashoffset="176" transform="rotate(-90 90 90)" />
-                        <text x="90" y="90" text-anchor="middle" dominant-baseline="middle" fill="#1A1A1A" font-size="24px" font-weight="bold">60%</text>
-                        <text x="90" y="115" text-anchor="middle" dominant-baseline="middle" fill="#666666" font-size="14px">골밀도 증가</text>
-                    </svg>
-                </div>
-            </div>
-            
-            <div style="background-color: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);">
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>걷기</span>
-                        <span>50%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 50%;"></div>
+                <div class="key-point">
+                    <div class="key-point-number">1</div>
+                    <div class="key-point-content">
+                        <div class="key-point-title">뼈 건강 개선</div>
+                        <p>계단 내려가기는 뼈에 더 많은 하중을 가하며, 골다공증 예방에 효과적입니다.</p>
+                        <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=28" target="_blank">00:28</a></div>
                     </div>
                 </div>
-                
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>계단 오르기</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%;"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>계단 내려가기</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%;"></div>
+
+                <div class="key-point">
+                    <div class="key-point-number">2</div>
+                    <div class="key-point-content">
+                        <div class="key-point-title">근육 활성화</div>
+                        <p>내려가기는 다른 근육 그룹을 활성화하고 근육 섬유 손상과 후속 성장을 유도합니다.</p>
+                        <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=173" target="_blank">02:53</a></div>
                     </div>
                 </div>
-                
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>가벼운 조깅</span>
-                        <span>70%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 70%;"></div>
-                    </div>
-                </div>
-                
-                <p style="text-align: center; margin-top: 20px; font-size: 14px;">근육 활성화 비교 (대퇴사두근 기준)</p>
-            </div>
-        </section>
-        
-        <section>
-            <h2 class="section-title">🧠 마인드맵: 계단 내려가기의 효과</h2>
-            <div class="mindmap-container">
-                <div class="central-node">계단 내려가기 효과</div>
-                
-                <svg class="connections" viewBox="0 0 1100 400">
-                    <!-- Central node to all primary nodes -->
-                    <path d="M550,50 L200,150" stroke="#7B4AFF" stroke-width="2" fill="none" />
-                    <path d="M550,50 L400,150" stroke="#7B4AFF" stroke-width="2" fill="none" />
-                    <path d="M550,50 L700,150" stroke="#7B4AFF" stroke-width="2" fill="none" />
-                    <path d="M550,50 L900,150" stroke="#7B4AFF" stroke-width="2" fill="none" />
-                    
-                    <!-- Dots on connections -->
-                    <circle cx="375" cy="100" r="4" fill="#7B4AFF" />
-                    <circle cx="475" cy="100" r="4" fill="#7B4AFF" />
-                    <circle cx="625" cy="100" r="4" fill="#7B4AFF" />
-                    <circle cx="725" cy="100" r="4" fill="#7B4AFF" />
-                </svg>
-                
-                <div class="nodes-container">
-                    <div class="node">
-                        <div class="node-title">신체적 효과</div>
-                        <ul>
-                            <li>근육 성장 촉진</li>
-                            <li>골밀도 증가</li>
-                            <li>균형감 향상</li>
-                            <li>하체 근력 강화</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="node">
-                        <div class="node-title">대사적 효과</div>
-                        <ul>
-                            <li>혈당 조절 개선</li>
-                            <li>지방 연소</li>
-                            <li>대사 건강 개선</li>
-                            <li>콜레스테롤 감소</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="node">
-                        <div class="node-title">실용적 이점</div>
-                        <ul>
-                            <li>접근성 높은 운동</li>
-                            <li>비용 필요 없음</li>
-                            <li>시간 효율적</li>
-                            <li>특별한 장비 불필요</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="node">
-                        <div class="node-title">안전 고려사항</div>
-                        <ul>
-                            <li>통제된 하강 중요</li>
-                            <li>통증시 휴식</li>
-                            <li>올바른 자세 유지</li>
-                            <li>점진적 강도 증가</li>
-                        </ul>
+
+                <div class="key-point">
+                    <div class="key-point-number">3</div>
+                    <div class="key-point-content">
+                        <div class="key-point-title">연구 결과</div>
+                        <p>60대 여성들의 12주 계단 내려가기만 실시한 그룹에서 골밀도 증가와 대사 건강 마커의 개선이 관찰되었습니다.</p>
+                        <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=265" target="_blank">04:25</a></div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section>
-            <h2 class="section-title">📚 세부 내용 분석</h2>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">📝</span>
-                        소개
+
+            <!-- 두 번째 컬럼 -->
+            <div class="section">
+                <h2 class="section-title">🏋️‍♀️ 운동 효과 비교</h2>
+                
+                <h3 class="section-title">🔄 계단 운동 비교</h3>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-title">계단 오르기</div>
+                        <div class="comparison-content">
+                            <p>• <strong>동심성 근육 수축</strong>: 근육이 짧아지면서 수축</p>
+                            <p>• <strong>심혈관 운동 효과 증가</strong>: 심박수와 산소 소비량 증가</p>
+                            <p>• <strong>칼로리 소모 높음</strong>: 체중 감량에 효과적</p>
+                            <p>• <strong>대퇴사두근 강화</strong>: 무릎 앞쪽 근육 주로 발달</p>
+                            <p>• <strong>폐활량 향상</strong>: 호흡 근육 강화</p>
+                            <p>• <strong>혈당 조절 개선</strong>: 인슐린 감수성 향상</p>
+                        </div>
                     </div>
-                    <p>타니모토 교수는 계단 운동 루틴의 일부로 계단 내려가기의 중요성을 강조합니다.<span class="timestamp">[00:00]</span></p>
-                    <div class="insight-bar">
-                        계단 내려가기는 단순히 오르기를 마친 후의 단계가 아닌, 그 자체로 독립적인 가치가 있는 운동입니다.
+                    <div class="comparison-item">
+                        <div class="comparison-title">계단 내려가기</div>
+                        <div class="comparison-content">
+                            <p>• <strong>이심성 근육 수축</strong>: 근육이 늘어나면서 수축</p>
+                            <p>• <strong>골밀도 증가 효과</strong>: 뼈에 더 큰 압력과 자극</p>
+                            <p>• <strong>근육 섬유 손상 증가</strong>: 더 많은 근육 재생과 성장</p>
+                            <p>• <strong>햄스트링 강화</strong>: 무릎 뒤쪽 근육 주로 발달</p>
+                            <p>• <strong>균형감각 향상</strong>: 협응력과 자세 안정성 개선</p>
+                            <p>• <strong>관절 건강 증진</strong>: 통제된 하중으로 연골 강화</p>
+                        </div>
                     </div>
                 </div>
-                
+
+                <div class="arrow"></div>
+
                 <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">💪</span>
-                        근육 참여
-                    </div>
-                    <p>계단 내려가기는 원심성 수축을 포함하며, 이는 더 많은 근섬유 손상을 일으켜 회복 중 근육 성장으로 이어집니다.<span class="timestamp">[02:53]</span></p>
-                    <div class="insight-bar">
-                        원심성 수축은 근육 비대 (근육 성장)의 핵심입니다.
-                    </div>
+                    <h3>걷기 vs 계단 운동</h3>
+                    <p>계단 운동은 걷기보다 허벅지 근육을 더 효과적으로 자극합니다. 특히 계단 내려가기는 걷기에 비해 최대 3-4배 더 많은 근육 활성화를 유도합니다.</p>
+                    <div class="tag">더 강력한 운동 효과</div>
+                    <div class="tag">근육 자극 3-4배 증가</div>
+                    <div class="tag">특정 근육 그룹 강화</div>
+                    <div class="tag">저영향 고효율 운동</div>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=306" target="_blank">05:06</a></div>
                 </div>
-                
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🔬</span>
-                        비교 연구
-                    </div>
-                    <p>연구에 따르면 계단 내려가기는 걷기보다 근육을 더 활성화하며 근육 자극 측면에서 가벼운 조깅에 비교될 수 있습니다.<span class="timestamp">[03:32]</span></p>
-                    <div class="insight-bar">
-                        계단 내려가기는 저영향 고효율 운동의 좋은 예입니다.
+
+                <div class="bubble">
+                    <p>💡 <strong>전문가 의견:</strong> 정형외과 전문의들은 근육량이 많은 사람들이 관절 통증을 덜 경험하고 수술에서 더 빠르게 회복한다고 지적합니다.</p>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=349" target="_blank">05:49</a></div>
+                </div>
+
+                <h3 class="section-title">🔍 계단 내려가기의 효과</h3>
+                <div class="bubble">
+                    <p><strong>과학적 근거:</strong> 계단 내려가기는 이심성 수축을 통해 근육에 더 많은 자극을 주며, 특히 여성과 노인의 골밀도 유지에 중요합니다. 한 연구에서는 12주 동안 계단 내려가기 운동만 한 그룹이 상당한 건강 개선을 보였습니다.</p>
+                </div>
+
+                <div class="mind-map">
+                    <div class="mind-map-center">계단 내려가기 건강 효과</div>
+                    <div class="mind-map-branches">
+                        <div class="branch">골밀도 7-8% 증가</div>
+                        <div class="branch">하체 근력 25% 향상</div>
+                        <div class="branch">혈중 지질 수치 개선</div>
+                        <div class="branch">항산화 능력 향상</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">👨‍⚕️</span>
-                        전문가 의견
-                    </div>
-                    <p>정형외과 전문가들은 근육량이 많은 개인이 관절 통증을 덜 경험하고 수술에서 더 빨리 회복한다고 지적합니다.<span class="timestamp">[05:49]</span></p>
-                    <div class="insight-bar">
-                        강한 근육은 관절을 지원하고 보호하는 천연 "브레이스" 역할을 합니다.
-                    </div>
-                </div>
+
+            <!-- 세 번째 컬럼 -->
+            <div class="section">
+                <h2 class="section-title">🔍 세부 내용 및 안전성</h2>
                 
                 <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🦵</span>
-                        우려사항 해결
-                    </div>
-                    <p>영상은 무릎 통증에 대한 우려를 다루며, 통증이 종종 관절 손상보다는 근육이나 힘줄 문제로 인한 것이라고 설명합니다.<span class="timestamp">[06:50]</span></p>
-                    <div class="insight-bar">
-                        대부분의 계단 운동 관련 통증은 올바른 테크닉과 점진적 강도 증가로 예방할 수 있습니다.
+                    <h3>근육 활성화 메커니즘</h3>
+                    <p>계단 내려가기는 이심성 수축을 포함하며, 이는 더 많은 근육 섬유 손상을 유발하여 회복 과정에서 근육 성장으로 이어집니다.</p>
+                    <div class="tag">근육 비대</div>
+                    <div class="tag">이심성 수축</div>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=173" target="_blank">02:53</a></div>
+                </div>
+
+                <div class="card">
+                    <h3>비교 연구</h3>
+                    <p>연구에 따르면 계단 내려가기는 걷기보다 근육을 더 많이 활성화하며, 근육 자극 측면에서 가벼운 조깅과 비슷할 수 있습니다.</p>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=212" target="_blank">03:32</a></div>
+                </div>
+
+                <div class="insight">
+                    <strong>주요 데이터:</strong> 60세 여성을 대상으로 한 연구에서 계단 내려가기에 집중한 그룹이 골밀도 증가를 보였습니다.
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=265" target="_blank">04:25</a></div>
+                </div>
+
+                <h3 class="section-title">⚠️ 안전성 고려사항</h3>
+                
+                <div class="bubble">
+                    <p>계단 운동은 안전하며, 통증은 일반적으로 근육이나 힘줄의 통증으로 휴식을 취하면 해결될 수 있습니다.</p>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=417" target="_blank">06:57</a></div>
+                </div>
+
+                <div class="key-point">
+                    <div class="key-point-number">5</div>
+                    <div class="key-point-content">
+                        <div class="key-point-title">무릎 통증에 대한 해명</div>
+                        <p>영상은 무릎 통증에 대한 우려를 다루며, 통증이 종종 관절 손상보다는 근육 또는 힘줄 문제로 인한 것임을 설명합니다.</p>
+                        <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=410" target="_blank">06:50</a></div>
                     </div>
                 </div>
-                
+
                 <div class="card">
-                    <div class="card-title">
-                        <span class="card-emoji">🧠</span>
-                        결론
-                    </div>
-                    <p>영상은 계단 내려가기가 자주 간과되지만 전체적인 건강과 피트니스에 중요한 운동 구성요소라고 결론짓습니다.<span class="timestamp">[07:30]</span></p>
-                    <div class="insight-bar">
-                        완전한 운동 루틴에는 계단 오르기와 내려가기가 모두 포함되어야 합니다.
+                    <h3>계단 운동의 생리학적 차이</h3>
+                    <p><strong>계단 오르기(동심성 수축)</strong>: 근육이 짧아지면서 수축하는 방식으로, 순간적인 에너지 소비가 크고 심폐 기능 향상에 효과적입니다.</p>
+                    <p><strong>계단 내려가기(이심성 수축)</strong>: 근육이 늘어나면서 제어하는 방식으로, 근섬유 미세 손상을 일으켜 복구 과정에서 더 강한 근육이 형성됩니다.</p>
+                    <div class="tag">근육 생리학</div>
+                    <div class="tag">운동 메커니즘</div>
+                </div>
+
+                <div class="key-point">
+                    <div class="key-point-number">💡</div>
+                    <div class="key-point-content">
+                        <div class="key-point-title">실용적 적용점</div>
+                        <p>• <strong>완전한 운동 효과</strong>: 계단 오르기와 내려가기를 모두 포함하여 운동 효과 극대화</p>
+                        <p>• <strong>속도 조절</strong>: 통제된 속도로 특히 내려가기를 실시하여 근육 활성화 극대화</p>
+                        <p>• <strong>노인 건강</strong>: 정기적인 계단 내려가기는 특히 골다공증 예방에 효과적</p>
+                        <p>• <strong>운동 대체</strong>: 시간이 부족할 때 짧은 계단 운동으로 효율적 운동 효과</p>
+                        <p>• <strong>안전 관리</strong>: 통증이 있으면 휴식을 취하고 점진적으로 강도 높이기</p>
+                        <p>• <strong>균형 훈련</strong>: 계단 내려가기로 자세 안정성과 균형감각 향상</p>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <footer>
-            <p>이 인포그래픽은 YouTube 영상 "The Surprising Benefits of Descending Stairs"의 내용을 바탕으로 제작되었습니다. ⓒ 2025. 모든 권리 보유.</p>
-        </footer>
+        </div>
+
+        <div class="footer">
+            © 2025 계단 내려가기의 놀라운 혜택 인포그래픽 | 출처: <a href="https://youtu.be/OD21bZ_jJT4" target="_blank">https://youtu.be/OD21bZ_jJT4</a>
+        </div>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script>
-        // 페이지 로드 시 애니메이션 효과
-        document.addEventListener('DOMContentLoaded', function() {
-            // 카드 요소들을 순차적으로 나타나게 함
-            gsap.from('.card', {
-                duration: 0.7,
-                opacity: 0,
-                y: 30,
-                stagger: 0.15,
-                ease: 'power2.out'
-            });
-            
-            // 도넛 차트 애니메이션
-            gsap.from('circle[stroke="#7B4AFF"]', {
-                duration: 1.5,
-                strokeDashoffset: 439.8,
-                ease: 'power2.inOut',
-                delay: 0.5
-            });
-            
-            // 프로그레스 바 애니메이션
-            gsap.from('.progress-fill', {
-                duration: 1,
-                width: 0,
-                ease: 'power2.inOut',
-                delay: 0.8,
-                stagger: 0.2
-            });
-            
-            // 마인드맵 노드 애니메이션
-            gsap.from('.node', {
-                duration: 0.8,
-                scale: 0.8,
-                opacity: 0,
-                stagger: 0.2,
-                delay: 1
-            });
-            
-            // 마인드맵 연결선 애니메이션
-            gsap.from('path', {
-                duration: 1.5,
-                drawSVG: 0,
-                ease: 'power2.inOut',
-                delay: 1
-            });
-            
-            // 원형 도트 애니메이션
-            gsap.from('circle[r="4"]', {
-                duration: 0.5,
-                scale: 0,
-                transformOrigin: 'center center',
-                ease: 'back.out(1.7)',
-                delay: 1.5,
-                stagger: 0.1
-            });
-        });
-    </script>
 </body>
 </html>
