@@ -480,52 +480,277 @@
                     <p><strong>과학적 근거:</strong> 계단 내려가기는 이심성 수축을 통해 근육에 더 많은 자극을 주며, 특히 여성과 노인의 골밀도 유지에 중요합니다. 한 연구에서는 12주 동안 계단 내려가기 운동만 한 그룹이 상당한 건강 개선을 보였습니다.</p>
                 </div>
 
-                <div class="mind-map">
-                    <div class="mind-map-center">계단 내려가기 건강 효과</div>
-                    <div class="mind-map-branches">
-                        <div class="branch">골밀도 7-8% 증가</div>
-                        <div class="branch">하체 근력 25% 향상</div>
-                        <div class="branch">혈중 지질 수치 개선</div>
-                        <div class="branch">항산화 능력 향상</div>
-                    </div>
+                <style>
+                    .comprehensive-mind-map {
+                        position: relative;
+                        min-height: 500px;
+                        margin: 40px 0;
+                        padding: 20px;
+                        background-color: rgba(242, 230, 61, 0.05);
+                        border-radius: 15px;
+                    }
+                    
+                    .map-center {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 150px;
+                        height: 150px;
+                        background-color: var(--color-3);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        color: var(--color-1);
+                        font-weight: bold;
+                        z-index: 5;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                        font-size: 16px;
+                        padding: 10px;
+                    }
+                    
+                    .map-category {
+                        position: absolute;
+                        width: 130px;
+                        min-height: 45px;
+                        background-color: var(--color-4);
+                        color: white;
+                        border-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        font-weight: bold;
+                        padding: 10px;
+                        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+                        z-index: 4;
+                    }
+                    
+                    .map-category:nth-child(2) {
+                        top: 30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                    .map-category:nth-child(3) {
+                        top: 50%;
+                        right: 30px;
+                        transform: translateY(-50%);
+                    }
+                    
+                    .map-category:nth-child(4) {
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                    .map-category:nth-child(5) {
+                        top: 50%;
+                        left: 30px;
+                        transform: translateY(-50%);
+                    }
+                    
+                    .map-items {
+                        position: absolute;
+                        width: 120px;
+                        background-color: white;
+                        border: 2px solid var(--color-4);
+                        border-radius: 8px;
+                        padding: 10px;
+                        font-size: 13px;
+                        z-index: 3;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+                    
+                    /* 신체적 효과 아이템 */
+                    .map-items:nth-child(6) {
+                        top: 10px;
+                        left: 100px;
+                    }
+                    
+                    .map-items:nth-child(7) {
+                        top: 20px;
+                        left: 230px;
+                    }
+                    
+                    .map-items:nth-child(8) {
+                        top: 80px;
+                        left: 40px;
+                    }
+                    
+                    /* 대사적 효과 아이템 */
+                    .map-items:nth-child(9) {
+                        top: 80px;
+                        right: 40px;
+                    }
+                    
+                    .map-items:nth-child(10) {
+                        top: 150px;
+                        right: 20px;
+                    }
+                    
+                    .map-items:nth-child(11) {
+                        top: 220px;
+                        right: 60px;
+                    }
+                    
+                    /* 실용적 이점 아이템 */
+                    .map-items:nth-child(12) {
+                        bottom: 40px;
+                        right: 90px;
+                    }
+                    
+                    .map-items:nth-child(13) {
+                        bottom: 30px;
+                        left: 230px;
+                    }
+                    
+                    .map-items:nth-child(14) {
+                        bottom: 80px;
+                        right: 200px;
+                    }
+                    
+                    /* 안전 고려사항 아이템 */
+                    .map-items:nth-child(15) {
+                        bottom: 80px;
+                        left: 40px;
+                    }
+                    
+                    .map-items:nth-child(16) {
+                        bottom: 150px;
+                        left: 20px;
+                    }
+                    
+                    .map-items:nth-child(17) {
+                        bottom: 220px;
+                        left: 60px;
+                    }
+                    
+                    .connector {
+                        position: absolute;
+                        background-color: transparent;
+                        border-top: 2px dashed var(--color-4);
+                        z-index: 2;
+                        transform-origin: left center;
+                    }
+                </style>
+                
+                <div class="comprehensive-mind-map">
+                    <div class="map-center">계단 내려가기 효과</div>
+                    
+                    <div class="map-category">신체적 효과</div>
+                    <div class="map-category">대사적 효과</div>
+                    <div class="map-category">실용적 이점</div>
+                    <div class="map-category">안전 고려사항</div>
+                    
+                    <!-- 신체적 효과 아이템들 -->
+                    <div class="map-items">골밀도 7-8% 증가</div>
+                    <div class="map-items">하체 근력 25% 향상</div>
+                    <div class="map-items">관절 안정성 개선</div>
+                    
+                    <!-- 대사적 효과 아이템들 -->
+                    <div class="map-items">혈중 지질 수치 개선</div>
+                    <div class="map-items">항산화 능력 향상</div>
+                    <div class="map-items">인슐린 감수성 향상</div>
+                    
+                    <!-- 실용적 이점 아이템들 -->
+                    <div class="map-items">시간 효율적 운동</div>
+                    <div class="map-items">무료 접근성</div>
+                    <div class="map-items">일상생활 통합 용이</div>
+                    
+                    <!-- 안전 고려사항 아이템들 -->
+                    <div class="map-items">적절한 신발 착용</div>
+                    <div class="map-items">손잡이 사용 권장</div>
+                    <div class="map-items">점진적 강도 증가</div>
                 </div>
             </div>
 
             <!-- 세 번째 컬럼 -->
             <div class="section">
-                <h2 class="section-title">🔍 세부 내용 및 안전성</h2>
+                <h2 class="section-title">🔍 계단 내려가기 상세 분석</h2>
                 
+                <h3 class="section-title">💪 신체적 효과</h3>
                 <div class="card">
                     <h3>근육 활성화 메커니즘</h3>
                     <p>계단 내려가기는 이심성 수축을 포함하며, 이는 더 많은 근육 섬유 손상을 유발하여 회복 과정에서 근육 성장으로 이어집니다.</p>
+                    <p><strong>주요 효과:</strong></p>
+                    <ul style="list-style-type:none; padding-left:10px;">
+                        <li>• 하체 근력 25% 향상 (특히 햄스트링과 둔근)</li>
+                        <li>• 근육 섬유 손상을 통한 근육 재생과 비대</li>
+                        <li>• 근육 내구력 향상</li>
+                        <li>• 근신경 협응력 개선</li>
+                    </ul>
                     <div class="tag">근육 비대</div>
                     <div class="tag">이심성 수축</div>
                     <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=173" target="_blank">02:53</a></div>
                 </div>
 
                 <div class="card">
-                    <h3>비교 연구</h3>
-                    <p>연구에 따르면 계단 내려가기는 걷기보다 근육을 더 많이 활성화하며, 근육 자극 측면에서 가벼운 조깅과 비슷할 수 있습니다.</p>
-                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=212" target="_blank">03:32</a></div>
+                    <h3>골밀도 향상 효과</h3>
+                    <p>계단 내려가기는 뼈에 더 큰 충격과 압력을 가해 골밀도를 효과적으로 증가시킵니다.</p>
+                    <p><strong>주요 효과:</strong></p>
+                    <ul style="list-style-type:none; padding-left:10px;">
+                        <li>• 골밀도 7-8% 증가 (특히 고관절과 척추)</li>
+                        <li>• 골다공증 예방 효과</li>
+                        <li>• 골 형성 촉진 물질 분비 증가</li>
+                        <li>• 관절 안정성 개선</li>
+                    </ul>
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=28" target="_blank">00:28</a></div>
                 </div>
 
-                <div class="insight">
-                    <strong>주요 데이터:</strong> 60세 여성을 대상으로 한 연구에서 계단 내려가기에 집중한 그룹이 골밀도 증가를 보였습니다.
+                <h3 class="section-title">🔄 대사적 효과</h3>
+                <div class="card">
+                    <h3>대사 건강 개선</h3>
+                    <p>계단 내려가기는 전체적인 대사 건강에 긍정적인 영향을 미칩니다.</p>
+                    <p><strong>주요 효과:</strong></p>
+                    <ul style="list-style-type:none; padding-left:10px;">
+                        <li>• 혈중 지질 수치 개선 (LDL 콜레스테롤 감소)</li>
+                        <li>• 항산화 능력 향상</li>
+                        <li>• 인슐린 감수성 향상</li>
+                        <li>• 기초 대사율 증가</li>
+                        <li>• 혈압 조절 개선</li>
+                    </ul>
                     <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=265" target="_blank">04:25</a></div>
                 </div>
 
-                <h3 class="section-title">⚠️ 안전성 고려사항</h3>
-                
+                <div class="insight">
+                    <strong>주요 연구 데이터:</strong> 60세 여성을 대상으로 한 연구에서 12주 동안 계단 내려가기만 실시한 그룹이 골밀도 증가와 대사 지표 개선, 근력 향상을 보였습니다. 특히 혈중 지질 수치와 항산화 지표가 현저히 개선되었습니다.
+                    <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=265" target="_blank">04:25</a></div>
+                </div>
+
+                <h3 class="section-title">⚙️ 실용적 이점</h3>
                 <div class="bubble">
-                    <p>계단 운동은 안전하며, 통증은 일반적으로 근육이나 힘줄의 통증으로 휴식을 취하면 해결될 수 있습니다.</p>
+                    <p><strong>일상 생활 통합:</strong> 계단 내려가기는 특별한 장비나 시설 없이도 일상생활에 쉽게 통합할 수 있습니다.</p>
+                    <ul style="list-style-type:none; padding-left:10px;">
+                        <li>• <strong>시간 효율성:</strong> 짧은 시간 내 높은 운동 효과</li>
+                        <li>• <strong>비용 효율성:</strong> 무료로 이용 가능한 자원</li>
+                        <li>• <strong>접근성:</strong> 대부분의 건물에서 이용 가능</li>
+                        <li>• <strong>저영향 운동:</strong> 체중이 많은 사람들도 안전하게 시작 가능</li>
+                        <li>• <strong>복합 운동:</strong> 근력, 균형, 심폐 기능 동시 개선</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">⚠️ 안전 고려사항</h3>
+                <div class="card">
+                    <h3>안전한 계단 운동 방법</h3>
+                    <p><strong>무릎 통증 예방:</strong> 무릎 통증은 주로 근육이나 힘줄 문제에서 기인하며, 적절한 방법으로 해결 가능합니다.</p>
+                    <ul style="list-style-type:none; padding-left:10px;">
+                        <li>• <strong>적절한 신발:</strong> 쿠션이 좋은 운동화 착용</li>
+                        <li>• <strong>손잡이 활용:</strong> 특히 초보자와 노인은 손잡이 사용</li>
+                        <li>• <strong>점진적 진행:</strong> 계단 수와 속도를 점차 늘리기</li>
+                        <li>• <strong>준비 운동:</strong> 간단한 스트레칭으로 근육 준비</li>
+                        <li>• <strong>통증 관리:</strong> 통증 발생시 휴식과 RICE 요법</li>
+                    </ul>
                     <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=417" target="_blank">06:57</a></div>
                 </div>
 
                 <div class="key-point">
                     <div class="key-point-number">5</div>
                     <div class="key-point-content">
-                        <div class="key-point-title">무릎 통증에 대한 해명</div>
-                        <p>영상은 무릎 통증에 대한 우려를 다루며, 통증이 종종 관절 손상보다는 근육 또는 힘줄 문제로 인한 것임을 설명합니다.</p>
+                        <div class="key-point-title">전문가 조언</div>
+                        <p>영상의 전문가들은 계단 내려가기가 관절에 안전하며, 오히려, 근육 발달이 관절 보호와 통증 감소에 도움이 된다고 강조합니다. 단, 개인의 건강 상태에 맞게 조절이 필요합니다.</p>
                         <div class="time">⏱️ <a href="https://youtu.be/OD21bZ_jJT4&t=410" target="_blank">06:50</a></div>
                     </div>
                 </div>
@@ -538,16 +763,44 @@
                     <div class="tag">운동 메커니즘</div>
                 </div>
 
+                <h3 class="section-title">📊 연령별 효과 비교</h3>
+                <table style="width:100%; border-collapse:collapse; margin:15px 0; border-radius:8px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+                    <thead>
+                        <tr style="background-color:var(--color-3); color:var(--color-1);">
+                            <th style="padding:10px; text-align:left; border:1px solid #ddd;">연령대</th>
+                            <th style="padding:10px; text-align:left; border:1px solid #ddd;">주요 이점</th>
+                            <th style="padding:10px; text-align:left; border:1px solid #ddd;">추천 빈도</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background-color:rgba(242, 230, 61, 0.1);">
+                            <td style="padding:10px; border:1px solid #ddd;"><strong>20-30대</strong></td>
+                            <td style="padding:10px; border:1px solid #ddd;">근력 강화, 체지방 감소, 대사 건강</td>
+                            <td style="padding:10px; border:1px solid #ddd;">주 3-5회, 고강도 가능</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px; border:1px solid #ddd;"><strong>40-50대</strong></td>
+                            <td style="padding:10px; border:1px solid #ddd;">골밀도 유지, 근육량 보존, 대사 증진</td>
+                            <td style="padding:10px; border:1px solid #ddd;">주 3-4회, 중강도 권장</td>
+                        </tr>
+                        <tr style="background-color:rgba(242, 230, 61, 0.1);">
+                            <td style="padding:10px; border:1px solid #ddd;"><strong>60대 이상</strong></td>
+                            <td style="padding:10px; border:1px solid #ddd;">골다공증 예방, 낙상 위험 감소, 균형감각</td>
+                            <td style="padding:10px; border:1px solid #ddd;">주 2-3회, 저강도로 시작</td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <div class="key-point">
                     <div class="key-point-number">💡</div>
                     <div class="key-point-content">
-                        <div class="key-point-title">실용적 적용점</div>
-                        <p>• <strong>완전한 운동 효과</strong>: 계단 오르기와 내려가기를 모두 포함하여 운동 효과 극대화</p>
-                        <p>• <strong>속도 조절</strong>: 통제된 속도로 특히 내려가기를 실시하여 근육 활성화 극대화</p>
-                        <p>• <strong>노인 건강</strong>: 정기적인 계단 내려가기는 특히 골다공증 예방에 효과적</p>
-                        <p>• <strong>운동 대체</strong>: 시간이 부족할 때 짧은 계단 운동으로 효율적 운동 효과</p>
-                        <p>• <strong>안전 관리</strong>: 통증이 있으면 휴식을 취하고 점진적으로 강도 높이기</p>
+                        <div class="key-point-title">전문가 추천 루틴</div>
+                        <p>• <strong>초보자</strong>: 1-2층 계단, 주 2회, 5-10분</p>
+                        <p>• <strong>중급자</strong>: 3-5층 계단, 주 3회, 15-20분</p>
+                        <p>• <strong>상급자</strong>: 5층 이상 계단, 주 4-5회, 20-30분</p>
                         <p>• <strong>균형 훈련</strong>: 계단 내려가기로 자세 안정성과 균형감각 향상</p>
+                        <p>• <strong>슈퍼세트</strong>: 계단 오르기-내려가기 연속 실시로 효과 극대화</p>
+                        <p>• <strong>인터벌 트레이닝</strong>: 빠르게 내려가기와 천천히 내려가기 번갈아 실시</p>
                     </div>
                 </div>
             </div>
