@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보험업계 주요 뉴스 인포그래픽</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+        
+        body {
+            background-color: #F5F5F7;
+            color: #666666;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666666;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #7B4AFF;
+            margin: 40px 0 24px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #7B4AFF;
+            border-radius: 2px;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex: 1 1 calc(33.333% - 24px);
+            min-width: 300px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .card-content {
+            margin-bottom: 16px;
+        }
+        
+        .source {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 16px;
+        }
+        
+        .benefit {
+            background-color: #F5F5F7;
+            padding: 16px;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .benefit:before {
+            content: '고객 혜택';
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background-color: #7B4AFF;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .trend-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .trend-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex: 1 1 calc(50% - 24px);
+            min-width: 300px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 200px;
+            margin: 24px 0;
+        }
+        
+        .donut-chart {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .donut-segment {
+            fill: none;
+            stroke-width: 30;
+        }
+        
+        .chart-label {
+            font-size: 14px;
+            text-anchor: middle;
+        }
+        
+        .chart-value {
+            font-size: 24px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 24px;
+            background-color: #DDDDDD;
+            border-radius: 12px;
+            margin: 8px 0 24px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #7B4AFF;
+            border-radius: 12px;
+            transition: width 1s ease;
+        }
+        
+        .insight-bar {
+            background-color: #444444;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #7B4AFF;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        
+        .quote {
+            border-left: 4px solid #7B4AFF;
+            background-color: rgba(123, 74, 255, 0.05);
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #DDDDDD;
+            font-size: 14px;
+            color: #666666;
+        }
+        
+        .flow-line {
+            position: relative;
+        }
+        
+        .flow-line:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background-color: #DDDDDD;
+            z-index: -1;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #7B4AFF;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 100%;
+            }
+            
+            .trend-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2025 보험업계 주요 트렌드 및 뉴스</h1>
+            <p class="subtitle">70대 보험설계사를 위한 보험업계 이슈 핵심 정리</p>
+        </header>
+        
+        <section>
+            <h2 class="section-title">디지털화 혁신</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="tag">디지털 헬스케어</div>
+                    <h3 class="card-title">건강보험과 디지털 헬스케어 서비스 연계 강화</h3>
+                    <p class="card-content">스마트워치나 앱으로 건강정보를 공유하면 보험료 할인 등의 혜택을 확대하려는 움직임이 있습니다.</p>
+                    <p class="source">출처: 조선비즈 (2025.03)</p>
+                    <div class="benefit">
+                        <p>건강관리를 열심히 하는 분들은 앞으로 더 저렴하고 유리한 보험 혜택을 받을 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">모바일 서비스</div>
+                    <h3 class="card-title">보험사, 모바일 청구 시스템 도입 가속</h3>
+                    <p class="card-content">병원 영수증을 스마트폰으로 찍어 간편하게 청구하는 서비스가 다수 도입되고 있습니다.</p>
+                    <p class="source">출처: 전자신문 (2024.12)</p>
+                    <div class="benefit">
+                        <p>보험금 청구가 쉬워져서, 서류 준비 번거로움 없이 편리하게 보상을 받을 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">블록체인 기술</div>
+                    <h3 class="card-title">블록체인 활용한 보험금 청구 시스템 시범 운영</h3>
+                    <p class="card-content">고객 정보 위·변조 방지를 위해 블록체인 기술을 활용하는 사례가 늘고 있습니다.</p>
+                    <p class="source">출처: 이데일리 (2025.03)</p>
+                    <div class="benefit">
+                        <p>청구 과정이 안전하고 신속해져서, 불필요한 문서 작업이 줄어듭니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="tag">온라인 플랫폼</div>
+                    <h3 class="card-title">온라인 보험설계 플랫폼 경쟁 심화</h3>
+                    <p class="card-content">보험사들이 온라인 비교 견적 서비스를 강화해 비대면 가입 절차가 쉬워졌습니다.</p>
+                    <p class="source">출처: 머니투데이 (2025.03)</p>
+                    <div class="benefit">
+                        <p>여러 보험을 간편하게 비교할 수 있어, 고객 입장에서는 더 합리적인 선택이 가능해집니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">모바일 상담</div>
+                    <h3 class="card-title">모바일 메신저 통한 보험상담·언더라이팅 가능해져</h3>
+                    <p class="card-content">대면이 어려운 상황에서 카카오톡 같은 메신저로 보험 가입 상담과 심사가 이뤄집니다.</p>
+                    <p class="source">출처: 디지털데일리 (2025.01)</p>
+                    <div class="benefit">
+                        <p>시간과 장소에 구애받지 않고 전문 상담을 받을 수 있어, 가입 절차가 훨씬 편리합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">인슈어테크</div>
+                    <h3 class="card-title">인슈어테크 기업, 스마트 가입/심사 시스템 도입</h3>
+                    <p class="card-content">AI 기술을 통해 가입자의 건강 상태나 정보를 빠르게 분석하여, 가입 가능 여부 및 보험료를 신속히 산정합니다.</p>
+                    <p class="source">출처: 전자신문 (2025.02)</p>
+                    <div class="benefit">
+                        <p>복잡한 심사 과정을 줄여, 고객 입장에서는 가입이 쉬워지고 보험금 청구도 빨라집니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="insight-bar">
+            <strong>핵심 인사이트:</strong> 디지털 기술의 활용으로 보험 가입과 청구 과정이 간소화되고, 건강관리와 연계된 맞춤형 서비스가 확대되는 추세입니다.
+        </div>
+        
+        <section>
+            <h2 class="section-title">고객 중심 상품 개발</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="tag">맞춤형 보험</div>
+                    <h3 class="card-title">빅데이터 기반 맞춤형 보험 상품 확대</h3>
+                    <p class="card-content">개인의 생활 패턴이나 의료 이력을 분석해, 보다 정교하게 가격을 책정하는 상품들이 나옵니다.</p>
+                    <p class="source">출처: 디지털데일리 (2025.01)</p>
+                    <div class="benefit">
+                        <p>건강 상태가 양호한 고객은 보험료를 저렴하게 설계받을 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">건강관리 서비스</div>
+                    <h3 class="card-title">헬스케어 스타트업과 제휴, 건강관리 프로그램 제공</h3>
+                    <p class="card-content">보험사가 체중관리·운동 프로그램을 제공하거나, 헬스케어 기업과 협력해 다양한 서비스를 마련합니다.</p>
+                    <p class="source">출처: 서울경제 (2025.01)</p>
+                    <div class="benefit">
+                        <p>적극적으로 건강 관리를 하면 보험료 할인이나 보너스 포인트 등 혜택을 얻을 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">패키지 상품</div>
+                    <h3 class="card-title">고객 맞춤형 결합상품(패키지 보험) 출시</h3>
+                    <p class="card-content">자동차·화재·상해 등 여러 보장을 묶어 할인을 제공하는 패키지 상품이 나옵니다.</p>
+                    <p class="source">출처: 헤럴드경제 (2025.03)</p>
+                    <div class="benefit">
+                        <p>필요한 보장을 한 번에 들고, 보험료를 절약할 수 있는 기회가 생깁니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">시장 변화와 새로운 수요</h2>
+            <div class="trend-container">
+                <div class="trend-card">
+                    <h3 class="card-title">보험 가입 트렌드 변화</h3>
+                    <div class="chart-container">
+                        <svg class="donut-chart" viewBox="0 0 100 100">
+                            <circle class="donut-segment" cx="50" cy="50" r="35" stroke="#DDDDDD" stroke-dasharray="219.91 219.91" stroke-dashoffset="0"></circle>
+                            <circle class="donut-segment" cx="50" cy="50" r="35" stroke="#7B4AFF" stroke-dasharray="219.91 219.91" stroke-dashoffset="164.93"></circle>
+                            <text class="chart-value" x="50" y="55">25%</text>
+                            <text class="chart-label" x="50" y="70">온라인 가입</text>
+                        </svg>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #7B4AFF;"></div>
+                            <span>온라인 가입</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #DDDDDD;"></div>
+                            <span>오프라인 가입</span>
+                        </div>
+                    </div>
+                    <p>온라인 가입 비율이 지속적으로 증가하는 추세로, 디지털 채널을 통한 가입이 활발해지고 있습니다.</p>
+                </div>
+                
+                <div class="trend-card">
+                    <h3 class="card-title">보험 종류별 성장률</h3>
+                    <p>치매·간병보험</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                    <p>해외여행보험</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;"></div>
+                    </div>
+                    <p>재해보험</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 55%;"></div>
+                    </div>
+                    <p>자율주행차 보험</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 40%;"></div>
+                    </div>
+                    <p>고령화 사회 진입과 함께 치매·간병보험의 수요가 가장 빠르게 증가하고 있습니다.</p>
+                </div>
+            </div>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="tag">노후 대비</div>
+                    <h3 class="card-title">치매·간병보험 판매량 급상승</h3>
+                    <p class="card-content">고령화로 인해 치매보험, 간병보험과 같은 노후 대비 상품 수요가 눈에 띄게 증가하고 있습니다.</p>
+                    <p class="source">출처: 파이낸셜뉴스 (2024.12)</p>
+                    <div class="benefit">
+                        <p>만일의 상황에 대비하려는 분들에게 안정적인 노후 자금 마련의 대안이 될 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">여행 보험</div>
+                    <h3 class="card-title">해외여행보험, 코로나19 이후 가입률 회복세</h3>
+                    <p class="card-content">해외여행이 다시 활성화되면서 긴급의료비 보장을 갖춘 여행보험 판매가 크게 늘고 있습니다.</p>
+                    <p class="source">출처: 한국경제 (2025.02)</p>
+                    <div class="benefit">
+                        <p>여행 중 발생하는 예기치 못한 질병·사고를 대비해 경제적 부담을 덜 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">자연재해</div>
+                    <h3 class="card-title">기후변화로 인한 재해보험 관심 증가</h3>
+                    <p class="card-content">홍수, 태풍 등 자연재해가 잦아지면서 재산·주택·농작물 보장보험에 대한 가입이 늘고 있습니다.</p>
+                    <p class="source">출처: 한국보험신문 (2025.03)</p>
+                    <div class="benefit">
+                        <p>갑작스런 재난으로 인한 큰 손해를 줄일 수 있는 안전장치가 될 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2 class="section-title">제도 및 업계 변화</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="tag">소비자 보호</div>
+                    <h3 class="card-title">보험업법 개정안 발의, 소비자 보호 규정 강화</h3>
+                    <p class="card-content">보험 계약 시 설명의무 강화, 불완전 판매에 대한 처벌 규정이 한층 엄격해졌습니다.</p>
+                    <p class="source">출처: 연합뉴스 (2025.02)</p>
+                    <div class="benefit">
+                        <p>보험 가입 과정에서 더 투명한 정보를 받고, 불필요한 상품을 가입하지 않을 수 있게 됩니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">보험료 변동</div>
+                    <h3 class="card-title">자동차보험 손해율 급증, 보험료 인상 논의</h3>
+                    <p class="card-content">교통사고 증가와 정비비 상승으로 보험사들이 자동차보험료 인상을 검토 중입니다.</p>
+                    <p class="source">출처: 매일경제 (2025.01)</p>
+                    <div class="benefit">
+                        <p>보험료가 오를 가능성이 있으니, 안전운전 습관을 들이고 갱신 시 다양한 할인 제도를 꼼꼼히 확인해야 합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="tag">ESG 경영</div>
+                    <h3 class="card-title">윤리·ESG 경영 강화로 인한 보험사의 사회공헌 확대</h3>
+                    <p class="card-content">친환경 투자, 지역사회 기부 등 ESG 경영 실천을 위해 보험사들이 다양한 활동을 펼치고 있습니다.</p>
+                    <p class="source">출처: 머니투데이 (2024.12)</p>
+                    <div class="benefit">
+                        <p>기업 이미지가 좋아져 보험 서비스 전반에 걸쳐 보다 신뢰감 있는 혜택을 누릴 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="quote">
+            <p>"위 뉴스들은 전반적으로 디지털화, 고령화, 그리고 건강에 대한 관심 증대를 반영합니다. 고객들은 편리해진 가입·청구 절차, 건강관리 혜택, 맞춤형 보장 등 여러 가지 긍정적 변화를 체감할 수 있을 것으로 보입니다."</p>
+        </div>
+        
+        <footer>
+            <p>© 2025 보험업계 트렌드 인포그래픽 | 출처: 각 기사 원문</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 페이지 로드 시 프로그레스 바 애니메이션
+        window.addEventListener('load', function() {
+            const progressBars = document.querySelectorAll('.progress');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
