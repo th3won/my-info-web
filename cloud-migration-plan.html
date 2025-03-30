@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클라우드 마이그레이션 & 신입 육성 100일 작전계획</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --text-dark: #334155;
+      --text-subtitle: #475569;
+      --text-section: #1e40af;
+      --bg-card: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poor Story', 'Gaegu', cursive;
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      color: var(--text-dark);
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-bottom: 2px dashed var(--color-3);
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      font-family: 'Nanum Pen Script', cursive;
+      background: linear-gradient(45deg, var(--color-1), var(--color-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .date {
+      font-size: 16px;
+      color: var(--text-subtitle);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .card {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--color-3);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--color-2), var(--color-4));
+    }
+    
+    .section-title {
+      font-size: 18px;
+      color: var(--text-section);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      font-family: 'Gaegu', cursive;
+      font-weight: bold;
+    }
+    
+    .section-title::before {
+      content: "🔍";
+      margin-right: 8px;
+    }
+    
+    .highlight {
+      background: linear-gradient(180deg, rgba(255,255,255,0) 50%, var(--color-2) 50%);
+      padding: 0 4px;
+      font-weight: bold;
+    }
+    
+    .underline {
+      border-bottom: 2px dashed var(--color-4);
+      padding-bottom: 2px;
+    }
+    
+    .task-list {
+      list-style: none;
+      margin-left: 10px;
+    }
+    
+    .task-list li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+    }
+    
+    .task-list li::before {
+      content: "✏️";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    
+    .arrow {
+      font-size: 24px;
+      color: var(--color-5);
+      margin: 10px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      position: relative;
+      padding: 0 20px;
+    }
+    
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--color-1), var(--color-5));
+      z-index: 1;
+      transform: translateY(-50%);
+    }
+    
+    .timeline-item {
+      background: var(--bg-card);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px dashed var(--color-3);
+    }
+    
+    .timeline-item span {
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--text-section);
+    }
+    
+    .timeline-item strong {
+      font-size: 16px;
+      color: var(--color-5);
+    }
+    
+    .resource-box {
+      background-color: rgba(242, 230, 61, 0.1);
+      border: 2px dashed var(--color-3);
+      border-radius: 12px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    
+    .resource-box h3 {
+      color: var(--color-1);
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .resource-list {
+      columns: 2;
+      column-gap: 20px;
+    }
+    
+    .resource-list li {
+      margin-bottom: 8px;
+      break-inside: avoid;
+    }
+    
+    .bubble {
+      background-color: #fff;
+      border: 2px solid var(--color-1);
+      border-radius: 20px;
+      padding: 15px;
+      position: relative;
+      margin: 20px 0;
+      box-shadow: 3px 3px 0 rgba(89, 60, 71, 0.2);
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-right: 2px solid var(--color-1);
+      border-bottom: 2px solid var(--color-1);
+      transform: rotate(45deg);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px dashed var(--color-3);
+      font-size: 14px;
+      color: var(--text-subtitle);
+    }
+    
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .timeline::before {
+        width: 4px;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+      }
+    }
+    
+    .code-box {
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+      font-family: monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    
+    .code-box::before {
+      content: "📝 코드 예시";
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background-color: var(--color-3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: var(--color-1);
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--color-2);
+      color: var(--color-1);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .warning-box {
+      background-color: rgba(242, 92, 5, 0.1);
+      border-left: 4px solid var(--color-5);
+      padding: 10px 15px;
+      margin: 15px 0;
+    }
+    
+    .warning-box::before {
+      content: "⚠️ 주의사항";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: var(--color-5);
+    }
+  </style>
+</head>
+<body onload="setTimeout(function() { document.body.classList.add('loaded'); }, 100)">
+  <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    body.loaded {
+      opacity: 1;
+    }
+    
+    .highlight-animation {
+      animation: highlight-pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes highlight-pulse {
+      0% { background-color: rgba(242, 230, 61, 0.1); }
+      50% { background-color: rgba(242, 230, 61, 0.3); }
+      100% { background-color: rgba(242, 230, 61, 0.1); }
+    }
+    
+    .timeline-item {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .task-list li {
+      transition: transform 0.2s ease;
+    }
+    
+    .task-list li:hover {
+      transform: translateX(5px);
+    }
+    
+    .title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(45deg, var(--color-2), var(--color-5));
+      transition: width 0.5s ease;
+    }
+    
+    .title:hover::after {
+      width: 100%;
+    }
+  </style>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🚀 클라우드 마이그레이션 & 신입 육성 100일 작전계획</h1>
+      <div class="date">2025년 3월 30일 | 책임 소프트웨어 엔지니어</div>
+    </div>
+    
+    <div class="bubble">
+      "직원 90%가 퇴사한 소프트웨어 개발 회사에 입사한 첫날, 100일 안에 신입 5명을 육성하고 온프레미스 시스템을 클라우드로 완벽하게 이전하는 미션을 받았습니다. 아래는 이 도전을 성공적으로 수행하기 위한 종합 작전계획입니다."
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <span>1단계</span>
+        <strong>1-20일</strong>
+        <span>준비</span>
+      </div>
+      <div class="timeline-item">
+        <span>2단계</span>
+        <strong>21-40일</strong>
+        <span>육성</span>
+      </div>
+      <div class="timeline-item">
+        <span>3단계</span>
+        <strong>41-70일</strong>
+        <span>전환</span>
+      </div>
+      <div class="timeline-item">
+        <span>4단계</span>
+        <strong>71-90일</strong>
+        <span>검증</span>
+      </div>
+      <div class="timeline-item">
+        <span>5단계</span>
+        <strong>91-100일</strong>
+        <span>최적화</span>
+      </div>
+    </div>
+    
+    <div class="card" style="margin-bottom: 30px;">
+      <h2 class="section-title">💡 프로젝트 개요</h2>
+      
+      <div style="margin-bottom: 20px;">
+        <p>직원 90%가 퇴사한 소프트웨어 개발 회사에서 온프레미스 시스템을 클라우드로 마이그레이션하고 신입 개발자 5명을 육성하는 100일 프로젝트입니다. 이 문서는 그 과정을 단계별로 상세히 계획합니다.</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+        <div class="bubble" style="margin: 0;">
+          <h3 style="color: var(--color-1); margin-bottom: 10px; font-size: 16px;">📋 프로젝트 목표</h3>
+          <ul style="list-style-type: none; padding-left: 10px;">
+            <li style="margin-bottom: 5px;">✅ 온프레미스 시스템 100% 클라우드 전환</li>
+            <li style="margin-bottom: 5px;">✅ 신입 개발자 5명 자립적 역량 확보</li>
+            <li style="margin-bottom: 5px;">✅ 서비스 가용성 99.9% 이상 유지</li>
+            <li style="margin-bottom: 5px;">✅ 시스템 운영 비용 15% 이상 절감</li>
+            <li style="margin-bottom: 5px;">✅ 개발 및 배포 주기 40% 단축</li>
+          </ul>
+        </div>
+        
+        <div class="bubble" style="margin: 0;">
+          <h3 style="color: var(--color-1); margin-bottom: 10px; font-size: 16px;">🧩 성공 기준</h3>
+          <ul style="list-style-type: none; padding-left: 10px;">
+            <li style="margin-bottom: 5px;">✅ 모든 기능이 클라우드에서 정상 작동</li>
+            <li style="margin-bottom: 5px;">✅ 신입 5명 모두 독립적 업무 수행 가능</li>
+            <li style="margin-bottom: 5px;">✅ 완전 자동화된 CI/CD 파이프라인 구축</li>
+            <li style="margin-bottom: 5px;">✅ 종합적인 모니터링 및 알림 체계 구축</li>
+            <li style="margin-bottom: 5px;">✅ 철저한 문서화 및 지식 전달 완료</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2 class="section-title">1단계: 현황 파악 & 준비 (1-20일)</h2>
+        <ul class="task-list">
+          <li>기존 <span class="highlight">인프라 및 코드베이스</span> 평가</li>
+          <li>핵심 시스템 및 종속성 식별</li>
+          <li>기존 문서에서 <span class="underline">지식 저장소</span> 구축</li>
+          <li>신입 교육 자료 개발</li>
+          <li>클라우드 환경 및 개발 워크플로우 설정</li>
+          <li>마이그레이션 전략 및 일정 수립</li>
+          <li>코드 분석 및 이해를 위한 <span class="highlight">AI 도구</span> 식별</li>
+        </ul>
+        
+        <div class="resource-box">
+          <h3>🛠️ 필요 자원</h3>
+          <ul class="resource-list">
+            <li>인프라 문서화 도구</li>
+            <li>코드 분석 도구 (SonarQube)</li>
+            <li>지식 베이스 플랫폼 (Confluence)</li>
+            <li>클라우드 계정 설정</li>
+            <li>버전 관리 시스템 접근</li>
+          </ul>
+        </div>
+        
+        <div class="warning-box">
+          기존 시스템의 문서가 부족할 수 있으므로, 남아있는 직원들과의 지식 전달 세션을 최우선으로 진행하세요.
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">2단계: 온보딩 & 초기 교육 (21-40일)</h2>
+        <ul class="task-list">
+          <li>5명의 신입 직원 <span class="highlight">온보딩</span></li>
+          <li>회사 시스템에 대한 기초 교육 제공</li>
+          <li>멘토 및 특정 책임 영역 배정</li>
+          <li>실습 학습을 위한 <span class="underline">소규모 마이그레이션</span> 프로젝트 시작</li>
+          <li>지식 전달 가속화를 위한 페어 프로그래밍 도입</li>
+          <li>기존 시스템 문서화 시작</li>
+          <li>클라우드 배포를 위한 <span class="highlight">CI/CD 파이프라인</span> 설정</li>
+        </ul>
+        
+        <div class="code-box">
+// 신입 개발자 역량 평가 체크리스트
+const skills = {
+  base: ["git", "언어기초", "개발환경설정"],
+  intermediate: ["시스템구조이해", "코드리뷰", "테스트작성"],
+  advanced: ["독립적문제해결", "클라우드구성", "최적화"]
+};
+
+// 개발자별 주간 진행상황 추적</div>
+        
+        <div class="arrow">⬇️</div>
+        <p style="text-align: center; font-weight: bold; color: var(--color-5);">신입 개발자 지식 로드맵 작성하기</p>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">3단계: 병렬 개발 & 마이그레이션 (41-70일)</h2>
+        <ul class="task-list">
+          <li><span class="highlight">비핵심 시스템</span> 마이그레이션 시작</li>
+          <li>마이그레이션된 시스템 테스트 프로토콜 수립</li>
+          <li>신입 직원 <span class="underline">전문 교육</span> 지속</li>
+          <li>모니터링 및 로깅 솔루션 개발</li>
+          <li>긴급 상황을 위한 롤백 절차 수립</li>
+          <li><span class="highlight">자동화된 테스트</span> 구현</li>
+          <li>정기적인 지식 공유 세션 진행</li>
+        </ul>
+        
+        <div class="resource-box">
+          <h3>💡 핵심 클라우드 기술</h3>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">AWS/Azure/GCP</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">마이크로서비스</span>
+          <span class="tag">서버리스</span>
+          <span class="tag">데이터베이스 마이그레이션</span>
+        </div>
+        
+        <div class="code-box">
+# Terraform을 이용한 인프라 자동화 예시
+resource "aws_instance" "app_server" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "AppServerInstance"
+  }
+}</div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">4단계: 핵심 시스템 마이그레이션 & 검증 (71-90일)</h2>
+        <ul class="task-list">
+          <li><span class="highlight">핵심 시스템</span>을 클라우드로 마이그레이션</li>
+          <li>모든 마이그레이션된 시스템 <span class="underline">광범위한 테스트</span></li>
+          <li>부하 및 성능 테스트</li>
+          <li>보안 감사 및 침투 테스트</li>
+          <li>사용자 수용 테스트</li>
+          <li>재해 복구 테스트</li>
+          <li>최종 문서 업데이트</li>
+        </ul>
+        
+        <div class="warning-box">
+          이 단계에서는 두 환경(온프레미스 및 클라우드)을 동시에 운영하면서 점진적으로 트래픽을 전환하세요. 문제 발생 시 즉시 롤백할 수 있는 체계를 유지하는 것이 중요합니다.
+        </div>
+        
+        <div class="code-box">
+// 마이그레이션 점검 체크리스트
+const validationSteps = [
+  "모든 엔드포인트 응답 확인",
+  "데이터 무결성 검증",
+  "성능 메트릭 비교",
+  "보안 규정 준수 확인",
+  "장애 복구 테스트"
+];</div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">5단계: 최적화 & 인계 (91-100일)</h2>
+        <ul class="task-list">
+          <li>클라우드 <span class="highlight">리소스 및 비용</span> 최적화</li>
+          <li>모든 문서 완성</li>
+          <li>신입 직원 <span class="underline">최종 지식 검증</span></li>
+          <li>성공 축하 및 인정</li>
+          <li>향후 로드맵 계획</li>
+          <li>마이그레이션 후 검토 및 교훈</li>
+        </ul>
+        
+        <div class="resource-box">
+          <h3>📊 성과 지표</h3>
+          <ul class="resource-list">
+            <li>시스템 가용성 99.9% 이상</li>
+            <li>응답 시간 성능 10% 이상 개선</li>
+            <li>운영 비용 15% 절감</li>
+            <li>개발자 생산성 향상</li>
+            <li>신입 개발자 자립도 80% 이상</li>
+          </ul>
+        </div>
+        
+        <div class="arrow">🎯</div>
+        <p style="text-align: center; font-weight: bold; color: var(--color-1);">모든 시스템이 클라우드에서 안정적으로 운영됨!</p>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">🤖 AI 도구 활용 전략</h2>
+        <ul class="task-list">
+          <li><span class="highlight">코드 분석</span>: GitHub Copilot, Sourcegraph</li>
+          <li><span class="highlight">문서 생성</span>: Claude, ChatGPT</li>
+          <li><span class="highlight">버그 예측</span>: DeepCode, CodeGuru</li>
+          <li><span class="highlight">테스트 자동화</span>: Diffblue Cover, EvoMaster</li>
+          <li><span class="highlight">지식 추출</span>: GPT-4 활용 코드베이스 요약</li>
+        </ul>
+        
+        <div class="code-box">
+// AI 활용을 위한 규칙 파일 예시 (.aiconfig)
+{
+  "excludeFolders": ["node_modules", "dist"],
+  "focusAreas": ["core", "api", "database"],
+  "analysisPriority": "security",
+  "documentationTasks": ["api", "architecture"],
+  "codingStandards": true
+}</div>
+        
+        <div class="resource-box">
+          <h3>🧠 AI 도구 활용 시나리오</h3>
+          <ul class="resource-list">
+            <li>레거시 코드 분석 및 패턴 식별</li>
+            <li>문서가 부족한 API 엔드포인트 문서화</li>
+            <li>클라우드 마이그레이션 패턴 추천</li>
+            <li>신입 개발자 질문에 대한 자동 응답</li>
+            <li>코드 리팩토링 제안</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card" style="margin-bottom: 30px;">
+      <h2 class="section-title">📝 핵심 문서 템플릿</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div>
+          <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">README.md 템플릿</h3>
+          <div class="code-box" style="font-size: 12px;">
+# 프로젝트명
+## 개요
+[프로젝트에 대한 간략한 설명]
+
+## 아키텍처
+[시스템 구성도 및 설명]
+
+## 설치 및 실행 방법
+```bash
+# 설치 명령어
+# 실행 명령어
+```
+
+## 개발 가이드
+[개발 환경 설정, 코딩 컨벤션, 테스트 방법]
+
+## 클라우드 환경
+[클라우드 구성 및 리소스 관리 방법]
+
+## 모니터링 및 로깅
+[모니터링 도구 및 접근 방법]
+
+## 트러블슈팅
+[일반적인 문제 및 해결 방법]
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">시스템 설계 문서 템플릿</h3>
+          <div class="code-box" style="font-size: 12px;">
+# 시스템 설계 문서
+
+## 1. 개요
+[시스템의 목적 및 범위]
+
+## 2. 아키텍처 개요
+[상위 수준 아키텍처 다이어그램 및 설명]
+
+## 3. 구성 요소
+- **프론트엔드**: [기술 스택, 구조]
+- **백엔드**: [API, 서비스 계층, 데이터 접근 계층]
+- **데이터베이스**: [스키마, 인덱스, 성능 최적화]
+- **인프라**: [클라우드 리소스, 네트워크 구성]
+
+## 4. 통합 포인트
+[외부 시스템 연동, API 통합 등]
+
+## 5. 보안 설계
+[인증, 권한, 암호화 등]
+
+## 6. 확장성 및 성능
+[확장 전략, 부하 분산, 캐싱 등]
+
+## 7. 모니터링 및 알림
+[모니터링 지표, 알림 설정]
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h2 class="section-title">📚 신입 개발자 육성 커리큘럼</h2>
+        <div style="margin-bottom: 15px;">
+          <p>체계적인 신입 개발자 육성을 위한 단계별 커리큘럼입니다. 이론 교육과 실습을 병행하여 100일 내에 자립적인 개발자로 성장할 수 있도록 구성했습니다.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px;">
+          <div style="border: 2px dashed var(--color-2); border-radius: 10px; padding: 15px; background: rgba(242, 230, 61, 0.05);">
+            <h3 style="color: var(--color-1); margin-bottom: 10px; font-size: 16px; text-align: center;">기초 단계 (1-30일)</h3>
+            <ul style="list-style-type: none; padding-left: 5px;">
+              <li style="margin-bottom: 5px;">✏️ 버전 관리 시스템 (Git) 숙달</li>
+              <li style="margin-bottom: 5px;">✏️ 회사 코드베이스 구조 이해</li>
+              <li style="margin-bottom: 5px;">✏️ 개발 환경 설정 및 빌드 프로세스</li>
+              <li style="margin-bottom: 5px;">✏️ 기본 클라우드 개념 이해</li>
+              <li style="margin-bottom: 5px;">✏️ 코드 리뷰 기초 학습</li>
+            </ul>
+          </div>
+          
+          <div style="border: 2px dashed var(--color-3); border-radius: 10px; padding: 15px; background: rgba(242, 196, 61, 0.05);">
+            <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px; text-align: center;">심화 단계 (31-70일)</h3>
+            <ul style="list-style-type: none; padding-left: 5px;">
+              <li style="margin-bottom: 5px;">✏️ 클라우드 서비스 실습 (AWS/Azure/GCP)</li>
+              <li style="margin-bottom: 5px;">✏️ CI/CD 파이프라인 구축 참여</li>
+              <li style="margin-bottom: 5px;">✏️ 컨테이너화 및 오케스트레이션</li>
+              <li style="margin-bottom: 5px;">✏️ 마이크로서비스 아키텍처 이해</li>
+              <li style="margin-bottom: 5px;">✏️ 데이터베이스 마이그레이션 기법</li>
+            </ul>
+          </div>
+          
+          <div style="border: 2px dashed var(--color-4); border-radius: 10px; padding: 15px; background: rgba(242, 91, 5, 0.05);">
+            <h3 style="color: var(--color-5); margin-bottom: 10px; font-size: 16px; text-align: center;">고급 단계 (71-100일)</h3>
+            <ul style="list-style-type: none; padding-left: 5px;">
+              <li style="margin-bottom: 5px;">✏️ 클라우드 아키텍처 설계 참여</li>
+              <li style="margin-bottom: 5px;">✏️ 성능 최적화 및 모니터링</li>
+              <li style="margin-bottom: 5px;">✏️ 보안 및 규정 준수 구현</li>
+              <li style="margin-bottom: 5px;">✏️ 비용 최적화 전략 학습</li>
+              <li style="margin-bottom: 5px;">✏️ 독립 프로젝트 수행 및 문서화</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="resource-box" style="margin-top: 20px;">
+          <h3>📋 주간 평가 및 피드백 체계</h3>
+          <ul class="resource-list">
+            <li>매주 금요일 개인별 진행상황 리뷰</li>
+            <li>2주 단위 역량 평가 테스트 실시</li>
+            <li>월간 프로젝트 발표 세션</li>
+            <li>맞춤형 추가 학습 자료 제공</li>
+            <li>멘토-멘티 1:1 피드백 세션</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">🏗️ 클라우드 마이그레이션 아키텍처</h2>
+        
+        <div style="text-align: center; margin: 20px 0;">
+          <div style="background-color: #f8f9fa; border-radius: 12px; padding: 20px; display: inline-block; border: 2px dashed var(--color-3);">
+            <div style="font-weight: bold; margin-bottom: 10px; font-size: 16px; color: var(--color-1);">온프레미스</div>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; justify-content: center;">
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">프론트엔드</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">웹 애플리케이션</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">백엔드</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">모놀리식 서버</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">데이터베이스</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">관계형 DB</div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin: 15px 0;">
+            <div style="display: inline-block; border-left: 2px dashed var(--color-4); height: 50px;"></div>
+            <div style="font-weight: bold; color: var(--color-4);">마이그레이션</div>
+            <div style="display: inline-block; border-left: 2px dashed var(--color-4); height: 50px;"></div>
+          </div>
+          
+          <div style="background-color: #f8f9fa; border-radius: 12px; padding: 20px; display: inline-block; border: 2px dashed var(--color-3);">
+            <div style="font-weight: bold; margin-bottom: 10px; font-size: 16px; color: var(--color-1);">클라우드</div>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap;">
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">프론트엔드</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">S3/CDN</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">API 게이트웨이</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">라우팅/인증</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">마이크로서비스</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">컨테이너화</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">관리형 DB</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">RDS/Aurora</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">캐싱</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">ElastiCache</div>
+              </div>
+              <div style="background-color: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; width: 120px;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 14px;">모니터링</div>
+                <div style="text-align: center; font-size: 12px; color: #666;">CloudWatch</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-box">
+          <h3>🔄 마이그레이션 접근 방식</h3>
+          <ul class="resource-list" style="columns: 1;">
+            <li><strong>리호스팅 (Lift & Shift)</strong>: 일부 애플리케이션은 최소한의 변경으로 클라우드로 이전</li>
+            <li><strong>리팩토링</strong>: 핵심 서비스는 클라우드 네이티브 아키텍처로 재설계</li>
+            <li><strong>리플랫포밍</strong>: 데이터베이스는 관리형 서비스로 마이그레이션</li>
+            <li><strong>단계적 전환</strong>: 비즈니스 중요도에 따라 점진적으로 마이그레이션</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">📊 클라우드 비용 최적화 전략</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <p>클라우드 마이그레이션 후 비용을 효율적으로 관리하기 위한 전략입니다. 초기 비용 증가가 예상되나, 장기적으로는 최적화를 통해 총소유비용(TCO)을 절감할 수 있습니다.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">자원 관리 최적화</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">리소스 사용률 모니터링 및 자동 스케일링</li>
+              <li style="margin-bottom: 5px;">미사용 리소스 식별 및 정리</li>
+              <li style="margin-bottom: 5px;">스팟 인스턴스 활용 (비중요 워크로드)</li>
+              <li style="margin-bottom: 5px;">서버리스 아키텍처 적용 (가능한 경우)</li>
+            </ul>
+          </div>
+          
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">비용 계획 및 관리</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">예약 인스턴스 구매 (핵심 워크로드)</li>
+              <li style="margin-bottom: 5px;">태깅 전략 수립 및 비용 분석</li>
+              <li style="margin-bottom: 5px;">비용 알림 설정 및 예산 관리</li>
+              <li style="margin-bottom: 5px;">클라우드 제공업체의 비용 절감 프로그램 활용</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="code-box" style="margin-top: 20px;">
+# 비용 최적화를 위한 Terraform 예시
+resource "aws_autoscaling_group" "app_asg" {
+  name                 = "app-autoscaling-group"
+  min_size             = 2
+  max_size             = 10
+  desired_capacity     = 2
+  vpc_zone_identifier  = [aws_subnet.private_1.id, aws_subnet.private_2.id]
+  
+  # 비용 절감을 위한 스케일링 정책
+  tag {
+    key                 = "Name"
+    value               = "AppServerScalable"
+    propagate_at_launch = true
+  }
+}
+
+# 스팟 인스턴스 활용 예시
+resource "aws_spot_fleet_request" "cheap_compute" {
+  iam_fleet_role       = aws_iam_role.spot_fleet.arn
+  target_capacity      = 5
+  allocation_strategy  = "lowestPrice"
+}</div>
+        
+        <div class="warning-box" style="margin-top: 20px;">
+          비용 최적화는 성능과 가용성을 해치지 않는 범위 내에서 이루어져야 합니다. 특히 프로덕션 환경에서는 신중한 접근이 필요합니다.
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">🔄 CI/CD 파이프라인 구성</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <p>클라우드 환경에서의 효율적인 개발 및 배포를 위한 CI/CD 파이프라인 구성입니다. 신입 개발자들에게도 직관적이고 안정적인 배포 경험을 제공합니다.</p>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px; margin: 20px 0; position: relative;">
+          <div style="height: 100%; width: 2px; background-color: var(--color-3); position: absolute; left: 130px; top: 25px; bottom: 25px;"></div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">코드 작성</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-2); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">1</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">개발자 작업</div>
+              <div style="font-size: 14px; color: #666;">Git 브랜치에서 코드 개발 및 커밋</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">코드 검증</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-2); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">2</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">자동화된 테스트 & 코드 분석</div>
+              <div style="font-size: 14px; color: #666;">단위 테스트, 정적 코드 분석, 품질 검사</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">코드 리뷰</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-2); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">3</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">PR 및 코드 리뷰</div>
+              <div style="font-size: 14px; color: #666;">동료 개발자 및 선임 검토, 피드백 반영</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">빌드 & 패키징</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-3); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">4</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">자동화된 빌드 프로세스</div>
+              <div style="font-size: 14px; color: #666;">컨테이너 이미지 생성, 아티팩트 패키징</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">테스트 환경</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-3); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2;">5</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">통합 테스트</div>
+              <div style="font-size: 14px; color: #666;">QA 환경 배포 및 자동화된 통합 테스트</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">스테이징</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-4); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2; color: white;">6</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">스테이징 환경 배포</div>
+              <div style="font-size: 14px; color: #666;">프로덕션과 동일한 환경에서 최종 검증</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">프로덕션</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-5); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2; color: white;">7</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">프로덕션 배포</div>
+              <div style="font-size: 14px; color: #666;">블루/그린 또는 카나리 배포 방식으로 안전하게 릴리스</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="width: 120px; text-align: right; font-weight: bold; color: var(--color-1);">모니터링</div>
+            <div style="width: 40px; height: 40px; background-color: var(--color-5); border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2; color: white;">8</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 10px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 5px;">배포 후 모니터링</div>
+              <div style="font-size: 14px; color: #666;">성능 모니터링, 오류 추적, 필요시 신속한 롤백</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-box">
+          <h3>🛠️ CI/CD 도구 스택</h3>
+          <span class="tag">GitHub Actions</span>
+          <span class="tag">Jenkins</span>
+          <span class="tag">ArgoCD</span>
+          <span class="tag">SonarQube</span>
+          <span class="tag">JUnit/Jest</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Terraform</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">🔐 데이터 마이그레이션 전략</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <p>데이터는 마이그레이션에서 가장 중요하고 민감한 부분입니다. 아래는 안전하고 효율적인 데이터 마이그레이션을 위한 전략입니다.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">데이터 분석 및 계획</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">데이터 볼륨 및 복잡성 평가</li>
+              <li style="margin-bottom: 5px;">데이터 종속성 및 관계 매핑</li>
+              <li style="margin-bottom: 5px;">데이터 정리 및 정규화 계획</li>
+              <li style="margin-bottom: 5px;">데이터 마이그레이션 시퀀스 결정</li>
+            </ul>
+          </div>
+          
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-4); margin-bottom: 10px; font-size: 16px;">마이그레이션 접근법</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;"><strong>빅뱅 접근법</strong>: 한 번에 모든 데이터 이전</li>
+              <li style="margin-bottom: 5px;"><strong>단계적 접근법</strong>: 테이블/스키마별 순차적 이전</li>
+              <li style="margin-bottom: 5px;"><strong>병렬 운영</strong>: 일정 기간 양쪽 시스템 동기화</li>
+              <li style="margin-bottom: 5px;"><strong>CDC(Change Data Capture)</strong>: 변경 데이터만 동기화</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="code-box" style="margin-top: 20px;">
+# AWS DMS(Database Migration Service) 구성 예시
+resource "aws_dms_replication_instance" "example" {
+  replication_instance_id     = "dms-replication-instance"
+  replication_instance_class  = "dms.t3.medium"
+  allocated_storage           = 50
+  vpc_security_group_ids      = [aws_security_group.dms_sg.id]
+  publicly_accessible         = false
+}
+
+# 소스 엔드포인트 (온프레미스 DB)
+resource "aws_dms_endpoint" "source" {
+  endpoint_id                 = "source-endpoint"
+  endpoint_type               = "source"
+  engine_name                 = "mysql"
+  server_name                 = "on-premises-db.example.com"
+  port                        = 3306
+  database_name               = "production"
+  username                    = "username"
+  password                    = "password"
+}
+
+# 대상 엔드포인트 (AWS RDS)
+resource "aws_dms_endpoint" "target" {
+  endpoint_id                 = "target-endpoint"
+  endpoint_type               = "target"
+  engine_name                 = "aurora"
+  server_name                 = aws_rds_cluster.example.endpoint
+  port                        = 3306
+  database_name               = "production"
+  username                    = "username"
+  password                    = "password"
+}</div>
+        
+        <div class="resource-box" style="margin-top: 20px;">
+          <h3>🔍 데이터 검증 전략</h3>
+          <ul class="resource-list" style="columns: 1;">
+            <li><strong>행 수 비교</strong>: 소스와 대상 데이터베이스의 각 테이블 행 수 확인</li>
+            <li><strong>체크섬 검증</strong>: 중요 테이블의 체크섬 비교로 데이터 정확성 확인</li>
+            <li><strong>샘플링 테스트</strong>: 무작위 레코드 샘플링하여 수동 검증</li>
+            <li><strong>애플리케이션 수준 테스트</strong>: 실제 애플리케이션으로 데이터 사용 검증</li>
+          </ul>
+        </div>
+        
+        <div class="warning-box" style="margin-top: 20px;">
+          민감한 데이터는 마이그레이션 전후에 암호화되어야 하며, 데이터 전송 중에도 항상 보안을 유지해야 합니다. 또한 마이그레이션 과정에서 문제 발생 시 롤백 계획을 반드시 마련해야 합니다.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">🔄 레거시 시스템 단계적 폐기 계획</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <p>클라우드 마이그레이션이 완료된 후 레거시 시스템을 안전하게 폐기하기 위한 단계별 계획입니다. 이 과정은 신중하게 진행하여 비즈니스 연속성을 보장해야 합니다.</p>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin: 20px 0;">
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <div style="min-width: 80px; height: 80px; background-color: var(--color-2); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 18px;">1단계</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 15px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 10px; color: var(--color-1);">평가 및 준비</div>
+              <ul style="padding-left: 20px;">
+                <li>레거시 시스템 종속성 최종 확인</li>
+                <li>모든 데이터가 정확하게 마이그레이션되었는지 확인</li>
+                <li>레거시 시스템 폐기 위험 평가</li>
+                <li>비상 롤백 계획 수립</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <div style="min-width: 80px; height: 80px; background-color: var(--color-3); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 18px;">2단계</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 15px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 10px; color: var(--color-1);">트래픽 전환</div>
+              <ul style="padding-left: 20px;">
+                <li>사용자 트래픽을 점진적으로 클라우드 시스템으로 전환</li>
+                <li>초기에는 10%, 30%, 50%, 100% 단계적 증가</li>
+                <li>각 단계별 성능 및 기능 모니터링</li>
+                <li>문제 발생 시 즉시 롤백 실행</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <div style="min-width: 80px; height: 80px; background-color: var(--color-4); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; color: white;">3단계</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 15px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 10px; color: var(--color-1);">읽기 전용 모드</div>
+              <ul style="padding-left: 20px;">
+                <li>레거시 시스템을 읽기 전용 모드로 전환</li>
+                <li>2주간 레거시 시스템 유지 (참조용)</li>
+                <li>모든 쓰기 작업은 클라우드 시스템에서만 수행</li>
+                <li>필요시 레거시 데이터 참조 가능</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 15px; align-items: flex-start;">
+            <div style="min-width: 80px; height: 80px; background-color: var(--color-5); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-weight: bold; font-size: 18px; color: white;">4단계</div>
+            <div style="flex-grow: 1; background-color: white; border-radius: 8px; padding: 15px; border: 1px solid #eee;">
+              <div style="font-weight: bold; margin-bottom: 10px; color: var(--color-1);">최종 백업 및 폐기</div>
+              <ul style="padding-left: 20px;">
+                <li>레거시 시스템의 최종 전체 백업 수행</li>
+                <li>백업 데이터 무결성 검증</li>
+                <li>모든 접근 권한 제거</li>
+                <li>하드웨어 및 소프트웨어 리소스 재할당</li>
+                <li>라이선스 종료 또는 재배치</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resource-box">
+          <h3>📊 레거시 시스템 데이터 보관 전략</h3>
+          <ul class="resource-list" style="columns: 1;">
+            <li><strong>장기 아카이브</strong>: 규정 준수 및 감사를 위한 데이터 장기 보관</li>
+            <li><strong>콜드 스토리지</strong>: 자주 접근하지 않는 데이터는 비용 효율적인 스토리지로 이전</li>
+            <li><strong>데이터 분류</strong>: 보존 기간에 따라 데이터 분류 및 관리</li>
+            <li><strong>접근 제어</strong>: 아카이브된 데이터에 대한 엄격한 접근 제어 정책 수립</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2 class="section-title">🔒 보안 및 규정 준수 전략</h2>
+        
+        <div style="margin-bottom: 15px;">
+          <p>클라우드 마이그레이션 과정에서 보안과 규정 준수는 최우선 고려사항입니다. 아래는 마이그레이션 전, 중, 후 단계별 보안 전략입니다.</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-1); margin-bottom: 10px; font-size: 16px; text-align: center;">마이그레이션 전</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">보안 요구사항 식별 및 문서화</li>
+              <li style="margin-bottom: 5px;">규정 준수 요건 분석</li>
+              <li style="margin-bottom: 5px;">기존 보안 통제 매핑</li>
+              <li style="margin-bottom: 5px;">클라우드 보안 아키텍처 설계</li>
+              <li style="margin-bottom: 5px;">IAM 전략 및 권한 설계</li>
+            </ul>
+          </div>
+          
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-3); margin-bottom: 10px; font-size: 16px; text-align: center;">마이그레이션 중</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">보안 구성 자동화</li>
+              <li style="margin-bottom: 5px;">네트워크 보안 구현</li>
+              <li style="margin-bottom: 5px;">암호화 적용 (전송 중/저장 데이터)</li>
+              <li style="margin-bottom: 5px;">취약점 스캔 및 해결</li>
+              <li style="margin-bottom: 5px;">접근 제어 및 인증 구현</li>
+            </ul>
+          </div>
+          
+          <div style="border: 1px solid #eee; border-radius: 10px; padding: 15px; background: white;">
+            <h3 style="color: var(--color-5); margin-bottom: 10px; font-size: 16px; text-align: center;">마이그레이션 후</h3>
+            <ul style="padding-left: 20px;">
+              <li style="margin-bottom: 5px;">보안 모니터링 및 감사</li>
+              <li style="margin-bottom: 5px;">침투 테스트 실시</li>
+              <li style="margin-bottom: 5px;">인시던트 대응 계획 수립</li>
+              <li style="margin-bottom: 5px;">규정 준수 증명 및 문서화</li>
+              <li style="margin-bottom: 5px;">지속적인 보안 개선</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="code-box">
+# AWS Security Groups 설정 예시
+resource "aws_security_group" "app_sg" {
+  name        = "app-security-group"
+  description = "Security group for application servers"
+  vpc_id      = aws_vpc.main.id
+
+  # 최소 권한 원칙 적용
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]  # 내부 네트워크만 접근 허용
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "AppServerSG"
+  }
+}</div>
+        
+        <div class="warning-box">
+          클라우드 서비스 제공업체와 고객 간의 보안 책임 모델(Shared Responsibility Model)을 명확히 이해하고, 담당 영역에 대한 보안을 철저히 구현해야 합니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">⚠️ 잠재적 위험 요소와 대응 방안</h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        <tr style="background-color: rgba(242, 198, 61, 0.2);">
+          <th style="padding: 10px; text-align: left; border-bottom: 2px dashed var(--color-3);">위험 요소</th>
+          <th style="padding: 10px; text-align: left; border-bottom: 2px dashed var(--color-3);">대응 방안</th>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>지식 손실</strong><br>
+            기존 직원들의 대량 퇴사로 인한 시스템 지식 손실
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 남아있는 직원들과 집중적인 지식 전달 세션<br>
+            - 코드베이스 분석 AI 도구 활용<br>
+            - 시스템 동작 모니터링으로 패턴 파악
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>마이그레이션 중단</strong><br>
+            예상치 못한 종속성으로 인한 마이그레이션 복잡도 증가
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 마이그레이션 전 종합적인 종속성 매핑<br>
+            - 점진적 마이그레이션 접근법 채택<br>
+            - 문제 발생 시 롤백 계획 수립
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>신입 역량 부족</strong><br>
+            빠른 시간 내 신입 개발자들의 역량 향상 어려움
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 체계적인 개발자 역량 로드맵 작성<br>
+            - 페어 프로그래밍 및 코드 리뷰 강화<br>
+            - 실제 프로젝트 기반 학습 방식 도입
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>서비스 중단</strong><br>
+            마이그레이션 과정에서의 서비스 가용성 문제
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 블루/그린 배포 전략 채택<br>
+            - 철저한 사전 테스트 및 모니터링<br>
+            - 사용자 영향 최소화를 위한 야간/주말 전환
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>보안 취약점</strong><br>
+            클라우드 마이그레이션 중 보안 구성 오류
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 클라우드 환경 보안 검토 자동화<br>
+            - 취약점 스캐닝 및 침투 테스트<br>
+            - 보안 전문가 컨설팅 검토
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>예산 초과</strong><br>
+            예상치 못한 클라우드 비용 발생
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 상세한 비용 예측 및 모니터링<br>
+            - 비용 상한선 설정 및 알림 구성<br>
+            - 리소스 최적화 지속 진행
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            <strong>데이터 무결성 문제</strong><br>
+            마이그레이션 과정에서의 데이터 손실 또는 불일치
+          </td>
+          <td style="padding: 10px; border-bottom: 1px solid #eee;">
+            - 마이그레이션 전 데이터 백업<br>
+            - 무결성 검증 프로세스 구현<br>
+            - 데이터 동기화 전략 수립
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="footer">
+      © 2025 클라우드 마이그레이션 & 신입 육성 100일 작전계획 | 작성자: 책임 소프트웨어 엔지니어
+    </div>
+  </div>
+</body>
+</html>
