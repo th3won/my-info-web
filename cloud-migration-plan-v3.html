@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100일 클라우드 이전 및 신규 팀원 온보딩 전략</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+        
+        :root {
+            --fashion-1: #593C47;
+            --fashion-2: #F2E63D;
+            --fashion-3: #F2C53D;
+            --fashion-4: #F25C05;
+            --fashion-5: #F24405;
+            --text-dark: #334155;
+            --text-subtitle: #475569;
+            --text-section: #1e40af;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Gaegu', cursive;
+            line-height: 1.4;
+            color: var(--text-dark);
+            background-color: #f8f9fa;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--fashion-3);
+            padding-bottom: 1rem;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "✏️";
+            position: absolute;
+            right: 5px;
+            bottom: -15px;
+            font-size: 24px;
+        }
+        
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poor Story', cursive;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q25,0 50,5 T100,5' stroke='%23F2C53D' fill='none' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 100px 10px;
+            background-repeat: repeat-x;
+            bottom: -5px;
+            left: 0;
+        }
+        
+        .date {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 1.2rem;
+            color: var(--text-subtitle);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 3px 3px 10px var(--card-shadow);
+            transform: rotate(-0.5deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        
+        .card:hover {
+            transform: rotate(0) scale(1.02);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            border: 2px solid;
+            border-color: var(--fashion-3);
+            border-style: dashed;
+            z-index: -1;
+        }
+        
+        .card-title {
+            font-size: 1.125rem;
+            color: var(--text-section);
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-family: 'Poor Story', cursive;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .card-content {
+            font-size: 0.875rem;
+            color: var(--text-dark);
+        }
+        
+        .highlight {
+            display: inline-block;
+            position: relative;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .highlight-yellow {
+            background: linear-gradient(180deg, transparent 50%, rgba(242, 230, 61, 0.5) 50%);
+        }
+        
+        .highlight-orange {
+            background: linear-gradient(180deg, transparent 50%, rgba(242, 92, 5, 0.3) 50%);
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+        }
+        
+        .hand-drawn-box {
+            border: 2px solid var(--fashion-4);
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            position: relative;
+            background-color: rgba(242, 230, 61, 0.1);
+        }
+        
+        .hand-drawn-box::before {
+            content: "📌";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 16px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .tag-1 {
+            background-color: var(--fashion-2);
+            color: var(--fashion-1);
+        }
+        
+        .tag-2 {
+            background-color: var(--fashion-3);
+            color: var(--fashion-1);
+        }
+        
+        .tag-3 {
+            background-color: var(--fashion-4);
+            color: white;
+        }
+        
+        .tag-4 {
+            background-color: var(--fashion-5);
+            color: white;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 4px;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='4' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2,0 L2,20' stroke='%23F25C05' stroke-width='4' stroke-dasharray='4 4'/%3E%3C/svg%3E");
+            background-repeat: repeat-y;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: var(--fashion-3);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--fashion-4);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--fashion-4);
+        }
+        
+        .wave-divider {
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q25,20 50,10 T100,10 T150,10 T200,10 T250,10 T300,10' stroke='%23F25C05' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-size: 300px 20px;
+            margin: 2rem 0;
+        }
+        
+        .speech-bubble {
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--fashion-3);
+        }
+        
+        .speech-bubble::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid var(--fashion-3);
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            top: -7px;
+            left: 22px;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid white;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-subtitle);
+            border-top: 1px dashed var(--fashion-3);
+            padding-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">100일 클라우드 이전 및 신규 팀원 온보딩 전략</h1>
+            <div class="date">2025년 3월 30일</div>
+        </div>
+        
+        <div class="speech-bubble">
+            <p>소프트웨어 개발 회사의 <span class="highlight highlight-yellow">책임 소프트웨어 엔지니어</span>로서 <span class="highlight highlight-orange">90%의 직원 퇴사 후 첫날</span>을 맞이하여, <span class="highlight highlight-yellow">100일 안에</span> 신입 5명을 육성하고 기존 온프레미스 시스템 전체를 클라우드로 이전하는 임무를 수행해야 합니다. 🚀</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="card-title">📋 1단계: 평가 및 계획 (1~10일차)</h3>
+                <div class="card-content">
+                    <p>현재 온프레미스 인프라에 대한 <span class="highlight highlight-yellow">상세 평가</span>와 마이그레이션 목표 및 전략 정의가 중요합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>다음 항목을 평가하세요:</p>
+                        <div class="tag tag-1">애플리케이션</div>
+                        <div class="tag tag-2">데이터</div>
+                        <div class="tag tag-3">워크로드</div>
+                        <div class="tag tag-4">보안 요구사항</div>
+                    </div>
+                    <p>마이그레이션 전략은 <span class="highlight highlight-orange">비즈니스 목표</span>와 일치시키고, 적절한 클라우드 배포 모델을 선택하세요.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">👨‍💼 2단계: 신규 엔지니어 온보딩 (1~30일차)</h3>
+                <div class="card-content">
+                    <p>가속화된 온보딩 프로세스로 신입 사원이 빠르게 적응할 수 있도록 합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>온보딩 단계별 집중 포인트:</p>
+                        <p>🔹 <span class="highlight highlight-yellow">첫 주</span>: 회사 문화, 팀 소개, 필수 도구 소개</p>
+                        <p>🔹 <span class="highlight highlight-yellow">첫 달</span>: 책임 범위 확장, 복잡한 프로젝트 소개</p>
+                    </div>
+                    <p>클라우드 기술에 대한 <span class="highlight highlight-orange">단기 집중 교육</span>을 통해 학습 곡선을 가속화하세요.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">🔍 3단계: 코드베이스 분석 (10~40일차)</h3>
+                <div class="card-content">
+                    <p><span class="highlight highlight-yellow">AI 기반 코드 분석 도구</span>를 활용하여 기존 코드베이스를 이해하고 종속성을 식별합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>집중 분석 영역:</p>
+                        <div class="tag tag-1">보안 취약점</div>
+                        <div class="tag tag-2">성능 병목</div>
+                        <div class="tag tag-3">코딩 표준</div>
+                    </div>
+                    <p>개선 및 현대화가 필요한 영역을 식별하고, 필요시 중요 구성 요소의 <span class="highlight highlight-orange">리버스 엔지니어링</span>을 수행합니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wave-divider"></div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="card-title">🚢 4단계: 마이그레이션 실행 (30~90일차)</h3>
+                <div class="card-content">
+                    <p><span class="highlight highlight-yellow">단계적 마이그레이션 전략</span>으로 위험을 최소화하고 팀이 적응할 수 있도록 합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>마이그레이션 순서:</p>
+                        <p>1️⃣ 중요하지 않은 구성 요소</p>
+                        <p>2️⃣ 데이터 마이그레이션</p>
+                        <p>3️⃣ 핵심 애플리케이션</p>
+                    </div>
+                    <p>각 구성 요소별로 <span class="highlight highlight-orange">적절한 마이그레이션 전략</span>(재호스팅, 재플랫폼화 등)을 적용합니다.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">🏗️ 5단계: 클라우드 설계 (40~80일차)</h3>
+                <div class="card-content">
+                    <p>확장성, 고가용성, 보안, 비용 효율성을 고려한 <span class="highlight highlight-yellow">클라우드 아키텍처</span>를 설계합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>설계 시 고려사항:</p>
+                        <div class="tag tag-1">자동 확장</div>
+                        <div class="tag tag-2">로드 밸런싱</div>
+                        <div class="tag tag-3">중복성</div>
+                        <div class="tag tag-4">보안</div>
+                    </div>
+                    <p>클라우드 지출을 추적하고 최적화 기회를 식별하기 위한 <span class="highlight highlight-orange">모니터링 및 비용 관리 도구</span>를 구현합니다.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">📝 6단계: 문서화 (1~100일차)</h3>
+                <div class="card-content">
+                    <p>새로운 클라우드 시스템의 <span class="highlight highlight-yellow">포괄적인 문서화</span>는 성공과 지속 가능성에 매우 중요합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>필수 문서:</p>
+                        <p>📄 시스템 설계 문서</p>
+                        <p>📄 README 파일</p>
+                        <p>📄 API 문서</p>
+                        <p>📄 사용자 가이드</p>
+                    </div>
+                    <p>새로운 팀을 <span class="highlight highlight-orange">문서화에 적극 참여</span>시켜 학습과 주인의식을 함양합니다.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wave-divider"></div>
+        
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--fashion-1); text-align: center; font-family: 'Poor Story', cursive;">
+            📅 100일 로드맵 타임라인
+        </h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>1~10일: 평가 및 계획 단계</h4>
+                    <p>온프레미스 인프라 평가, 마이그레이션 전략 수립, 클라우드 준비 상태 평가</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>1~30일: 신규 팀원 온보딩 및 교육</h4>
+                    <p>가속화된 온보딩, 클라우드 기술 교육, 기존 코드베이스 이해</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>10~40일: 코드베이스 심층 분석</h4>
+                    <p>AI 기반 코드 분석, 개선 영역 식별, 리버스 엔지니어링</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>30~90일: 마이그레이션 실행</h4>
+                    <p>단계적 마이그레이션, 데이터 마이그레이션, 애플리케이션 마이그레이션</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>40~80일: 클라우드 시스템 설계</h4>
+                    <p>목표 클라우드 아키텍처 설계, 확장성 및 가용성 고려, 비용 최적화</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4>1~100일: 문서화 및 지식 이전</h4>
+                    <p>시스템 문서화, 지식 공유 세션, 문서 업데이트 프로세스 설정</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3 class="card-title">🧠 리소스 계획 (1~100일차)</h3>
+                <div class="card-content">
+                    <div class="hand-drawn-box">
+                        <p>필수 리소스:</p>
+                        <p>👨‍💻 <span class="highlight highlight-yellow">인적 자원</span>: 새 팀원의 기술 평가, 외부 전문가 고려</p>
+                        <p>💰 <span class="highlight highlight-yellow">재정 자원</span>: 클라우드 비용, 교육, 컨설팅 예산</p>
+                        <p>🔧 <span class="highlight highlight-yellow">기술 자원</span>: 클라우드 서비스, 마이그레이션 도구</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">⚠️ 문제 예측 및 완화 (1~100일차)</h3>
+                <div class="card-content">
+                    <p>일반적인 마이그레이션 문제를 사전에 식별하고 완화 계획을 마련합니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>주요 리스크 영역:</p>
+                        <div class="tag tag-1">인프라 호환성</div>
+                        <div class="tag tag-2">비용 증가</div>
+                        <div class="tag tag-3">데이터 보안</div>
+                        <div class="tag tag-4">기술 격차</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title">🏁 결론: 성공적인 클라우드 미래</h3>
+                <div class="card-content">
+                    <p>협업, 효과적인 의사 소통, 사전 예방적 문제 해결이 성공의 열쇠입니다.</p>
+                    <div class="hand-drawn-box">
+                        <p>클라우드 마이그레이션의 장기적 이점:</p>
+                        <p>🚀 <span class="highlight highlight-yellow">확장성</span></p>
+                        <p>🔄 <span class="highlight highlight-yellow">민첩성</span></p>
+                        <p>💡 <span class="highlight highlight-yellow">혁신</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 클라우드 마이그레이션 전략 보고서 | 그래픽 레코딩 스타일 인포그래픽</p>
+        </div>
+    </div>
+</body>
+</html>
