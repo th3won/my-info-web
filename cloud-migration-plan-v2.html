@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직원 90% 이탈 상황에서의 급속 클라우드 전환 및 신입 육성 전략</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Poor+Story&family=Nanum+Pen+Script&display=swap');
+        
+        :root {
+            --color-1: #593C47;
+            --color-2: #F2E63D;
+            --color-3: #F2C53D;
+            --color-4: #F25C05;
+            --color-5: #F24405;
+            --subtitle: #475569;
+            --section: #1e40af;
+            --body: #334155;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Gaegu', 'Poor Story', cursive;
+            background-color: #f8f9fa;
+            line-height: 1.4;
+            color: var(--body);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 4px dashed var(--color-1);
+            margin-bottom: 30px;
+        }
+        
+        .title-container h1 {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--color-1), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .date-source {
+            font-size: 14px;
+            color: var(--subtitle);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .column {
+            width: 33.33%;
+            padding: 0 15px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border: 2px solid var(--color-3);
+            position: relative;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            border-radius: inherit;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            color: var(--section);
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "✏️";
+            margin-right: 10px;
+        }
+        
+        .keyword {
+            font-weight: bold;
+            position: relative;
+            color: var(--color-1);
+        }
+        
+        .keyword::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-2);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .hand-box {
+            border: 2px solid var(--color-4);
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+            background-color: rgba(242, 230, 61, 0.1);
+            position: relative;
+        }
+        
+        .hand-box::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-right: 2px solid var(--color-4);
+            border-bottom: 2px solid var(--color-4);
+            top: -8px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 20px 0;
+            height: 40px;
+        }
+        
+        .arrow::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background-color: var(--color-5);
+            top: 50%;
+            left: 10%;
+        }
+        
+        .arrow::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid var(--color-5);
+            border-right: 2px solid var(--color-5);
+            transform: rotate(45deg);
+            top: calc(50% - 5px);
+            right: 10%;
+        }
+        
+        .phase-circle {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--color-3);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--color-5);
+        }
+        
+        .task-list {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        .task-list li {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .task-list li::before {
+            content: "•";
+            position: absolute;
+            left: -15px;
+            color: var(--color-4);
+            font-size: 20px;
+        }
+        
+        .banner {
+            background-color: var(--color-2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 15px 0;
+            font-weight: bold;
+            display: inline-block;
+            transform: rotate(-1deg);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+        
+        .speech-bubble {
+            position: relative;
+            background: var(--color-3);
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 15px 0;
+            color: var(--color-1);
+            font-weight: bold;
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: var(--color-3) transparent;
+        }
+        
+        .connection-line {
+            border-left: 2px dashed var(--color-4);
+            padding-left: 15px;
+            margin-left: 10px;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .table th, .table td {
+            border: 1px solid var(--color-1);
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .table th {
+            background-color: var(--color-3);
+            color: var(--color-1);
+            font-weight: bold;
+        }
+        
+        .footnote {
+            font-size: 12px;
+            color: var(--subtitle);
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--color-1);
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-container">
+                <h1>직원 90% 이탈 상황에서의 급속 클라우드 전환 및 신입 육성 전략</h1>
+                <p>대규모 인력 이탈이라는 위기 상황에서 온프레미스 시스템을 클라우드로 성공적으로 전환하고 신입 인력을 빠르게 전력화하기 위한 100일 프로젝트 계획</p>
+            </div>
+            <div class="date-source">
+                <p>2025년 3월 30일</p>
+                <p>AI 기반 전략 보고서</p>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- 첫번째 컬럼 -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">📌 상황 분석 및 과제 정의</h2>
+                    <div class="speech-bubble">
+                        90%의 인력이 이탈한 위기 상황에서 신속한 대응 필요!
+                    </div>
+                    
+                    <h3>현재 상황의 위기와 기회</h3>
+                    <div class="hand-box">
+                        <p><span class="keyword">위기 요소:</span></p>
+                        <ul class="task-list">
+                            <li>90%의 인력 이탈로 인한 지식/경험 손실</li>
+                            <li>제한된 시간(100일) 내 두 가지 대형 과제 동시 수행</li>
+                            <li>시스템에 대한 문서화 부족 가능성</li>
+                            <li>신입 개발자들의 빠른 적응과 성장 필요</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hand-box">
+                        <p><span class="keyword">기회 요소:</span></p>
+                        <ul class="task-list">
+                            <li>레거시 시스템의 혁신적 개선 기회</li>
+                            <li>클라우드 네이티브 아키텍처로의 전환 가능성</li>
+                            <li>새로운 인력으로 조직 문화 재정립 기회</li>
+                            <li>최신 기술과 AI 도구를 적극 활용할 수 있는 환경</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="banner">핵심 목표</div>
+                    <ul class="task-list">
+                        <li><span class="keyword">100일 내 클라우드 완전 이전</span></li>
+                        <li><span class="keyword">5명의 신입 개발자 독립적 업무 수행 가능 수준으로 육성</span></li>
+                        <li>시스템 다운타임 최소화 및 서비스 품질 유지</li>
+                        <li>체계적인 문서화 체계 구축</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">🔍 100일 프로젝트 로드맵</h2>
+                    
+                    <div class="phase-title">
+                        <span class="phase-circle">1</span>초기 대응 및 현황 파악 (1-10일)
+                    </div>
+                    <div class="connection-line">
+                        <p><span class="keyword">목표:</span> 현 상황 파악 및 초기 대응 계획 수립</p>
+                        <ul class="task-list">
+                            <li>시스템 인벤토리 작성</li>
+                            <li>신입 개발자 초기 오리엔테이션</li>
+                            <li>위기 관리 계획 수립</li>
+                            <li>현재 코드베이스 접근 및 기본 문서화 시작</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="arrow"></div>
+                    
+                    <div class="phase-title">
+                        <span class="phase-circle">2</span>분석 및 계획 수립 (11-30일)
+                    </div>
+                    <div class="connection-line">
+                        <p><span class="keyword">목표:</span> 상세 분석을 통한 마이그레이션 및 교육 계획 수립</p>
+                        <ul class="task-list">
+                            <li>클라우드 마이그레이션 전략 선택 (6R 전략)</li>
+                            <li>신입 개발자 교육 커리큘럼 개발</li>
+                            <li>상세 프로젝트 계획 수립</li>
+                            <li>코드 문서화 및 지식 이전 계획</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 두번째 컬럼 -->
+            <div class="column">
+                <div class="card">
+                    <div class="phase-title">
+                        <span class="phase-circle">3</span>신입 교육 및 시스템 이전 준비 (31-60일)
+                    </div>
+                    <div class="connection-line">
+                        <p><span class="keyword">목표:</span> 신입 개발자 교육 본격화 및 클라우드 마이그레이션 준비</p>
+                        <ul class="task-list">
+                            <li>신입 개발자 집중 교육</li>
+                            <li>클라우드 환경 구축</li>
+                            <li>마이그레이션 테스트 환경 구축</li>
+                            <li>문서화 고도화</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="arrow"></div>
+                    
+                    <div class="phase-title">
+                        <span class="phase-circle">4</span>클라우드 이전 실행 (61-90일)
+                    </div>
+                    <div class="connection-line">
+                        <p><span class="keyword">목표:</span> 실제 클라우드 이전 작업 수행 및 신입 개발자 실무 투입</p>
+                        <ul class="task-list">
+                            <li>단계적 마이그레이션 실행</li>
+                            <li>신입 개발자 실무 프로젝트 할당</li>
+                            <li>통합 테스트 수행</li>
+                            <li>신입 개발자 중간 평가 및 피드백</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="arrow"></div>
+                    
+                    <div class="phase-title">
+                        <span class="phase-circle">5</span>최적화 및 안정화 (91-100일)
+                    </div>
+                    <div class="connection-line">
+                        <p><span class="keyword">목표:</span> 시스템 안정화 및 최종 점검</p>
+                        <ul class="task-list">
+                            <li>성능 최적화</li>
+                            <li>신입 개발자 최종 평가</li>
+                            <li>최종 문서화 완료</li>
+                            <li>프로젝트 회고 및 향후 계획 수립</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">👨‍💻 신입 엔지니어 육성 전략</h2>
+                    
+                    <div class="hand-box">
+                        <p><span class="keyword">입사 초기 (1-30일)</span></p>
+                        <ul class="task-list">
+                            <li>체계적인 온보딩 프로그램</li>
+                            <li>지식 습득 중심의 학습 계획</li>
+                            <li>멘토링 시스템 가동</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hand-box">
+                        <p><span class="keyword">역량 강화 (31-60일)</span></p>
+                        <ul class="task-list">
+                            <li>마이그레이션 하위 태스크 할당</li>
+                            <li>페어 프로그래밍을 통한 실시간 학습</li>
+                            <li>문제 해결 능력 강화 훈련</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hand-box">
+                        <p><span class="keyword">독립적 업무 수행 (61-100일)</span></p>
+                        <ul class="task-list">
+                            <li>마이그레이션 핵심 업무 담당</li>
+                            <li>팀 리드 경험 제공</li>
+                            <li>의사결정 참여 기회 부여</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="speech-bubble">
+                        신입 개발자가 100일 후 독립적으로 업무 수행 가능한 수준으로! 🚀
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 세번째 컬럼 -->
+            <div class="column">
+                <div class="card">
+                    <h2 class="section-title">☁️ 클라우드 이전 전략</h2>
+                    
+                    <div class="banner">마이그레이션 전략 (6R 접근법)</div>
+                    
+                    <table class="table">
+                        <tr>
+                            <th>전략</th>
+                            <th>적용 시스템 유형</th>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword">리호스팅</span><br>(Lift & Shift)</td>
+                            <td>레거시 시스템, 단순 웹 애플리케이션</td>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword">리플랫폼</span></td>
+                            <td>미들티어 애플리케이션, API 서비스</td>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword">리퍼터링/리아키텍트</span></td>
+                            <td>핵심 비즈니스 애플리케이션</td>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword">리빌드</span></td>
+                            <td>높은 확장성/유연성 필요 시스템</td>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword">리플레이스</span></td>
+                            <td>백오피스 시스템, 이메일 등</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="banner">데이터 마이그레이션 전략</div>
+                    <ul class="task-list">
+                        <li><span class="keyword">일괄 마이그레이션 (Big Bang)</span>: 소규모 데이터, 가용성 요구사항 낮은 경우</li>
+                        <li><span class="keyword">단계적 마이그레이션 (Phased)</span>: 중규모 데이터, 가용성 중요한 경우</li>
+                        <li><span class="keyword">제로 다운타임 마이그레이션</span>: 대규모 데이터, 고가용성 필수 시스템</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">🤖 AI 도구를 활용한 지식 격차 해소</h2>
+                    
+                    <div class="speech-bubble">
+                        Cursor AI를 통한 코드베이스 이해 가속화! ⚡
+                    </div>
+                    
+                    <ul class="task-list">
+                        <li>코드 분석 및 자동 문서화</li>
+                        <li>코드 흐름 시각화</li>
+                        <li>핵심 컴포넌트 식별 지원</li>
+                        <li>기존 코드 스타일 및 패턴 학습</li>
+                        <li>도메인 특화 지식 캡처</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2 class="section-title">⚠️ 위기 관리 전략</h2>
+                    
+                    <div class="banner">위기 관리 프레임워크</div>
+                    
+                    <div class="hand-box">
+                        <ul class="task-list">
+                            <li><span class="keyword">위기 식별 및 분류</span>: 기술적, 인력, 일정 위기</li>
+                            <li><span class="keyword">위기 대응 체계</span>: 에스컬레이션 경로, 의사결정 주체</li>
+                            <li><span class="keyword">모니터링 및 조기 경보</span>: KPI 정의 및 추적</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="speech-bubble">
+                        위기를 기회로! 선제적 대응이 핵심입니다 🔑
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footnote">
+            <p>© 2025 클라우드 전환 및 신입 육성 프로젝트팀 | 본 인포그래픽은 100일 전략 계획의 요약본입니다</p>
+        </div>
+    </div>
+</body>
+</html>
