@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>음식이 신체에 미치는 영향 인포그래픽</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Gaegu', cursive;
+      background-color: #f8f9fa;
+      color: #334155;
+      line-height: 1.4;
+      padding: 2rem;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px dashed #593C47;
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      font-family: 'Nanum Pen Script', cursive;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(45deg, #593C47, #F24405);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0.5rem 0;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,3 C25,0 25,6 50,3 C75,0 75,6 100,3' stroke='%23F2C53D' stroke-width='2' fill='none' /%3E%3C/svg%3E") repeat-x;
+    }
+    
+    .date {
+      font-family: 'Poor Story', cursive;
+      color: #475569;
+      font-size: 14px;
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -1rem;
+    }
+    
+    .column {
+      flex: 0 0 33.333333%;
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .column {
+        flex: 0 0 100%;
+      }
+    }
+    
+    .card {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, #593C47, #F24405);
+    }
+    
+    .section-title {
+      font-size: 18px;
+      color: #1e40af;
+      margin-bottom: 1rem;
+      font-family: 'Poor Story', cursive;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .icon {
+      font-size: 1.5rem;
+    }
+    
+    .food-list {
+      list-style: none;
+      padding-left: 0.5rem;
+    }
+    
+    .food-item {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .food-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #F2C53D;
+    }
+    
+    .food-name {
+      font-weight: bold;
+      position: relative;
+      display: inline;
+    }
+    
+    .highlight {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 8px;
+      background-color: #F2C53D;
+      z-index: -1;
+      opacity: 0.6;
+    }
+    
+    .hand-drawn-box {
+      border: 2px solid #593C47;
+      border-radius: 10px;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+    
+    .hand-drawn-box::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 50px;
+      height: 20px;
+      background-color: white;
+      z-index: 1;
+    }
+    
+    .hand-drawn-arrow {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 3px dashed #593C47;
+      color: #475569;
+      font-size: 12px;
+    }
+    
+    .value-badge {
+      display: inline-block;
+      background-color: #F25C05;
+      color: white;
+      border-radius: 30px;
+      padding: 0.1rem 0.5rem;
+      font-size: 12px;
+      margin-left: 0.5rem;
+      transform: rotate(-3deg);
+    }
+    
+    .hand-drawn-frame {
+      position: relative;
+    }
+    
+    .hand-drawn-frame::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border: 3px solid #593C47;
+      border-radius: 15px;
+      z-index: -1;
+    }
+    
+    .star {
+      display: inline-block;
+      color: #F2E63D;
+      transform: rotate(5deg);
+      margin-right: 0.2rem;
+    }
+    
+    .note {
+      background-color: rgba(242, 230, 61, 0.2);
+      border-left: 3px solid #F2E63D;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      transform: rotate(-1deg);
+    }
+    
+    .explanation {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 0.5rem;
+    }
+
+    .ranking {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #F24405;
+      color: white;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: bold;
+      transform: rotate(5deg);
+    }
+    
+    .connecting-line {
+      position: absolute;
+      stroke-dasharray: 5,5;
+      stroke: #593C47;
+      stroke-width: 2;
+      z-index: -1;
+    }
+    
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .food-grid-item {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      border: 2px dashed #F2C53D;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">단계적으로 신체에 영향을 미치는 음식 순위 📊</h1>
+      <div class="date">2025년 3월 31일 | 건강 정보 기반 정리</div>
+    </header>
+    
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">📈</span>
+            혈당을 빠르게 올리는 음식 순위
+          </h2>
+          <p class="explanation">식사 후 혈당을 빠르게 상승시키는 음식들을 알아봅시다.</p>
+          
+          <ul class="food-list">
+            <li class="food-item">
+              <div class="food-name highlight">충무김밥</div>
+              <span class="value-badge">196mg/dL</span>
+              <div class="ranking">1</div>
+              <p>평균 최고 혈당 수치가 가장 높은 음식</p>
+            </li>
+            
+            <li class="food-item">
+              <div class="food-name highlight">잡채밥</div>
+              <span class="value-badge">187mg/dL</span>
+              <div class="ranking">2</div>
+              <p>당분과 탄수화물이 결합된 고혈당 유발 음식</p>
+            </li>
+            
+            <li class="food-item">
+              <div class="food-name highlight">컵라면</div>
+              <span class="value-badge">186mg/dL</span>
+              <div class="ranking">3</div>
+              <p>정제된 탄수화물과 나트륨이 혈당 급상승 유발</p>
+            </li>
+            
+            <li class="food-item">
+              <div class="food-name highlight">고구마</div>
+              <span class="value-badge">179mg/dL</span>
+              <div class="ranking">5</div>
+              <p>다이어트 식품으로 알려졌으나 개인별 반응 차이가 큼</p>
+            </li>
+          </ul>
+          
+          <div class="note">
+            <span class="star">★</span> 대부분의 사람들이 건강식품으로 알고 있는 고구마가 순위권에 있다는 점이 흥미롭습니다!
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">📊</span>
+            혈당 상승 음식 추가 목록
+          </h2>
+          
+          <ul class="food-list">
+            <li class="food-item">
+              <div class="food-name highlight">떡볶이</div>
+              <span class="value-badge">177mg/dL</span>
+              <div class="ranking">5</div>
+              <p>탄수화물 비율이 높아 혈당 급상승 유발</p>
+            </li>
+            
+            <li class="food-item">
+              <div class="food-name highlight">볶음밥</div>
+              <span class="value-badge">177mg/dL</span>
+              <div class="ranking">6</div>
+              <p>한 그릇 음식으로 간편하지만 혈당 관리에 주의</p>
+            </li>
+            
+            <li class="food-item">
+              <div class="food-name highlight">냉모밀</div>
+              <span class="value-badge">176mg/dL</span>
+              <div class="ranking">7</div>
+              <p>국물에 포함된 설탕으로 인해 혈당 상승</p>
+            </li>
+          </ul>
+          
+          <div class="hand-drawn-box">
+            <h3 style="margin-top: 0; color: #F24405; font-size: 16px;">혈당 관리 TIP</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li style="margin-bottom: 0.5rem;">✅ 당지수가 높은 음식 섭취량 조절하기</li>
+              <li style="margin-bottom: 0.5rem;">✅ 혈당 상승 음식과 함께 단백질 섭취하기</li>
+              <li style="margin-bottom: 0.5rem;">✅ 식이섬유가 풍부한 채소 함께 먹기</li>
+              <li>✅ 식후 가벼운 산책으로 혈당 관리하기</li>
+            </ul>
+          </div>
+          
+          <svg width="100%" height="80" style="margin-top: 1rem;">
+            <path d="M10,40 C30,50 70,30 90,40" fill="none" stroke="#593C47" stroke-width="2" stroke-dasharray="5,3"/>
+            <text x="50" y="20" text-anchor="middle" font-family="Gaegu" fill="#593C47" transform="rotate(-5, 50, 20)">혈당 관리는 꾸준히!</text>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <h2 class="section-title">
+            <span class="icon">🧠</span>
+            도파민 수치를 높이는 음식 순위
+          </h2>
+          <p class="explanation">기분, 집중력 등에 영향을 미치는 도파민 생성을 돕는 음식들</p>
+          
+          <div class="food-grid">
+            <div class="food-grid-item">
+              <span style="font-size: 24px;">🍌</span>
+              <div class="food-name">바나나</div>
+              <div class="ranking">1</div>
+              <p style="font-size: 12px; margin-top: 0.5rem;">트립토판과 티로신 풍부</p>
+            </div>
+            
+            <div class="food-grid-item">
+              <span style="font-size: 24px;">🥜</span>
+              <div class="food-name">견과류</div>
+              <div class="ranking">2</div>
+              <p style="font-size: 12px; margin-top: 0.5rem;">티로신과 오메가-3 함유</p>
+            </div>
+            
+            <div class="food-grid-item">
+              <span style="font-size: 24px;">🍫</span>
+              <div class="food-name">다크 초콜릿</div>
+              <div class="ranking">3</div>
+              <p style="font-size: 12px; margin-top: 0.5rem;">페닐에틸아민 성분 함유</p>
+            </div>
+            
+            <div class="food-grid-item">
+              <span style="font-size: 24px;">🥚</span>
+              <div class="food-name">달걀</div>
+              <div class="ranking">4</div>
+              <p style="font-size: 12px; margin-top: 0.5rem;">필수 아미노산 풍부</p>
+            </div>
+          </div>
+          
+          <div class="food-item" style="margin-top: 1rem;">
+            <div class="food-name highlight">유제품</div>
+            <div class="ranking">5</div>
+            <p>치즈, 요거트 등은 티라민 및 프로바이오틱스를 통해 도파민 생성 지원</p>
+          </div>
+          
+          <div class="note" style="transform: rotate(1deg);">
+            <span class="star">★</span> 연어와 병아리콩과 같은 오메가-3와 단백질이 풍부한 음식도 도파민 수치 향상에 도움을 줍니다!
+          </div>
+          
+          <svg width="100%" height="50">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L9,3 z" fill="#F25C05"/>
+              </marker>
+            </defs>
+            <path d="M30,25 C50,5 70,45 90,25" fill="none" stroke="#F25C05" stroke-width="2" marker-end="url(#arrow)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <p>📝 자료 출처: 식품영양학 연구 데이터 | 혈당 및 도파민 영향 분석 보고서 | 일반인 대상 임상 연구 결과</p>
+      <p>© 2025 건강 정보 연구소 | 무단 복제를 금합니다</p>
+    </footer>
+  </div>
+</body>
+</html>

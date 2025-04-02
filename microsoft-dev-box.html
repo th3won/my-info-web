@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Dev Box 개발자 생산성 인포그래픽</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/static/pretendard.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7B4AFF;
+      --neutral-1: #F5F5F7;
+      --neutral-2: #DDDDDD;
+      --neutral-3: #666666;
+      --neutral-4: #1A1A1A;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --card-radius: 20px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: var(--neutral-1);
+      color: var(--neutral-3);
+      line-height: 1.6;
+      padding: 40px 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--neutral-4);
+      margin-bottom: 16px;
+    }
+    
+    .subtitle {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+    
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 60px;
+      justify-content: center;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 30px;
+      box-shadow: 0 8px 24px var(--shadow);
+      flex: 1;
+      min-width: 300px;
+      max-width: 380px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 60px;
+      background-color: var(--primary);
+      border-radius: 3px;
+    }
+    
+    .card-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--neutral-4);
+      margin-bottom: 16px;
+    }
+    
+    .card-content {
+      color: var(--neutral-3);
+      font-size: 16px;
+    }
+    
+    .quote {
+      background-color: rgba(123, 74, 255, 0.05);
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-style: italic;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .badge {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+    }
+    
+    .insight-bar {
+      background-color: #444444;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+    
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px 0;
+    }
+    
+    .donut-chart {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 20px;
+    }
+    
+    .donut-chart svg {
+      transform: rotate(-90deg);
+    }
+    
+    .donut-chart .percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--neutral-4);
+    }
+    
+    .donut-chart .label {
+      font-size: 16px;
+      color: var(--neutral-3);
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .progress-container {
+      width: 100%;
+      margin: 20px 0;
+    }
+    
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      background-color: var(--neutral-2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background-color: var(--primary);
+      border-radius: 5px;
+    }
+    
+    .comparison-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+    
+    .comparison-item {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+    }
+    
+    .comparison-value {
+      font-size: 48px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .comparison-label {
+      font-size: 18px;
+      color: var(--neutral-4);
+      font-weight: 500;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 20px;
+      border-top: 1px solid var(--neutral-2);
+      color: var(--neutral-3);
+      font-size: 14px;
+    }
+    
+    .connecting-lines {
+      position: relative;
+    }
+    
+    .connecting-lines::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 40px;
+      background-color: var(--primary);
+    }
+    
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 60px 0;
+      position: relative;
+    }
+    
+    .flowchart::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background-color: var(--primary);
+      z-index: 0;
+    }
+    
+    .flow-step {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 20px 30px;
+      width: 80%;
+      max-width: 600px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    
+    .flow-step::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -15px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    
+    .flow-step-number {
+      position: absolute;
+      top: 50%;
+      left: -15px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      z-index: 3;
+    }
+    
+    .cta-container {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 40px;
+      text-align: center;
+      margin: 60px auto;
+      max-width: 800px;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 12px 30px;
+      border-radius: 30px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(123, 74, 255, 0.3);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .icon {
+      font-size: 48px;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Microsoft Dev Box 개발자 생산성 영향</h1>
+      <h2 class="subtitle">클라우드 기반 개발자 워크스테이션의 성능 벤치마크</h2>
+    </div>
+    
+    <h3 class="section-title">개발자 환경의 혁신 필요성</h3>
+    <div class="card-container">
+      <div class="card">
+        <h4 class="card-title">기존 워크스테이션의 한계</h4>
+        <div class="card-content">
+          <p>전통적인 물리적 워크스테이션은 복잡한 환경 설정, 충돌하는 구성으로 인한 생산성 손실, 확장성 부족 등의 문제점을 가지고 있습니다.</p>
+          <div class="quote">
+            "기존 VDI 솔루션의 관리, 자동화, 맞춤형 정의에 있어 거의 발전이 없었습니다...지금까지는요." - GigaOm
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h4 class="card-title">Microsoft Dev Box의 목표</h4>
+        <div class="card-content">
+          <p>Microsoft Dev Box는 개발자에게 사전 구성된 프로젝트 기반 워크스테이션에 대한 셀프 서비스 액세스를 제공하면서 중앙 집중식 관리 및 IT 가드레일을 유지합니다.</p>
+          <div class="badge">클라우드 기반 솔루션</div>
+        </div>
+      </div>
+      <div class="card">
+        <h4 class="card-title">독립적인 연구 결과</h4>
+        <div class="card-content">
+          <p>GigaOm의 벤치마크 보고서 "Microsoft Dev Box 클라우드 기반 개발자 워크스테이션 평가"는 이 솔루션이 다른 개발 환경과 어떻게 비교되는지 분석했습니다.</p>
+          <div class="insight-bar">
+            Microsoft Dev Box는 전통적인 랩톱이나 VDI 솔루션에 비해 상당한 이점을 제공합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">기존 VDI 환경과 Microsoft Dev Box 비교</h3>
+    <div style="overflow-x: auto; margin-bottom: 40px;">
+      <table style="width: 100%; border-collapse: collapse; border-radius: var(--card-radius); overflow: hidden; box-shadow: 0 8px 24px var(--shadow);">
+        <thead>
+          <tr style="background-color: var(--primary); color: white;">
+            <th style="padding: 16px; text-align: left; font-size: 18px;">비교 항목</th>
+            <th style="padding: 16px; text-align: left; font-size: 18px;">기존 VDI 환경</th>
+            <th style="padding: 16px; text-align: left; font-size: 18px;">Microsoft Dev Box</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: white;">
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2); font-weight: bold;">설정 및 구성</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">복잡한 IT 작업이 필요하며 개발자 요구에 맞춤화하기 어려움</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">개발자 셀프 서비스로 프로젝트별 맞춤 구성 가능</td>
+          </tr>
+          <tr style="background-color: var(--neutral-1);">
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2); font-weight: bold;">성능 확장성</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">제한된 자원 할당으로 대규모 프로젝트에 부적합</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">최대 32 vCPU, 128GB RAM으로 필요에 따라 동적 확장 가능</td>
+          </tr>
+          <tr style="background-color: white;">
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2); font-weight: bold;">개발자 경험</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">느린 응답성, 지연 시간 문제로 생산성 저하</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">로컬 머신과 동일한 응답성, 느린 인터넷에서도 원활한 경험</td>
+          </tr>
+          <tr style="background-color: var(--neutral-1);">
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2); font-weight: bold;">프로젝트 전환</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">환경 재구성에 상당한 시간 소요, 종종 충돌 발생</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">즉시 사용 가능한 다중 환경으로 원활한 프로젝트 전환</td>
+          </tr>
+          <tr style="background-color: white;">
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2); font-weight: bold;">보안 관리</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">중앙화된 제어가 가능하나 유연성 부족</td>
+            <td style="padding: 16px; border-bottom: 1px solid var(--neutral-2);">Intune 통합으로 강력한 보안과 유연한 관리 동시 제공</td>
+          </tr>
+          <tr style="background-color: var(--neutral-1);">
+            <td style="padding: 16px; font-weight: bold;">협업 효율성</td>
+            <td style="padding: 16px;">환경 불일치로 인한 "내 컴퓨터에서는 작동함" 문제 발생</td>
+            <td style="padding: 16px;">모든 팀원이 동일한 구성으로 작업하여 협업 마찰 감소</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3 class="section-title connecting-lines">GigaOm 연구의 주요 발견</h3>
+    <div class="chart-container">
+      <div class="donut-chart">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle cx="90" cy="90" r="80" fill="none" stroke="#DDDDDD" stroke-width="20"/>
+          <circle cx="90" cy="90" r="80" fill="none" stroke="#7B4AFF" stroke-width="20" stroke-dasharray="503" stroke-dashoffset="125"/>
+        </svg>
+        <div class="percentage">75%</div>
+      </div>
+      <div class="label">Microsoft Dev Box를 사용하는 개발팀의 생산성 향상</div>
+    </div>
+    
+    <div class="card-container">
+      <div class="card">
+        <div class="badge">발견 1</div>
+        <h4 class="card-title">생산성 향상</h4>
+        <div class="card-content">
+          <p>Microsoft Dev Box는 VDI 솔루션에 비해 개발자 생산성을 크게 향상시키고 구성 시간과 IT 오버헤드를 줄였습니다.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="badge">발견 2</div>
+        <h4 class="card-title">우수한 사용자 경험</h4>
+        <div class="card-content">
+          <p>개발자 타이핑 경험은 핫스팟 및 공용 Wi-Fi를 통해서도 로컬 머신과 동일하게 느껴졌습니다.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="badge">발견 3</div>
+        <h4 class="card-title">향상된 성능</h4>
+        <div class="card-content">
+          <p>Visual Studio가 장착된 Microsoft Dev Box 설정은 샘플 Chromium 코드 베이스에서 VDI 또는 로컬 클라이언트보다 더 나은 성능을 보였습니다.</p>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">Microsoft Dev Box가 기존 VDI의 한계를 극복하는 3가지 방식</h3>
+    <div class="flowchart">
+      <div class="flow-step">
+        <div class="flow-step-number">1</div>
+        <h4 class="card-title">개발자 워크스테이션 경험 혁신</h4>
+        <div class="card-content">
+          <p>셀프 서비스, 온디맨드 액세스를 통해 개발자가 필요한 시간과 장소에서 워크스테이션을 시작할 수 있습니다.</p>
+          <div class="quote">
+            "Microsoft Dev Box는 새 사용자의 설정 시간을 6시간 이상의 구성 작업에서 1시간 이내의 코딩 준비 상태로 줄일 수 있습니다." - GigaOm
+          </div>
+          <div class="insight-bar">
+            <strong>VDI 한계 극복:</strong> 기존 VDI는 IT 부서 요청 및 긴 대기 시간이 필요한 반면, Dev Box는 즉시 셀프 서비스로 제공됩니다.
+          </div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">2</div>
+        <h4 class="card-title">프로젝트 기반 구성으로 개발 워크플로우 가속화</h4>
+        <div class="card-content">
+          <p>다양한 기술 요구 사항을 가진 여러 프로젝트에서 원활하게 작업할 수 있습니다.</p>
+          <p>Microsoft Dev Box는 최대 32개의 가상 CPU, 128GB RAM 및 2TB 스토리지로 구성할 수 있습니다.</p>
+          <div class="insight-bar">
+            <strong>VDI 한계 극복:</strong> 기존 VDI는 하나의 표준 이미지를 사용하는 반면, Dev Box는 프로젝트별 맞춤형 구성을 지원합니다.
+          </div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-number">3</div>
+        <h4 class="card-title">중앙 집중식 보안 및 거버넌스 유지</h4>
+        <div class="card-content">
+          <p>Microsoft Intune을 통해 관리되는 Microsoft Dev Box는 IT 관리자에게 권한, 액세스 제어 및 네트워크 연결에 대한 제어를 제공합니다.</p>
+          <div class="quote">
+            "관리자는 Microsoft Intune을 통해 배포하는 클라우드 기반 개발자 워크스테이션의 보안 및 관리를 완전히 제어할 수 있습니다." - GigaOm
+          </div>
+          <div class="insight-bar">
+            <strong>VDI 한계 극복:</strong> 기존 VDI는 유연성이 부족한 보안 정책을 제공하는 반면, Dev Box는 세밀한 접근 제어와 함께 개발자 자율성을 보장합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">성능 비교</h3>
+    <div class="comparison-container">
+      <div class="comparison-item">
+        <div class="comparison-value">64%</div>
+        <div class="comparison-label">더 빠른 소프트웨어 빌드 시간</div>
+      </div>
+      <div class="comparison-item">
+        <div class="comparison-value">6+</div>
+        <div class="comparison-label">시간에서 1시간 미만으로 설정 시간 단축</div>
+      </div>
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-label">
+        <span>Microsoft Dev Box</span>
+        <span>100%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-label">
+        <span>중간 사양 물리적 장치</span>
+        <span>36%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 36%;"></div>
+      </div>
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-label">
+        <span>기존 VDI 환경</span>
+        <span>42%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 42%;"></div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">기존 VDI 한계 극복: Microsoft Dev Box의 주요 이점</h3>
+    <div class="grid-container">
+      <div class="card">
+        <div class="icon">🚀</div>
+        <h4 class="card-title">개발자 생산성 향상</h4>
+        <div class="card-content">
+          <p>개발자는 모든 장치에서 온디맨드로 사전 구성된 워크스테이션에 액세스할 수 있어 작업을 더 빠르게 시작할 수 있습니다.</p>
+          <p style="margin-top: 10px;"><strong>VDI 한계 극복:</strong> 기존 VDI는 리소스 경쟁으로 성능이 저하되는 반면, Dev Box는 전용 리소스로 일관된 성능을 제공합니다.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h4 class="card-title">프로젝트별 환경 전환</h4>
+        <div class="card-content">
+          <p>다양한 프로젝트 요구 사항에 맞는 여러 구성을 쉽게 전환하여 개발 주기를 가속화합니다.</p>
+          <p style="margin-top: 10px;"><strong>VDI 한계 극복:</strong> 기존 VDI는 단일 이미지 기반으로 프로젝트별 맞춤화가 어려운 반면, Dev Box는 프로젝트별 완전 맞춤형 환경을 제공합니다.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🔌</div>
+        <h4 class="card-title">네트워크 성능 최적화</h4>
+        <div class="card-content">
+          <p>데이터 센터 내에서 개발하는 것과 같은 경험으로, 대용량 소스 파일을 로컬에 다운로드할 필요가 없습니다.</p>
+          <p style="margin-top: 10px;"><strong>VDI 한계 극복:</strong> 기존 VDI는 네트워크 지연으로 사용자 경험이 저하되는 반면, Dev Box는 Microsoft의 글로벌 네트워크 인프라로 지연 시간을 최소화합니다.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h4 class="card-title">자동화된 설정 및 관리</h4>
+        <div class="card-content">
+          <p>Azure VM Image Builder와 Microsoft Dev Box 맞춤 설정을 통해 개발 환경 설정 시간을 크게 단축합니다.</p>
+          <p style="margin-top: 10px;"><strong>VDI 한계 극복:</strong> 기존 VDI는 복잡한 IT 관리가 필요한 반면, Dev Box는 셀프 서비스 포털과 자동화된 환경 구성으로 관리 부담을 줄입니다.</p>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">기존 VDI 접근 방식 대비 Microsoft Dev Box의 핵심 차별점</h3>
+    <div style="display: flex; justify-content: center; margin-bottom: 60px;">
+      <div style="background: white; border-radius: var(--card-radius); box-shadow: 0 8px 24px var(--shadow); padding: 30px; max-width: 900px;">
+        <div style="display: flex; margin-bottom: 20px; border-bottom: 1px solid var(--neutral-2); padding-bottom: 20px;">
+          <div style="flex: 1; padding-right: 20px;">
+            <h4 style="color: #FF5252; font-size: 22px; margin-bottom: 10px;">기존 VDI 접근 방식</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5252;">❌</span>
+                IT 팀 주도의 중앙 집중식 환경 구성
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5252;">❌</span>
+                제한된 하드웨어 리소스 및 확장성 부족
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5252;">❌</span>
+                표준화된 단일 이미지 중심 접근
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5252;">❌</span>
+                개발자 요구에 느린 대응 속도
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: #FF5252;">❌</span>
+                복잡한 관리 인터페이스와 제한된 자동화
+              </li>
+            </ul>
+          </div>
+          <div style="flex: 1; padding-left: 20px; border-left: 1px solid var(--neutral-2);">
+            <h4 style="color: var(--primary); font-size: 22px; margin-bottom: 10px;">Microsoft Dev Box 접근 방식</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                개발자 셀프 서비스 환경과 원활한 사용자 경험
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                최대 32 vCPU, 128GB RAM까지 확장 가능한 리소스
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                프로젝트별 맞춤형 구성 및 복제 가능한 환경
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                즉각적인 환경 프로비저닝 및 스케일링
+              </li>
+              <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                <span style="position: absolute; left: 0; color: var(--primary);">✓</span>
+                Microsoft Intune 통합으로 간소화된 관리 및 보안
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="quote">
+          "Microsoft Dev Box는 단순히 기존 VDI를 개선한 것이 아니라, 개발자 워크스테이션 경험을 근본적으로 재정의합니다. 이는 물리적 하드웨어, 전통적인 가상 머신, 그리고 레거시 VDI 솔루션과는 차별화된 새로운 접근 방식입니다." - GigaOm 성능 벤치마크 보고서
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-container">
+      <h3 class="card-title">Microsoft Dev Box로 개발 경험 전환하기</h3>
+      <p>GigaOm 보고서에 따르면 Microsoft Dev Box를 통해 "개발자 생산성, 혁신 속도의 대규모 개선 및 물류 및 물리적 장치 관리 감소"를 달성할 수 있습니다.</p>
+      <p style="margin: 20px 0;">기존 VDI 환경의 한계를 극복하고 클라우드 기반의 개발자 중심 워크스테이션으로 전환하여 팀의 생산성을 혁신하세요.</p>
+      <a href="#" class="cta-button">개념 증명 시작하기</a>
+    </div>
+    
+    <div class="footer">
+      <p>출처: GigaOm의 "Microsoft Dev Box 클라우드 기반 개발자 워크스테이션 평가" 보고서 및 Microsoft 블로그</p>
+      <p>© 2025 Microsoft Corporation</p>
+    </div>
+  </div>
+</body>
+</html>
