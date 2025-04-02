@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025년 4월 3일 신문 소식</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Poor+Story&family=Nanum+Pen+Script&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --text-dark: #334155;
+      --text-subtitle: #475569;
+      --text-section: #1e40af;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Gaegu', 'Nanum Pen Script', cursive;
+      line-height: 1.4;
+      color: var(--text-dark);
+      background-color: #f7f7f7;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    header {
+      padding: 30px;
+      background: linear-gradient(135deg, var(--color-1), var(--color-5));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    
+    .title {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-family: 'Poor Story', cursive;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .date {
+      font-size: 16px;
+      color: var(--color-2);
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+    
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    
+    .column {
+      width: 33.33%;
+      padding: 10px;
+    }
+    
+    @media (max-width: 900px) {
+      .column {
+        width: 50%;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+      border: 2px solid;
+      border-color: var(--color-1);
+      border-style: dashed;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--color-3);
+      z-index: 0;
+      border-radius: 0 0 0 50px;
+      opacity: 0.3;
+    }
+    
+    .card:nth-child(2n)::before {
+      background-color: var(--color-4);
+    }
+    
+    .card:nth-child(3n)::before {
+      background-color: var(--color-2);
+    }
+    
+    .card-title {
+      font-size: 18px;
+      color: var(--text-section);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(to right, var(--color-4), transparent) 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .card-content {
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .highlight {
+      background: linear-gradient(to bottom, transparent 60%, var(--color-2) 60%);
+      font-weight: bold;
+      padding: 0 2px;
+    }
+    
+    .keyword {
+      color: var(--color-5);
+      font-weight: bold;
+      padding: 0 2px;
+    }
+    
+    .marker {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .marker::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 8px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-3);
+      opacity: 0.3;
+      z-index: -1;
+    }
+    
+    .arrow {
+      position: relative;
+      display: inline-block;
+      margin: 0 5px;
+      color: var(--color-4);
+    }
+    
+    .source {
+      font-size: 12px;
+      color: var(--text-subtitle);
+      text-align: right;
+      font-style: italic;
+      margin-top: 10px;
+      background: rgba(89, 60, 71, 0.1);
+      padding: 3px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      float: right;
+    }
+    
+    .banner {
+      background: linear-gradient(90deg, var(--color-3), var(--color-2));
+      color: var(--color-1);
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 5px 0;
+      font-weight: bold;
+      transform: rotate(-1deg);
+    }
+    
+    .number-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      background-color: var(--color-1);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-right: 8px;
+      font-size: 14px;
+    }
+    
+    .hand-arrow {
+      display: inline-block;
+      color: var(--color-4);
+      font-weight: bold;
+      margin: 0 5px;
+      transform: rotate(15deg);
+    }
+    
+    footer {
+      padding: 20px;
+      text-align: center;
+      background-color: #f8f8f8;
+      border-top: 2px dashed var(--color-1);
+    }
+    
+    .footer-text {
+      font-size: 14px;
+      color: var(--text-subtitle);
+    }
+    
+    .bubble {
+      position: relative;
+      background: #f8f8f8;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      display: inline-block;
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-top-color: #f8f8f8;
+      border-bottom: 0;
+      margin-left: -10px;
+      margin-bottom: -10px;
+    }
+    
+    .stat {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--color-4);
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">📰 2025년 4월 3일 신문 소식</h1>
+      <div class="date">2025.04.03 목요일</div>
+    </header>
+    
+    <div class="content">
+      <!-- 첫번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">🔍 대장암 1위, 왜?</h2>
+          <div class="card-content">
+            <p>한국, <span class="highlight">서구보다 고기를 덜 먹는데</span> 20~49세 대장암 발병률은 <span class="stat">10만명당 12.9명</span> 조사 대상국 42개국 중 <span class="keyword">1위</span>! 전문가들이 건강을 위해 강조하는 것은...</p>
+            <div class="bubble">
+              "운동, 체중 관리와 더불어 <span class="marker">채소, 건강한 지방, 섬유질, 저당분 식단</span>을 유지하는 것이 중요합니다."
+            </div>
+            <div class="source">출처: 세계</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">🍚 물가, 또 올랐어요</h2>
+          <div class="card-content">
+            <p>3월 소비자물가 <span class="highlight">2.1% 상승</span>, 밥상물가 품목 중 가공식품 상승률 3.6%</p>
+            <p>무서운 식품 물가 상승률 <span class="hand-arrow">→</span></p>
+            <ul style="list-style-type: none; margin-left: 20px;">
+              <li>🥬 김치 <span class="keyword">15.3%</span></li>
+              <li>☕ 커피 <span class="keyword">8.3%</span></li>
+              <li>🍞 빵 <span class="keyword">6.3%</span></li>
+              <li>🥓 햄 및 베이컨 <span class="keyword">6.0%</span></li>
+            </ul>
+            <p>신선 식품도 축산물(3.1%)과 수산물(4.9%) 크게 상승 중!</p>
+            <div class="source">출처: 헤럴드경제</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">📚 4월 사서추천도서</h2>
+          <div class="card-content">
+            <div class="banner">국립중앙도서관 추천!</div>
+            <p><span class="number-box">1</span> <b>문학 분야</b></p>
+            <p>▲ '빛이 이끄는 곳으로'</p>
+            <p>▲ '나의 작은 나라'</p>
+            
+            <p><span class="number-box">2</span> <b>인문예술 분야</b></p>
+            <p>▲ '지명발견록'</p>
+            <p>▲ '제대로 연습하는 법'</p>
+            
+            <p><span class="number-box">3</span> <b>사회과학 분야</b></p>
+            <p>▲ '음식의 역사'</p>
+            <p>▲ '침묵을 배우는 시간'</p>
+            
+            <p><span class="number-box">4</span> <b>자연과학 분야</b></p>
+            <p>▲ '개미 오디세이'</p>
+            <p>▲ '코끼리는 암에 걸리지 않는다'</p>
+            <div class="source">출처: 아시아경제</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 두번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">🤔 0.8을 곱하면 '요즘 나이'?</h2>
+          <div class="card-content">
+            <p>평균 수명이 길어짐에 따라 <span class="highlight">결혼, 출산, 은퇴</span> 등 인생의 중요한 변화 시점이 예전보다 많이 늦어졌습니다.</p>
+            <div class="bubble">
+              '0.8'은 <span class="marker">과학적으로 도출된 숫자가 아닌</span> 삼성생명이 '젊음이 길어진 시대'라는 광고 캠페인의 일환으로 제시한 숫자
+            </div>
+            <p style="margin-top: 10px;">
+              <b>계산법:</b> 현재 나이 × 0.8 = 요즘 나이<br>
+              <span class="hand-arrow">→</span> 50세 × 0.8 = 40세
+            </p>
+            <div class="source">출처: 헤럴드경제</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">🌳 임도, 산림보호 역할 더 커</h2>
+          <div class="card-content">
+            <p>이번 산불을 겪으면서 <span class="highlight">임도(林道) 개설 문제</span>를 새롭게 보는 계기가 되었습니다.</p>
+            <div class="banner">임도의 역할</div>
+            <p>✅ 산림 관리 통로</p>
+            <p>✅ 산불 확산 차단</p>
+            <p style="margin-top: 10px;">국내 임도 밀도는 <span class="keyword">일본의 6분의 1 수준</span>에 불과합니다.</p>
+            <div class="bubble">
+              환경단체 등은 임도 개설을 자연 훼손으로 보는 입장
+            </div>
+            <div class="source">출처: 문화</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">🏥 입원 대기 기간 늘어</h2>
+          <div class="card-content">
+            <p>의정갈등으로 인해 입원 대기 일수가 <span class="highlight">3.9일 증가</span>했습니다.</p>
+            <p style="margin-top: 10px;">원하는 날짜에 입원한 환자: <span class="keyword">90.2%</span></p>
+            <p>대기해야 했던 환자: <span class="keyword">9.8%</span></p>
+            <div class="bubble">
+              대기 환자의 평균 대기 일수는 <span class="marker">17.5일</span>로 의정갈등 전보다 3.9일 길어져
+            </div>
+            <p style="text-align: center; margin-top: 10px;">
+              <span style="font-size: 12px;">↓</span><br>
+              <b>조사가 시작된 2017년 이래 최장 기록</b>
+            </p>
+            <div class="source">출처: 문화</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">🍎 과일, 송이버섯 더 귀해지나?</h2>
+          <div class="card-content">
+            <p>이번 산불 피해 지역 경북은 <span class="highlight">전국 과일 생산량의 60%</span>를 차지합니다.</p>
+            <p style="margin-top: 10px;">
+              <span class="number-box">1</span> <b>의성</b>: 자두 생산의 <span class="keyword">25%</span>
+            </p>
+            <p>
+              <span class="number-box">2</span> <b>영덕군</b>: 국내 송이버섯 채취량의 <span class="keyword">30%</span> (최대 산지)
+            </p>
+            <div class="source">출처: 문화</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 세번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2 class="card-title">🍚 일본의 쌀 사태</h2>
+          <div class="card-content">
+            <p>쌀값 폭등 사태로 <span class="highlight">국민들이 극도로 예민해진 일본</span>...</p>
+            <div class="bubble">
+              도시락 판매회사의 '도시락 판매 중단' 만우절 이벤트에 여론 뭇매!
+            </div>
+            <p style="margin-top: 10px;">
+              쌀밥을 만우절 장난 거리로 만들었다는 이유
+            </p>
+            <div class="banner">현재 일본의 쌀값</div>
+            <p>
+              5㎏에 <span class="keyword">4만원 선</span><br>
+              <span class="hand-arrow">→</span> 전년 동기 대비 <span class="marker">2배</span><br>
+              <span class="hand-arrow">→</span> 한국의 <span class="marker">3배</span>
+            </p>
+            <div class="source">출처: 한국</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">✈️ 비행기 커피는 마시지 마라?</h2>
+          <div class="card-content">
+            <p><span class="highlight">승무원, 조종사들의 경고</span>...</p>
+            <div class="bubble">
+              "비행기의 따뜻한 음료 제조 방식은 <span class="marker">비위생적</span>입니다."
+            </div>
+            <p style="margin-top: 10px;">
+              영국 데일리메일, 미국 승무원 영상 게시물 인용 보도:
+            </p>
+            <p>
+              ❌ 물탱크는 청소되지 않음<br>
+              ❌ 커피 포트 물은 물이 튀지 않게 하기 위해 <span class="keyword">변기 가까이 가져가 버림</span>
+            </p>
+            <div class="source">출처: 한국</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2 class="card-title">🎓 학과 명칭의 중요성</h2>
+          <div class="card-content">
+            <p>단순한 이름 변경으로 <span class="highlight">최하위에서 최상위 학과로</span> 바뀐 사례!</p>
+            <div class="banner">서울대 1990년대 초 사례</div>
+            <p>
+              <span class="number-box">1</span> <b>성공 사례</b>:<br>
+              '동물학과' <span class="hand-arrow">→</span> '<span class="marker">분자생물학과</span>'<br>
+              결과: 자연대 입시 성적 최하위에서 <span class="keyword">3위</span>로 상승
+            </p>
+            <p style="margin-top: 10px;">
+              <span class="number-box">2</span> <b>실패 사례</b>:<br>
+              '식물학과' <span class="hand-arrow">→</span> '<span class="marker">생물학과</span>'<br>
+              결과: 고리타분한 이미지가 박혀 <span class="keyword">최하위로 추락</span>
+            </p>
+            <div class="source">출처: 한경</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p class="footer-text">© 2025년 4월 3일 신문 소식 모음 | 그래픽 레코딩 스타일 인포그래픽</p>
+    </footer>
+  </div>
+</body>
+</html>
