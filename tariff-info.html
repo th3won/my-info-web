@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미국의 최근 관세 정책 인포그래픽</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@300;400;700&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --blue-800: #1e40af;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Gaegu', 'Nanum Pen Script', cursive;
+      background-color: #f8f9fa;
+      line-height: 1.4;
+      color: var(--gray-700);
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* 손으로 그린 느낌의 배경 요소 */
+    .bg-doodle {
+      position: absolute;
+      z-index: 0;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    
+    .bg-doodle-1 {
+      top: 10%;
+      left: 5%;
+      width: 150px;
+      height: 150px;
+      border: 3px solid var(--fashion-1);
+      border-radius: 40% 60% 70% 30%;
+      transform: rotate(15deg);
+    }
+    
+    .bg-doodle-2 {
+      bottom: 15%;
+      right: 8%;
+      width: 200px;
+      height: 200px;
+      border: 3px solid var(--fashion-4);
+      border-radius: 60% 40% 30% 70%;
+      transform: rotate(-20deg);
+    }
+    
+    .bg-doodle-3 {
+      top: 40%;
+      right: 15%;
+      width: 100px;
+      height: 100px;
+      border: 3px solid var(--fashion-3);
+      border-radius: 50% 50% 30% 70%;
+      transform: rotate(45deg);
+    }
+    
+    /* 헤더 스타일 */
+    header {
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed var(--fashion-1);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .title-box {
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+    }
+    
+    .title-underline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q25,10 50,5 T100,5' stroke='%23F25C05' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+    
+    .date-source {
+      font-size: 14px;
+      color: var(--gray-600);
+      text-align: right;
+    }
+    
+    /* 메인 콘텐츠 */
+    .content {
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .intro-box {
+      width: 100%;
+      position: relative;
+      background-color: rgba(242, 230, 60, 0.15);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--fashion-2);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+    
+    .intro-box p {
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .intro-icon {
+      position: absolute;
+      right: 20px;
+      top: -15px;
+      font-size: 40px;
+      opacity: 0.3;
+      transform: rotate(15deg);
+    }
+    
+    .column {
+      flex: 1 1 30%;
+      min-width: 300px;
+    }
+    
+    .section {
+      background-color: white;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 2px solid transparent;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--fashion-3), var(--fashion-4));
+      border-radius: 14px;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    
+    h2 {
+      font-size: 22px;
+      color: var(--fashion-1);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 5' preserveAspectRatio='none'%3E%3Cpath d='M0,2.5 Q25,5 50,2.5 T100,2.5' stroke='%23593C47' stroke-width='1.5' stroke-dasharray='4 2' fill='none' /%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+    
+    h3 {
+      font-size: 18px;
+      color: var(--blue-800);
+      margin: 15px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .country-list {
+      list-style-type: none;
+      margin-top: 20px;
+    }
+    
+    .country-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      position: relative;
+      transition: transform 0.2s ease;
+      overflow: hidden;
+    }
+    
+    .country-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .country-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--fashion-4), var(--fashion-5));
+      border-radius: 3px 0 0 3px;
+    }
+    
+    .country-flag {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    
+    .country-name {
+      font-weight: bold;
+      width: 100px;
+    }
+    
+    .tariff-rates {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .rate-box {
+      text-align: center;
+      min-width: 60px;
+    }
+    
+    .rate-value {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--fashion-1);
+      background-color: rgba(242, 196, 60, 0.2);
+      border-radius: 8px;
+      padding: 4px 8px;
+      display: inline-block;
+      position: relative;
+    }
+    
+    .rate-label {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 5px;
+    }
+    
+    .arrow-icon {
+      font-size: 16px;
+      color: var(--fashion-4);
+    }
+    
+    .high-tariff .rate-value {
+      background-color: rgba(242, 92, 5, 0.2);
+      color: var(--fashion-5);
+    }
+    
+    .medium-tariff .rate-value {
+      background-color: rgba(242, 196, 60, 0.2);
+      color: var(--fashion-4);
+    }
+    
+    .low-tariff .rate-value {
+      background-color: rgba(242, 230, 60, 0.2);
+      color: #593C47;
+    }
+    
+    .comparison-chart {
+      width: 100%;
+      height: 250px;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+    
+    .impact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .impact-item {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    
+    .impact-item::before {
+      content: '✏️';
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+    
+    .note-box {
+      background-color: rgba(89, 60, 71, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      position: relative;
+    }
+    
+    .note-box::before {
+      content: '📌';
+      position: absolute;
+      left: -5px;
+      top: -10px;
+      font-size: 24px;
+      transform: rotate(-10deg);
+    }
+    
+    .note-box p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+    .hand-drawn-arrow {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' preserveAspectRatio='none'%3E%3Cpath d='M2,15 Q20,5 40,15 T58,15 L55,10 M55,15 L58,20' stroke='%23F24405' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+      background-size: 100% 100%;
+    }
+    
+    .arrow-1 {
+      top: 50%;
+      right: -40px;
+      transform: rotate(30deg);
+    }
+    
+    .arrow-2 {
+      bottom: -20px;
+      left: 50%;
+      transform: rotate(90deg);
+    }
+    
+    /* 강조 표시 */
+    .highlight {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: var(--fashion-3);
+      opacity: 0.4;
+      z-index: -1;
+      border-radius: 4px;
+    }
+    
+    .marker {
+      background: linear-gradient(transparent 40%, var(--fashion-2) 40%, var(--fashion-2) 70%, transparent 70%);
+      padding: 0 4px;
+    }
+    
+    /* 테이블 스타일 */
+    .tariff-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+      margin: 20px 0;
+    }
+    
+    .tariff-table th {
+      text-align: left;
+      padding: 8px 12px;
+      color: var(--fashion-1);
+      font-size: 16px;
+      border-bottom: 2px dashed var(--fashion-3);
+    }
+    
+    .tariff-table td {
+      padding: 10px 12px;
+    }
+    
+    .tariff-table tr {
+      background-color: rgba(242, 230, 60, 0.05);
+      position: relative;
+      transition: all 0.2s;
+    }
+    
+    .tariff-table tr:hover {
+      background-color: rgba(242, 196, 60, 0.15);
+    }
+    
+    .tariff-table tr td:first-child {
+      border-radius: 8px 0 0 8px;
+      border-left: 3px solid var(--fashion-4);
+    }
+    
+    .tariff-table tr td:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+    
+    /* 포스트잇 효과 */
+    .post-it {
+      background-color: var(--fashion-2);
+      padding: 15px;
+      transform: rotate(-2deg);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+      position: relative;
+      color: var(--fashion-1);
+      font-weight: bold;
+      max-width: 80%;
+    }
+    
+    .post-it::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.05) 50%);
+    }
+    
+    /* 푸터 */
+    footer {
+      padding: 20px 40px;
+      border-top: 2px dashed var(--fashion-1);
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+    
+    /* 차트 스타일 */
+    .chart-container {
+      position: relative;
+      height: 250px;
+      margin-top: 20px;
+      padding-left: 40px;
+    }
+    
+    .chart-bar {
+      position: absolute;
+      bottom: 30px;
+      height: var(--height);
+      width: 25px;
+      background: linear-gradient(to top, var(--fashion-1), var(--color));
+      border-radius: 5px 5px 0 0;
+      margin-right: 30px;
+      transition: height 1s ease;
+    }
+    
+    .chart-label {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 12px;
+      width: 40px;
+    }
+    
+    .chart-value {
+      position: absolute;
+      bottom: calc(var(--height) + 35px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      border: 1px solid var(--fashion-1);
+      border-radius: 4px;
+      padding: 2px 4px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    
+    .y-axis {
+      position: absolute;
+      left: 0;
+      bottom: 30px;
+      height: 200px;
+      width: 40px;
+    }
+    
+    .y-tick {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(89, 60, 71, 0.2);
+    }
+    
+    .y-label {
+      position: absolute;
+      left: 5px;
+      transform: translateY(50%);
+      font-size: 10px;
+      color: var(--gray-600);
+    }
+    
+    .x-axis {
+      position: absolute;
+      left: 40px;
+      bottom: 30px;
+      height: 1px;
+      right: 0;
+      background-color: var(--fashion-1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 배경 요소 -->
+    <div class="bg-doodle bg-doodle-1"></div>
+    <div class="bg-doodle bg-doodle-2"></div>
+    <div class="bg-doodle bg-doodle-3"></div>
+    
+    <!-- 헤더 -->
+    <header>
+      <div class="title-box">
+        <h1>미국의 최근 관세 정책 변화와 영향</h1>
+        <div class="title-underline"></div>
+      </div>
+      <div class="date-source">
+        2025년 4월 3일 <br>
+        <small>📊 글로벌 무역 보고서 기반</small>
+      </div>
+    </header>
+    
+    <!-- 메인 콘텐츠 -->
+    <div class="content">
+      <!-- 도입부 -->
+      <div class="intro-box">
+        <div class="intro-icon">🌐</div>
+        <p>미국이 무역 적자를 줄이고 국내 산업 보호를 위해 주요 교역국에 관세율을 변경했습니다. 이는 국가별 무역 관행과 무역 불균형을 고려하여 결정되었으며, 글로벌 무역에 상당한 영향을 미칠 것으로 예상됩니다.</p>
+      </div>
+      
+      <!-- 첫 번째 컬럼 -->
+      <div class="column">
+        <div class="section">
+          <h2>🌏 주요 교역국 관세율 현황</h2>
+          <p>미국이 주요 교역국에 대한 관세율을 변경했습니다. 아래는 주요 아시아 국가들의 관세율입니다.</p>
+          
+          <ul class="country-list">
+            <li class="country-item high-tariff">
+              <div class="country-flag">🇻🇳</div>
+              <div class="country-name">베트남</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">90%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">46%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item high-tariff">
+              <div class="country-flag">🇨🇳</div>
+              <div class="country-name">중국</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">67%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">34%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇹🇼</div>
+              <div class="country-name">대만</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">64%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">32%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇰🇷</div>
+              <div class="country-name">대한민국</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">50%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">25%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇯🇵</div>
+              <div class="country-name">일본</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">46%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">24%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          
+          <div class="post-it">
+            <p>베트남에 가장 높은 관세율 적용 (90%)</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>📊 글로벌 무역 불균형</h2>
+          <p>미국의 관세 정책은 각 국가와의 <span class="highlight">무역 불균형</span>을 해소하기 위한 전략적 조치입니다.</p>
+          
+          <div class="chart-container">
+            <div class="y-axis">
+              <div class="y-tick" style="bottom: 0%;"><div class="y-label">0%</div></div>
+              <div class="y-tick" style="bottom: 25%;"><div class="y-label">25%</div></div>
+              <div class="y-tick" style="bottom: 50%;"><div class="y-label">50%</div></div>
+              <div class="y-tick" style="bottom: 75%;"><div class="y-label">75%</div></div>
+              <div class="y-tick" style="bottom: 100%;"><div class="y-label">100%</div></div>
+            </div>
+            <div class="x-axis"></div>
+            
+            <div class="chart-bar" style="--height: 180px; --color: var(--fashion-4); left: 60px;">
+              <div class="chart-label">🇻🇳</div>
+              <div class="chart-value">90%</div>
+            </div>
+            
+            <div class="chart-bar" style="--height: 144px; --color: var(--fashion-3); left: 120px;">
+              <div class="chart-label">🇹🇭</div>
+              <div class="chart-value">72%</div>
+            </div>
+            
+            <div class="chart-bar" style="--height: 134px; --color: var(--fashion-4); left: 180px;">
+              <div class="chart-label">🇨🇳</div>
+              <div class="chart-value">67%</div>
+            </div>
+            
+            <div class="chart-bar" style="--height: 128px; --color: var(--fashion-3); left: 240px;">
+              <div class="chart-label">🇹🇼</div>
+              <div class="chart-value">64%</div>
+            </div>
+            
+            <div class="chart-bar" style="--height: 100px; --color: var(--fashion-2); left: 300px;">
+              <div class="chart-label">🇰🇷</div>
+              <div class="chart-value">50%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 두 번째 컬럼 -->
+      <div class="column">
+        <div class="section">
+          <h2>🇪🇺 유럽 및 기타 지역 관세율</h2>
+          
+          <ul class="country-list">
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇪🇺</div>
+              <div class="country-name">유럽연합</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">39%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">20%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇮🇳</div>
+              <div class="country-name">인도</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">52%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">26%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item high-tariff">
+              <div class="country-flag">🇹🇭</div>
+              <div class="country-name">태국</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">72%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">36%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇨🇭</div>
+              <div class="country-name">스위스</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">61%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">31%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇮🇩</div>
+              <div class="country-name">인도네시아</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">64%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">32%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item medium-tariff">
+              <div class="country-flag">🇿🇦</div>
+              <div class="country-name">남아공</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">60%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">30%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2>⚖️ 관세 역학 관계</h2>
+          <p>대부분의 국가에서 <span class="marker">미국산 품목에 부과된 관세율이 미국이 부과한 관세율의 약 2배</span>에 해당합니다.</p>
+          
+          <h3>📝 관세율 패턴</h3>
+          <ul class="impact-list">
+            <li class="impact-item">대부분 국가: 2:1 비율의 상호 관세</li>
+            <li class="impact-item">영국, 브라질, 호주, 튀르키예, 아랍에미리트, 아르헨티나, 사우디아라비아: 1:1 비율 유지</li>
+            <li class="impact-item">높은 관세율(60% 이상): 베트남, 중국, 태국, 대만, 인도네시아, 스위스, 남아공</li>
+          </ul>
+          
+          <div class="note-box">
+            <p>이러한 관세율 패턴은 미국과의 <span class="highlight">무역 관계</span>와 <span class="highlight">경제적 의존도</span>를 반영합니다.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 세 번째 컬럼 -->
+      <div class="column">
+        <div class="section">
+          <h2>🤝 저관세 국가 그룹</h2>
+          <p>일부 국가들은 상대적으로 낮은 관세율(10-20%)을 유지하고 있습니다.</p>
+          
+          <ul class="country-list">
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇬🇧</div>
+              <div class="country-name">영국</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇧🇷</div>
+              <div class="country-name">브라질</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇦🇺</div>
+              <div class="country-name">호주</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇹🇷</div>
+              <div class="country-name">튀르키예</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇳🇿</div>
+              <div class="country-name">뉴질랜드</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">20%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+            
+            <li class="country-item low-tariff">
+              <div class="country-flag">🇦🇪</div>
+              <div class="country-name">UAE</div>
+              <div class="tariff-rates">
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국산 품목</div>
+                </div>
+                <div class="arrow-icon">⟺</div>
+                <div class="rate-box">
+                  <div class="rate-value">10%</div>
+                  <div class="rate-label">미국 부과</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2>🌊 예상되는 영향</h2>
+          <h3>🔍 주요 파급 효과</h3>
+          <ul class="impact-list">
+            <li class="impact-item">글로벌 <span class="highlight">공급망 재편성</span> 가속화</li>
+            <li class="impact-item">고관세 국가의 수출 경쟁력 약화</li>
+            <li class="impact-item">자유무역협정(FTA) 재협상 가능성 증가</li>
+            <li class="impact-item">소비자 가격 상승</li>
+            <li class="impact-item">글로벌 경제 성장률 저하 우려</li>
+          </ul>
+          
+          <h3>🌐 외교적 대응</h3>
+          <ul class="impact-list">
+            <li class="impact-item">일부 국가들은 <span class="marker">외교적 해결책</span>을 모색 중</li>
+            <li class="impact-item">고관세 국가들 간 <span class="marker">공동 대응</span> 논의 진행</li>
+            <li class="impact-item">WTO를 통한 분쟁 해결 절차 가능성</li>
+          </ul>
+          
+          <div class="post-it" style="transform: rotate(2deg); background-color: var(--fashion-3);">
+            <p>무역 전쟁의 장기화는 글로벌 경제에 악영향</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 푸터 -->
+    <footer>
+      <p>© 2025 글로벌 무역 보고서 | 데이터 출처: 국제무역연구소</p>
+    </footer>
+  </div>
+</body>
+</html>
