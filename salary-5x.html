@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>풀스택 개발자 연봉 5배 올리기 전략</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+    
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --light-bg: #fffef7;
+      --subtitle: #475569;
+      --section-title: #1e40af;
+      --body-text: #334155;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poor Story', 'Gaegu', cursive;
+      background-color: var(--light-bg);
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23593c47' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 12px;
+      border: 2px solid var(--fashion-1);
+      border-style: dashed;
+    }
+    
+    .header-left h1 {
+      font-size: 32px;
+      font-weight: bold;
+      font-family: 'Nanum Pen Script', cursive;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(45deg, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 3px 3px 0px rgba(89, 60, 71, 0.2);
+    }
+    
+    .header-left p {
+      font-size: 16px;
+      color: var(--subtitle);
+    }
+    
+    .header-right {
+      text-align: right;
+      font-size: 14px;
+      color: var(--body-text);
+    }
+    
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid;
+      border-color: var(--fashion-3);
+      transform: rotate(-0.5deg);
+    }
+    
+    .card:nth-child(2n) {
+      transform: rotate(0.8deg);
+      border-color: var(--fashion-4);
+    }
+    
+    .card:nth-child(3n) {
+      transform: rotate(-0.3deg);
+      border-color: var(--fashion-2);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      color: var(--section-title);
+      margin-bottom: 1rem;
+      font-weight: bold;
+      position: relative;
+    }
+    
+    .card-title::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--fashion-4), var(--fashion-4) 6px, transparent 6px, transparent 12px);
+    }
+    
+    .card-title i {
+      margin-right: 0.5rem;
+    }
+    
+    .card-content {
+      font-size: 14px;
+      color: var(--body-text);
+    }
+    
+    .keyword {
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      padding: 0 2px;
+    }
+    
+    .keyword.yellow {
+      background: linear-gradient(transparent 40%, var(--fashion-2) 40%);
+    }
+    
+    .keyword.orange {
+      background: linear-gradient(transparent 40%, var(--fashion-3) 40%);
+    }
+    
+    .keyword.red {
+      background: linear-gradient(transparent 40%, var(--fashion-4) 40%);
+    }
+    
+    ul.hand-drawn {
+      list-style: none;
+      margin-left: 1rem;
+    }
+    
+    ul.hand-drawn li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    ul.hand-drawn li::before {
+      content: '✎';
+      position: absolute;
+      left: 0;
+      color: var(--fashion-5);
+    }
+    
+    .hand-arrow {
+      position: absolute;
+      font-size: 24px;
+      color: var(--fashion-4);
+      transform: rotate(30deg);
+    }
+    
+    .circle-highlight {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 2.5px dashed var(--fashion-5);
+      border-radius: 50%;
+      transform: rotate(10deg);
+      z-index: 0;
+    }
+    
+    .bubble {
+      position: relative;
+      background-color: rgba(242, 230, 61, 0.2);
+      border-radius: 15px;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border: 1.5px solid var(--fashion-3);
+    }
+    
+    .bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: rgba(242, 230, 61, 0.2) transparent;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--fashion-1);
+      color: white;
+      border-radius: 20px;
+      padding: 0.2rem 0.8rem;
+      font-size: 12px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      transform: rotate(-2deg);
+    }
+    
+    .tag:nth-child(2n) {
+      background-color: var(--fashion-4);
+      transform: rotate(1deg);
+    }
+    
+    .tag:nth-child(3n) {
+      background-color: var(--fashion-5);
+      transform: rotate(-1deg);
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 12px;
+      color: var(--body-text);
+      border-top: 1px dashed var(--fashion-1);
+    }
+    
+    @media (max-width: 768px) {
+      .main-content {
+        flex-direction: column;
+      }
+      
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <h1>풀스택 개발자 연봉 5배 올리기 전략 📈</h1>
+        <p>Angular, React, Spring Boot 개발자를 위한 커리어 성장 가이드</p>
+      </div>
+      <div class="header-right">
+        <p>작성일: 2025.04.04</p>
+        <p>분야: 개발자 커리어</p>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <!-- 첫번째 컬럼 - 기술적 역량 강화 -->
+      <div class="column">
+        <div class="card">
+          <div class="card-title">
+            <span>💻 기술적 역량 강화</span>
+          </div>
+          <div class="card-content">
+            <p>스택 깊이를 더해 차별화된 가치를 제공하세요!</p>
+            <div class="bubble">
+              <strong>고연봉 개발자의 특징:</strong> 일반 개발자가 다루지 못하는 깊이 있는 기술 지식 보유
+            </div>
+            
+            <ul class="hand-drawn">
+              <li><span class="keyword orange">React Server Components</span> & <span class="keyword orange">Angular 최신 버전</span> 최적화 기술 마스터</li>
+              <li>Spring Boot에서 <span class="keyword yellow">마이크로서비스 아키텍처</span> 구축 경험 확보</li>
+              <li><span class="keyword red">DevOps</span> 파이프라인 구축 및 <span class="keyword red">클라우드 아키텍처</span> 설계 능력</li>
+              <li>성능 최적화 및 <span class="keyword yellow">확장성</span> 높은 애플리케이션 개발 역량</li>
+            </ul>
+            
+            <div style="margin-top: 1.5rem;">
+              <div class="tag">React</div>
+              <div class="tag">Angular</div>
+              <div class="tag">Spring Boot</div>
+              <div class="tag">마이크로서비스</div>
+              <div class="tag">DevOps</div>
+              <div class="tag">클라우드</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">
+            <span>🚀 시장 가치 증대 전략</span>
+          </div>
+          <div class="card-content">
+            <p>단순한 코드 작성자가 아닌 문제 해결사가 되세요!</p>
+            
+            <ul class="hand-drawn">
+              <li>비즈니스 도메인 <span class="keyword orange">깊이 이해하기</span></li>
+              <li>기술 선택의 <span class="keyword yellow">비즈니스적 타당성</span> 설명 가능한 수준</li>
+              <li>숫자로 입증할 수 있는 <span class="keyword red">성과 데이터</span> 수집</li>
+              <li>회사 비즈니스에 <span class="keyword orange">직접적인 수익</span> 기여 포인트 만들기</li>
+            </ul>
+            
+            <div style="position: relative;">
+              <div class="circle-highlight" style="top: -50px; right: 20px;"></div>
+              <p style="margin-top: 1rem; font-weight: bold; text-align: center;">
+                💰 핵심 포인트: 기술적 가치 + 비즈니스 가치 = 5배 연봉
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 두번째 컬럼 - 개인 브랜드 구축 -->
+      <div class="column">
+        <div class="card">
+          <div class="card-title">
+            <span>🌟 개인 브랜드 구축</span>
+          </div>
+          <div class="card-content">
+            <p>업계에서 인정받는 전문가로 포지셔닝하세요!</p>
+            
+            <ul class="hand-drawn">
+              <li><span class="keyword yellow">오픈소스</span> 프로젝트 기여 및 운영</li>
+              <li>기술 컨퍼런스 <span class="keyword orange">발표</span> 및 커뮤니티 활동</li>
+              <li>전문성을 보여주는 <span class="keyword red">기술 블로그</span> 운영</li>
+              <li>GitHub에 <span class="keyword yellow">양질의 코드</span> 지속적 공유</li>
+              <li>LinkedIn 프로필 최적화 및 <span class="keyword orange">네트워킹</span></li>
+            </ul>
+            
+            <div class="bubble" style="background-color: rgba(242, 91, 4, 0.1); border-color: var(--fashion-4);">
+              <strong>📌 TIP:</strong> 특정 분야의 니치 기술에 집중하여 "그 분야의 전문가"로 알려지세요
+            </div>
+            
+            <div style="position: relative;">
+              <span class="hand-arrow" style="bottom: -20px; right: 30px;">↗️</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">
+            <span>🔄 지속적 학습과 역량 보여주기</span>
+          </div>
+          <div class="card-content">
+            <p>끊임없이 발전하는 모습을 증명하세요!</p>
+            
+            <ul class="hand-drawn">
+              <li>최신 기술 트렌드 <span class="keyword yellow">선제적 학습</span> 및 적용</li>
+              <li>실무 경험이 담긴 <span class="keyword orange">포트폴리오</span> 구축</li>
+              <li>동료들에게 <span class="keyword red">멘토링</span> 및 지식 공유</li>
+              <li>관련 분야 <span class="keyword yellow">자격증</span> 취득 (AWS, Azure 등)</li>
+            </ul>
+            
+            <p style="margin-top: 1rem; text-align: center; font-style: italic;">
+              "고연봉 개발자는 지식을 <span class="keyword red">독점하지 않고</span> <span class="keyword orange">공유</span>합니다"
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 세번째 컬럼 - 비즈니스 & 리더십 역량 -->
+      <div class="column">
+        <div class="card">
+          <div class="card-title">
+            <span>🧠 비즈니스 & 리더십 역량</span>
+          </div>
+          <div class="card-content">
+            <p>기술을 넘어 비즈니스 파트너가 되세요!</p>
+            
+            <ul class="hand-drawn">
+              <li>제품과 <span class="keyword orange">비즈니스 모델</span> 깊이 이해하기</li>
+              <li>투자 수익률(ROI) 관점에서 <span class="keyword yellow">기술 의사결정</span> 설명</li>
+              <li>팀 리더십 & <span class="keyword red">프로젝트 관리</span> 경험 쌓기</li>
+              <li>경영진과 <span class="keyword orange">효과적인 커뮤니케이션</span> 역량</li>
+              <li>기술 비전 제시 및 <span class="keyword yellow">전략 수립</span> 능력</li>
+            </ul>
+            
+            <div style="margin-top: 1.5rem; border: 1px dashed var(--fashion-5); padding: 0.8rem; border-radius: 8px;">
+              <p style="text-align: center; font-weight: bold;">핵심 차별화 요소</p>
+              <p style="text-align: center;">기술 지식 + 비즈니스 통찰력 + 리더십</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-title">
+            <span>📊 성과 측정 & 협상 전략</span>
+          </div>
+          <div class="card-content">
+            <p>자신의 가치를 수치화하고 증명하세요!</p>
+            
+            <ul class="hand-drawn">
+              <li>자신의 <span class="keyword orange">시장 가치</span> 지속적으로 리서치</li>
+              <li>업무 성과를 <span class="keyword yellow">데이터</span>로 기록하고 문서화</li>
+              <li>비즈니스 임팩트 중심의 <span class="keyword red">성과 포트폴리오</span> 준비</li>
+              <li>연봉 협상시 <span class="keyword orange">객관적 지표</span> 활용</li>
+              <li>적절한 <span class="keyword yellow">이직 타이밍</span> 포착하기</li>
+            </ul>
+            
+            <div class="bubble" style="background-color: rgba(242, 196, 60, 0.2); border-color: var(--fashion-2);">
+              <strong>🔑 핵심:</strong> 스스로의 가치를 낮게 평가하지 마세요! 당신의 기여가 회사에 가져온 <span class="keyword red">실질적인 가치</span>를 인식하고 주장하세요.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>© 2025 풀스택 개발자 커리어 가이드 | 출처: 풀스택 개발자 연봉 5배 올리기 전략 | 디자인: 그래픽 레코딩 스타일</p>
+    </div>
+  </div>
+</body>
+</html>
