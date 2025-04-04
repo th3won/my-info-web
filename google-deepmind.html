@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>챗GPT는 아직 애기 수준: 구글 딥마인드의 AI 발전 로드맵</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+    
+    :root {
+      --color-1: #593C47;
+      --color-2: #F2E63D;
+      --color-3: #F2C53D;
+      --color-4: #F25C05;
+      --color-5: #F24405;
+      --text-main: #334155;
+      --text-heading: #1e40af;
+      --text-subheading: #475569;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Gaegu', cursive;
+      background-color: #f8f9fa;
+      color: var(--text-main);
+      line-height: 1.4;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--color-1), var(--color-3), var(--color-5));
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px dashed var(--color-3);
+    }
+    
+    h1 {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 38px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--color-1), var(--color-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q25,10 50,5 T100,5' fill='none' stroke='%23F25C05' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+      background-size: 100px 10px;
+    }
+    
+    .header-right {
+      font-family: 'Poor Story', cursive;
+      color: var(--text-subheading);
+      text-align: right;
+      font-size: 14px;
+    }
+    
+    .content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--color-3);
+      border-radius: 4px;
+      opacity: 0.8;
+    }
+    
+    .card:hover {
+      box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+    
+    h2 {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 24px;
+      color: var(--color-1);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    h2 svg {
+      margin-right: 8px;
+    }
+    
+    h3 {
+      font-family: 'Poor Story', cursive;
+      font-size: 18px;
+      color: var(--text-heading);
+      margin: 1rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    h3 svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+    
+    p {
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+    
+    .marker {
+      background: linear-gradient(transparent 60%, var(--color-2) 60%);
+      font-weight: bold;
+    }
+    
+    .highlight {
+      color: var(--color-5);
+      font-weight: bold;
+    }
+    
+    .box {
+      border: 2px solid var(--color-1);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      position: relative;
+      background: rgba(242, 230, 60, 0.1);
+    }
+    
+    .box-title {
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background: white;
+      padding: 0 10px;
+      font-weight: bold;
+      color: var(--color-1);
+    }
+    
+    .stages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+    
+    .stage {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    .stage-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+      color: white;
+    }
+    
+    .note {
+      background: rgba(242, 196, 60, 0.2);
+      border-left: 3px solid var(--color-3);
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      font-size: 13px;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .arrow {
+      display: block;
+      margin: 1rem auto;
+      width: 30px;
+      height: 30px;
+    }
+    
+    .faq {
+      margin-top: 2rem;
+    }
+    
+    .question {
+      font-weight: bold;
+      color: var(--color-1);
+      margin: 1rem 0 0.5rem;
+    }
+    
+    .answer {
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+    }
+    
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-subheading);
+      padding-top: 1rem;
+      border-top: 1px dashed var(--color-3);
+    }
+    
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--color-4);
+      border-radius: 30px;
+      padding: 3px 10px;
+      font-size: 12px;
+      color: var(--color-4);
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #f3f4f6;
+      border-radius: 4px;
+      margin: 5px 0 15px;
+      position: relative;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--color-4);
+      position: relative;
+    }
+    
+    .hand-arrow {
+      position: absolute;
+      opacity: 0.6;
+      transform: rotate(-30deg);
+    }
+    
+    .speech-bubble {
+      position: relative;
+      background: #f8f9fa;
+      border: 2px solid var(--color-1);
+      border-radius: 10px;
+      padding: 10px;
+      margin: 1rem 0;
+    }
+    
+    .speech-bubble:after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      bottom: -10px;
+      width: 20px;
+      height: 10px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 10'%3E%3Cpath d='M0,0 L20,0 L10,10 Z' fill='%23f8f9fa'/%3E%3Cpath d='M0,0 L20,0 L10,10 Z' fill='none' stroke='%23593C47' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+    }
+    
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    @media (max-width: 900px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>구글 딥마인드 "챗GPT는 아직 애기 수준"...왜?</h1>
+        <div class="tag">인공지능</div>
+        <div class="tag">AI 발전 로드맵</div>
+        <div class="tag">AGI</div>
+      </div>
+      <div class="header-right">
+        2025년 4월 4일<br>
+        <span style="font-size: 12px;">✏️ 그래픽 레코딩 스타일로 재구성</span>
+      </div>
+    </header>
+    
+    <div class="content">
+      <!-- 첫번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="margin-right: 8px;">
+              <path d="M12 4L2 9.3L12 14.6L22 9.3L12 4Z" stroke="#593C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 14.7L12 20L22 14.7" stroke="#593C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            AGI란 무엇인가?
+          </h2>
+          
+          <p>인공일반지능(Artificial General Intelligence, <span class="marker">AGI</span>)은 인간 수준 또는 그 이상의 능력을 가진 AI 시스템을 의미합니다. 최근 대형 언어 모델(<span class="marker">LLMs</span>)의 급속한 발전으로 AGI는 더 이상 먼 미래의 개념이 아닌 실질적 연구와 정책 토론의 대상이 되고 있습니다.</p>
+          
+          <div class="speech-bubble">
+            "챗GPT는 시작에 불과했다!"<br>
+            - 구글 딥마인드 연구진
+          </div>
+          
+          <p>구글 딥마인드의 연구진은 논문에서 <span class="highlight">AGI 발전을 체계적으로 측정하고 추적할 수 있는 프레임워크</span>를 제안했습니다.</p>
+          
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#1e40af" stroke-width="2" stroke-dasharray="2 2"/>
+              <path d="M8 12L11 15L16 9" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            핵심 차원
+          </h3>
+          
+          <div class="two-columns">
+            <div class="box">
+              <div class="box-title">성능(Performance)</div>
+              <p style="margin-top: 10px;">특정 작업에 대한 AI의 능력 깊이를 측정</p>
+              <svg viewBox="0 0 100 60" width="100%" height="60">
+                <path d="M10,50 Q30,10 50,45 T90,15" stroke="#F25C05" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <circle cx="90" cy="15" r="5" fill="#F25C05"/>
+              </svg>
+            </div>
+            <div class="box">
+              <div class="box-title">일반성(Generality)</div>
+              <p style="margin-top: 10px;">AI 능력의 범위를 평가</p>
+              <svg viewBox="0 0 100 60" width="100%" height="60">
+                <circle cx="50" cy="30" r="25" stroke="#593C47" stroke-width="2" fill="none"/>
+                <circle cx="50" cy="30" r="15" stroke="#593C47" stroke-width="2" fill="none"/>
+                <path d="M50,5 L50,55 M25,30 L75,30" stroke="#593C47" stroke-width="2" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="note">
+            <span style="font-weight: bold;">📌 주목:</span> 단순히 AGI가 '존재하는지' 또는 '존재하지 않는지'의 이분법적 관점에서 벗어나, AGI로 향하는 발전 경로를 명확하게 구분하고 측정할 수 있는 방법을 제공합니다.
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3,12 C5,8 8,6 12,6 C16,6 19,8 21,12 C19,16 16,18 12,18 C8,18 5,16 3,12Z" stroke="#593C47" stroke-width="2" fill="none"/>
+              <circle cx="12" cy="12" r="3" stroke="#593C47" stroke-width="2" fill="none"/>
+            </svg>
+            AGI의 5단계 발전
+          </h2>
+          
+          <p>연구진은 AI 시스템을 성능에 따라 다섯 단계로 나누었습니다:</p>
+          
+          <div class="stages">
+            <div class="stage">
+              <div class="stage-circle" style="background-color: #F2E63D;">1</div>
+              <div>
+                <strong>태동(Emerging)</strong>
+                <div style="font-size: 12px;">현재 챗GPT, Bard 등의 수준</div>
+              </div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24">
+              <path d="M12,3 L12,21 M5,14 L12,21 L19,14" stroke="#593C47" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="stage">
+              <div class="stage-circle" style="background-color: #F2C53D;">2</div>
+              <div>
+                <strong>능숙(Competent)</strong>
+                <div style="font-size: 12px;">인간의 50%ile 수준 능력</div>
+              </div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24">
+              <path d="M12,3 L12,21 M5,14 L12,21 L19,14" stroke="#593C47" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="stage">
+              <div class="stage-circle" style="background-color: #F25C05;">3</div>
+              <div>
+                <strong>전문가(Expert)</strong>
+                <div style="font-size: 12px;">인간의 90%ile 수준 능력</div>
+              </div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24">
+              <path d="M12,3 L12,21 M5,14 L12,21 L19,14" stroke="#593C47" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="stage">
+              <div class="stage-circle" style="background-color: #F24405;">4</div>
+              <div>
+                <strong>거장(Virtuoso)</strong>
+                <div style="font-size: 12px;">최고 인간 수준 이상</div>
+              </div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24">
+              <path d="M12,3 L12,21 M5,14 L12,21 L19,14" stroke="#593C47" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="stage">
+              <div class="stage-circle" style="background-color: #593C47; color: white;">5</div>
+              <div>
+                <strong>초인간(Superhuman)</strong>
+                <div style="font-size: 12px;">모든 인간을 능가하는 수준</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="note">
+            현재 최신 언어 모델들(ChatGPT, Bard, Llama 2, Gemini 등)은 <span class="marker">태동 수준의 일반 AI(Emerging AGI)</span>로 분류됩니다. 일부 작업에서는 능숙한 수준의 성능을 보이지만, 대부분의 작업에서는 여전히 태동 단계에 머물러 있습니다.
+          </div>
+        </div>
+      </div>
+      
+      <!-- 두번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="6" width="18" height="12" rx="2" stroke="#593C47" stroke-width="2" fill="none"/>
+              <path d="M8 10C8 8.89543 8.89543 8 10 8H14C15.1046 8 16 8.89543 16 10V14C16 15.1046 15.1046 16 14 16H10C8.89543 16 8 15.1046 8 14V10Z" stroke="#593C47" stroke-width="2" fill="none"/>
+              <circle cx="7" cy="11" r="1" fill="#593C47"/>
+              <circle cx="17" cy="11" r="1" fill="#593C47"/>
+              <circle cx="7" cy="14" r="1" fill="#593C47"/>
+              <circle cx="17" cy="14" r="1" fill="#593C47"/>
+            </svg>
+            AI 시스템의 자율성
+          </h2>
+          
+          <p>연구진은 AGI 개발 경로에서 고려해야 할 또 다른 중요한 측면으로 <span class="highlight">AI 시스템의 자율성(Autonomy) 수준</span>을 제시했습니다.</p>
+          
+          <div class="stages">
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">🚫</div>
+              <div>
+                <strong>AI 없음</strong>
+              </div>
+            </div>
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">🔨</div>
+              <div>
+                <strong>AI 도구</strong>
+                <div style="font-size: 12px;">기술 의존도 증가 위험</div>
+              </div>
+            </div>
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">💼</div>
+              <div>
+                <strong>AI 컨설턴트</strong>
+              </div>
+            </div>
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">👥</div>
+              <div>
+                <strong>AI 협력자</strong>
+              </div>
+            </div>
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">👨‍⚕️</div>
+              <div>
+                <strong>AI 전문가</strong>
+              </div>
+            </div>
+            <div class="stage">
+              <div style="width: 30px; text-align: center;">🤖</div>
+              <div>
+                <strong>AI 에이전트</strong>
+                <div style="font-size: 12px;">조정 실패, 권력 집중 위험</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="note">
+            주목할 점은 <span class="marker">AGI 능력의 증가가 반드시 높은 수준의 자율성으로 이어져야 하는 것은 아니라는 것</span>입니다. 예를 들어, 자율주행차 기술이 완전 자율주행(레벨 5) 수준에 도달하더라도, 교육, 즐거움, 평가, 안전 등의 이유로 수동 운전(레벨 0)을 선택할 필요가 있는 상황이 있을 수 있습니다.
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15 8L21 9L17 14L18 20L12 17.5L6 20L7 14L3 9L9 8L12 2Z" stroke="#593C47" stroke-width="2" fill="none"/>
+            </svg>
+            AGI 벤치마크
+          </h2>
+          
+          <p>AGI 발전을 추적하기 위해서는 시스템의 성능과 일반성을 체계적으로 측정할 수 있는 <span class="highlight">벤치마크</span>가 필요합니다.</p>
+          
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h16M4 12h16M4 17h10" stroke="#1e40af" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            벤치마크 요구사항
+          </h3>
+          
+          <div class="box">
+            <div class="box-title">다양한 인지 및 메타인지 작업</div>
+            <ul style="list-style-type: none; margin-top: 10px;">
+              <li>✓ 언어적 지능</li>
+              <li>✓ 수학적・논리적 추론</li>
+              <li>✓ 공간 추론</li>
+              <li>✓ 대인관계 및 개인 내적 사회적 지능</li>
+              <li>✓ 새로운 기술을 학습하는 능력</li>
+              <li>✓ 창의성</li>
+            </ul>
+          </div>
+          
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zm0-15v5m0 5v-1" stroke="#1e40af" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            메타인지 능력의 중요성
+          </h3>
+          
+          <div class="two-columns">
+            <div>
+              <span class="tag">학습 능력</span><br>
+              <span style="font-size: 12px">새로운 기술을 학습하는 능력</span>
+            </div>
+            <div>
+              <span class="tag">도움 요청</span><br>
+              <span style="font-size: 12px">도움이 필요한 시점 인식</span>
+            </div>
+            <div>
+              <span class="tag">마음 이론</span><br>
+              <span style="font-size: 12px">타인의 생각과 의도 이해</span>
+            </div>
+            <div>
+              <span class="tag">자기인식</span><br>
+              <span style="font-size: 12px">자신의 능력과 한계 인식</span>
+            </div>
+          </div>
+          
+          <div class="note">
+            <span style="font-weight: bold;">📌 '살아있는 벤치마크':</span> 충분히 일반적인 지능이 수행할 수 있는 작업의 전체 집합을 열거하는 것은 불가능하기 때문에, 새로운 작업을 생성하고 합의하는 프레임워크를 포함해야 합니다.
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.5L14.5 2z" stroke="#593C47" stroke-width="2" fill="none"/>
+              <path d="M14 2v6h6" stroke="#593C47" stroke-width="2" fill="none"/>
+              <path d="M16 13H8" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 17H8" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 9H8" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            현재 AI 수준 평가
+          </h2>
+          
+          <p>현재 최신 언어 모델들(ChatGPT, Bard, Llama 2, Gemini 등)은 <span class="marker">태동 수준의 일반 AI(Emerging AGI)</span>로 분류됩니다.</p>
+          
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M11 5h2M4 12h16M11 19h2" stroke="#1e40af" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            현재 AI 모델의 능력
+          </h3>
+          
+          <div style="margin: 1rem 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>짧은 에세이 작성</span>
+              <span style="color: var(--color-3);">능숙</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>간단한 코딩</span>
+              <span style="color: var(--color-3);">능숙</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%;"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>수학적 능력</span>
+              <span style="color: var(--color-2);">태동</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 45%;"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>사실 기반 응답</span>
+              <span style="color: var(--color-2);">태동</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%;"></div>
+            </div>
+          </div>
+          
+          <div class="speech-bubble">
+            <strong>"챗GPT와 바드는 아직 '애기' 수준"</strong><br>
+            현재 AI 모델들은 여전히 발전 초기 단계에 불과합니다.
+          </div>
+        </div>
+      </div>
+      
+      <!-- 세번째 컬럼 -->
+      <div class="column">
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 8L22 12L18 16" stroke="#593C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 8L2 12L6 16" stroke="#593C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 4L10 20" stroke="#593C47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            AGI 발전의 과제와 기회
+          </h2>
+          
+          <p>AGI의 발전은 인류에게 전례 없는 기회와 도전을 동시에 가져옵니다. 일반적으로 AGI 논의에서는 <span class="highlight">'존재적 위험'</span>이나 다른 극단적 위험에 초점을 맞추지만, 이 연구에서 제안한 단계별 접근법은 AGI를 단일 종착점이 아닌 발전 경로로 이해하도록 돕습니다.</p>
+          
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zm-1-7h2m-2-8h2v5h-2V7z" stroke="#1e40af" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            단계별 위험
+          </h3>
+          
+          <div class="box">
+            <div class="box-title">AGI 단계별 위험 요소</div>
+            <div style="margin-top: 10px;">
+              <div style="display: flex; margin-bottom: 8px;">
+                <div style="background: #F2E63D; width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; margin-right: 8px;"></div>
+                <div>
+                  <strong>태동 AGI:</strong> 기술 의존도 증가, 오용 위험
+                </div>
+              </div>
+              <div style="display: flex; margin-bottom: 8px;">
+                <div style="background: #F2C53D; width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; margin-right: 8px;"></div>
+                <div>
+                  <strong>능숙 AGI:</strong> 일자리 대체, 경제적 불평등
+                </div>
+              </div>
+              <div style="display: flex; margin-bottom: 8px;">
+                <div style="background: #F25C05; width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; margin-right: 8px;"></div>
+                <div>
+                  <strong>전문가 AGI:</strong> 경제적 혼란, 구조적 위험
+                </div>
+              </div>
+              <div style="display: flex; margin-bottom: 8px;">
+                <div style="background: #F24405; width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; margin-right: 8px;"></div>
+                <div>
+                  <strong>거장 AGI:</strong> 조정 실패, 인간 통제 문제
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div style="background: #593C47; width: 12px; height: 12px; border-radius: 50%; margin-top: 3px; margin-right: 8px;"></div>
+                <div>
+                  <strong>초인간 AGI(ASI):</strong> 존재적 위험
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="note">
+            연구진은 이러한 세분화된 접근법을 통해 <span class="marker">정책 입안자들이 극단적 위험 시나리오뿐만 아니라 AGI로 가는 경로에서의 근시일내 위험도 식별하고 우선순위를 정할 수 있다</span>고 주장합니다.
+          </div>
+          
+          <p>또한 <span class="highlight">AGI의 발전</span>은 반드시 모델 역량의 개선뿐만 아니라 인간-AI 상호작용 연구와 함께 진행되어야 한다고 강조합니다.</p>
+        </div>
+        
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#593C47" stroke-width="2" fill="none"/>
+              <path d="M12 16v-5M12 7h.01" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            자주 묻는 질문
+          </h2>
+          
+          <div class="faq">
+            <div class="question">Q. AGI와 현재의 대형 언어 모델(LLM)은 어떤 차이가 있나요?</div>
+            <div class="answer">
+              현재의 LLM(ChatGPT, Bard 등)은 태동 수준의 일반 AI(Emerging AGI)로 분류됩니다. 이들은 일부 작업에서 능숙한 성능을 보이지만 대부분의 작업에서는 여전히 태동 단계에 머물러 있습니다. 진정한 AGI는 '능숙(Competent)' 수준 이상으로, 인간이 할 수 있는 대부분의 인지 작업에서 적어도 평균 이상의 성능을 보여야 합니다. 이 수준은 아직 달성되지 않았습니다.
+            </div>
+            
+            <div class="question">Q. 인공초지능(ASI)은 무엇이며 얼마나 위험한가요?</div>
+            <div class="answer">
+              인공초지능(Artificial Superintelligence, ASI)은 성능과 일반성 측면에서 가장 높은 수준으로, 모든 인간을 능가하는 광범위한 작업 수행 능력을 갖춘 시스템을 의미합니다. ASI는 신경 인터페이스, 고품질 예측, 동물과의 소통 등 인간의 기존 기술과 질적으로 다른 작업도 수행할 수 있습니다. 위험성 측면에서 ASI는 인간 조작자를 속여 잘못 지정된 목표를 달성하거나, 국제 관계 불안정화 같은 복잡한 구조적 위험을 초래할 가능성이 있습니다.
+            </div>
+            
+            <div class="question">Q. AGI 개발에서 메타인지 능력이 왜 중요한가요?</div>
+            <div class="answer">
+              메타인지 능력(새로운 기술 학습, 도움을 요청할 시점 인식, 사회적 메타인지 등)은 AGI의 일반성에 핵심적인 요소입니다. 시스템이 모든 가능한 사용 사례에 대해 사전에 최적화되는 것은 불가능하므로, 새로운 기술을 학습하는 능력은 필수적입니다. 또한 조정(alignment)과 적절한 인간-AI 상호작용을 지원하기 위해 도움을 요청할 시점을 아는 것도 중요합니다. 이러한 메타인지 능력은 AGI 시스템이 다양한 환경과 작업에 적응하고 인간과 효과적으로 협력하는 데 필수적입니다.
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="5" width="16" height="16" rx="2" stroke="#593C47" stroke-width="2" fill="none"/>
+              <path d="M16 2v4M8 2v4M4 10h16" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 14l-2 2M12 14l2 2" stroke="#593C47" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            요약 및 시사점
+          </h2>
+          
+          <div class="two-columns">
+            <div class="box" style="height: 100%;">
+              <div class="box-title">현재 위치</div>
+              <p style="margin-top: 10px; text-align: center; font-size: 16px;">현재 AI는 <span class="marker">태동 단계(Emerging AGI)</span>에 불과합니다.</p>
+              <div style="text-align: center; margin-top: 10px;">
+                <svg viewBox="0 0 100 20" width="90%" height="20">
+                  <rect x="0" y="5" width="100" height="10" rx="5" fill="#f3f4f6"/>
+                  <rect x="0" y="5" width="20" height="10" rx="5" fill="#F2E63D"/>
+                  <circle cx="20" cy="10" r="6" fill="#F25C05"/>
+                </svg>
+                <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 5px;">
+                  <span>태동</span>
+                  <span>능숙</span>
+                  <span>전문가</span>
+                  <span>거장</span>
+                  <span>초인간</span>
+                </div>
+              </div>
+            </div>
+            <div class="box" style="height: 100%;">
+              <div class="box-title">미래 전망</div>
+              <p style="margin-top: 10px; font-size: 12px;">
+                <span style="font-weight: bold;">기회:</span> 의료 혁신, 생산성 향상, 과학 발전 가속화
+              </p>
+              <p style="font-size: 12px;">
+                <span style="font-weight: bold;">과제:</span> 일자리 변화, 윤리적 문제, 인간과 AI 협력 방식
+              </p>
+              <p style="font-size: 12px;">
+                <span style="font-weight: bold;">미래:</span> 단계적이고 책임 있는 발전이 중요
+              </p>
+            </div>
+          </div>
+          
+          <div class="note">
+            <span style="font-weight: bold;">핵심 시사점:</span> AGI는 인간의 지능과 비슷하거나 뛰어난 기계 지능을 의미합니다. 현재의 AI 시스템은 아직 초기 단계에 불과하며, AGI로 향하는 여정은 기술적 발전뿐만 아니라 윤리적, 사회적, 정책적 고려사항과 함께 진행되어야 합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      ✏️ 그래픽 레코딩 스타일로 재구성된 내용 | 원본 출처: 구글 딥마인드 연구 논문 (2025년) | 제작일: 2025년 4월 4일 | 모든 권리 보유
+    </footer>
+  </div>
+</body>
+</html>
