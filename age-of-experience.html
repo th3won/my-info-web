@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>경험의 시대에 오신 것을 환영합니다</title>
+  <style>
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Nanum+Pen+Script&family=Poor+Story&display=swap');
+    
+    /* Color palette */
+    :root {
+      --fashion-1: #593C47;
+      --fashion-2: #F2E63D;
+      --fashion-3: #F2C53D;
+      --fashion-4: #F25C05;
+      --fashion-5: #F24405;
+      --text-primary: #334155;
+      --text-secondary: #475569;
+      --section-title: #1e40af;
+    }
+    
+    body {
+      font-family: 'Gaegu', 'Poor Story', cursive;
+      line-height: 1.4;
+      color: var(--text-primary);
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    
+    /* Header styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--fashion-3);
+      position: relative;
+    }
+    
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--fashion-4);
+      border-radius: 50%;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .header h1::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--fashion-1), var(--fashion-5));
+      border-radius: 10px;
+    }
+    
+    .header .date-source {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    /* Layout styles */
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    /* Card styles */
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 10px 15px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--fashion-2), var(--fashion-3), var(--fashion-4));
+    }
+    
+    /* Section title styles */
+    .section-title {
+      font-size: 18px;
+      color: var(--section-title);
+      margin-top: 0;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px dashed var(--fashion-3);
+      display: flex;
+      align-items: center;
+    }
+    
+    .section-title .icon {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    /* Text styles */
+    p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    /* Highlight styles */
+    .highlight {
+      background: linear-gradient(to bottom, transparent 60%, var(--fashion-2) 60%);
+      padding: 0 2px;
+      font-weight: bold;
+    }
+    
+    .marker {
+      position: relative;
+      font-weight: bold;
+      color: var(--fashion-5);
+    }
+    
+    .marker::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: var(--fashion-4);
+      opacity: 0.4;
+      border-radius: 2px;
+    }
+    
+    /* Hand-drawn elements */
+    .hand-drawn-box {
+      border: 2px solid var(--fashion-3);
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      position: relative;
+    }
+    
+    .hand-drawn-box::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px dashed var(--fashion-4);
+      border-radius: 6px;
+      z-index: -1;
+    }
+    
+    .arrow {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 24px;
+      color: var(--fashion-4);
+      text-align: center;
+      margin: 10px 0;
+    }
+    
+    /* Connection lines */
+    .connection {
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .connection::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 5px;
+      height: 100%;
+      width: 2px;
+      background-color: var(--fashion-3);
+    }
+    
+    .connection::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--fashion-4);
+    }
+    
+    /* Bubble styles */
+    .bubble {
+      background-color: rgba(242, 230, 61, 0.2);
+      border: 2px solid var(--fashion-3);
+      border-radius: 20px;
+      padding: 10px 15px;
+      position: relative;
+      display: inline-block;
+      margin: 15px 0;
+    }
+    
+    .bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 8px 0;
+      border-style: solid;
+      border-color: var(--fashion-3) transparent;
+    }
+    
+    /* Icon styles */
+    .icon-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    
+    .icon-item {
+      text-align: center;
+      padding: 10px;
+    }
+    
+    .icon-item span {
+      font-size: 24px;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    /* Figure styles */
+    .figure {
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .figure img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 2px solid var(--fashion-1);
+    }
+    
+    .figure-caption {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-style: italic;
+    }
+    
+    /* Footer styles */
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--fashion-3);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Timeline style */
+    .timeline {
+      position: relative;
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+    
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--fashion-2), var(--fashion-4), var(--fashion-5));
+      border-radius: 3px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: white;
+      border: 3px solid var(--fashion-3);
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>경험의 시대에 오신 것을 환영합니다</h1>
+      <div class="date-source">2025년 4월 | 데이비드 실버, 리처드 S. 서튼</div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="content">
+      <!-- Column 1 -->
+      <div class="column">
+        <!-- Introduction card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">📌</span> 요약</h2>
+          <p>우리는 인공지능 분야에서 전례 없는 수준의 능력을 약속하는 <span class="highlight">새로운 시대의 문턱</span>에 서 있습니다. 새로운 세대의 에이전트는 주로 <span class="marker">경험으로부터 학습</span>하여 초인적인 능력을 습득할 것입니다.</p>
+          
+          <div class="bubble">
+            이 글은 다가오는 <span class="highlight">경험의 시대</span>를 정의할 핵심 특징들을 탐구합니다!
+          </div>
+        </div>
+        
+        <!-- Human Data Age card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🔍</span> 인간 데이터의 시대</h2>
+          <p>인공지능(AI)은 최근 몇 년간 <span class="marker">대규모의 인간 생성 데이터</span>를 학습하고 전문가의 예시와 선호를 통해 미세 조정함으로써 놀라운 발전을 이루었습니다.</p>
+          
+          <div class="hand-drawn-box">
+            <p>인간을 모방하는 것만으로는 많은 인간 능력을 유능한 수준으로 재현하기에 충분하지만, 이 접근 방식만으로는 많은 중요한 주제와 작업에서 <span class="highlight">초인적인 지능을 달성하지 못했으며</span> 아마 달성할 수도 없을 것입니다.</p>
+          </div>
+          
+          <p>강력한 에이전트의 성능을 실제로 향상시킬 수 있는 고품질 데이터 소스의 대부분은 이미 소비되었거나 곧 소비될 것입니다. 인간 데이터로부터의 지도 학습에만 의존하는 진보의 속도는 눈에 띄게 느려지고 있습니다.</p>
+          
+          <div class="arrow">↓ 새로운 접근 방식이 필요합니다 ↓</div>
+        </div>
+        
+        <!-- Age of Experience card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">💡</span> 경험의 시대</h2>
+          <p>상당히 더 발전하기 위해서는 <span class="marker">새로운 데이터 소스</span>가 필요합니다. 이 데이터는 에이전트가 강해짐에 따라 지속적으로 개선되는 방식으로 생성되어야 합니다.</p>
+          
+          <div class="bubble">
+            AI는 <span class="highlight">경험이 개선의 주요 매체</span>가 되고 궁극적으로 오늘날 시스템에서 사용되는 인간 데이터의 규모를 압도하게 될 새로운 시대의 정점에 있습니다!
+          </div>
+          
+          <p>이러한 전환은 인간 중심 AI의 전형인 거대 언어 모델에서도 이미 시작되었을 수 있습니다. 한 가지 예는 수학 능력입니다. <span class="marker">AlphaProof</span>는 최근 국제 수학 올림피아드에서 메달을 획득한 최초의 프로그램이 되었으며, 이는 인간 중심 접근 방식의 성능을 능가했습니다.</p>
+        </div>
+      </div>
+      
+      <!-- Column 2 -->
+      <div class="column">
+        <!-- Experience Age Key Features card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🌟</span> 경험의 시대 핵심 특징</h2>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <h3>흐름 (Streams)</h3>
+              <p><span class="marker">경험적 에이전트</span>는 평생 동안 계속 학습할 수 있습니다. 에이전트는 짧은 상호작용 조각이 아닌 <span class="highlight">경험의 흐름 속에 거주</span>할 것입니다.</p>
+            </div>
+            
+            <div class="timeline-item">
+              <h3>행동과 관찰 (Actions and Observations)</h3>
+              <p>에이전트는 그들의 행동과 관찰이 인간 대화만을 통해 상호작용하는 것이 아니라 <span class="highlight">환경에 풍부하게 근거</span>할 것입니다.</p>
+            </div>
+            
+            <div class="timeline-item">
+              <h3>보상 (Rewards)</h3>
+              <p>에이전트의 보상은 인간의 사전 판단에서 오는 것이 아니라 <span class="marker">환경에 대한 경험</span>에 근거할 것입니다.</p>
+            </div>
+            
+            <div class="timeline-item">
+              <h3>계획 및 추론 (Planning and Reasoning)</h3>
+              <p>에이전트는 단지 인간의 용어로 추론하는 것이 아니라 <span class="highlight">경험에 대해 계획 및/또는 추론</span>할 것입니다.</p>
+            </div>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <p>우리는 오늘날의 기술이 적절하게 선택된 알고리즘과 함께 이러한 돌파구를 달성하기에 <span class="marker">충분히 강력한 기반</span>을 이미 제공한다고 믿습니다.</p>
+          </div>
+        </div>
+        
+        <!-- RL Methods card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🔄</span> 강화 학습 방법</h2>
+          <p>강화 학습(RL)은 에이전트가 환경과의 직접적인 상호작용을 통해 스스로 학습하는 <span class="marker">자율 학습</span>에 깊이 뿌리를 둔 풍부한 역사를 가지고 있습니다.</p>
+          
+          <div class="icon-container">
+            <div class="icon-item">
+              <span>🎮</span>
+              게임 마스터
+            </div>
+            <div class="icon-item">
+              <span>🧠</span>
+              세계 모델
+            </div>
+            <div class="icon-item">
+              <span>🔍</span>
+              탐색 기술
+            </div>
+            <div class="icon-item">
+              <span>⏱️</span>
+              시간적 추상화
+            </div>
+          </div>
+          
+          <p>경험의 시대는 <span class="highlight">고전적인 RL 개념을 재검토하고 개선</span>할 기회를 제공합니다. 이 시대는 관찰 데이터에 유연하게 근거한 보상 함수에 대해 생각하는 새로운 방법을 가져올 것입니다.</p>
+        </div>
+        
+        <!-- Why Now card -->
+        <div class="glass">
+          <h2 class="section-title"><span class="icon">⏰</span> 왜 지금인가?</h2>
+          <p>경험으로부터 학습하는 것은 새로운 것이 아닙니다. 강화 학습 시스템은 이전에 명확한 보상 신호가 있는 시뮬레이터에서 표현된 많은 복잡한 작업을 마스터했습니다.</p>
+          
+          <div class="bubble">
+            인간 중심 LLM의 부상은 <span class="marker">자율 학습</span>에서 <span class="marker">인간 지식 활용</span>으로 초점을 옮겼습니다.
+          </div>
+          
+          <p>그러나 패러다임의 변화가 목욕물과 함께 아기까지 버렸다고 주장할 수 있습니다. 인간 중심 RL은 전례 없는 행동의 폭을 가능하게 했지만, <span class="highlight">에이전트 성능에 새로운 천장</span>을 부과했습니다.</p>
+        </div>
+      </div>
+      
+      <!-- Column 3 -->
+      <div class="column">
+        <!-- Timeline visualization -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">📊</span> AI 패러다임의 진화</h2>
+          <div class="figure">
+            <svg width="100%" height="200" viewBox="0 0 400 200">
+              <!-- Background grid -->
+              <line x1="50" y1="150" x2="350" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="50" y1="120" x2="350" y2="120" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="50" y1="90" x2="350" y2="90" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="50" y1="60" x2="350" y2="60" stroke="#e2e8f0" stroke-width="1"/>
+              <line x1="50" y1="30" x2="350" y2="30" stroke="#e2e8f0" stroke-width="1"/>
+              
+              <!-- Y-axis -->
+              <line x1="50" y1="30" x2="50" y2="150" stroke="#475569" stroke-width="2"/>
+              <text x="30" y="25" fill="#475569" font-size="12" text-anchor="middle">RL 집중도</text>
+              
+              <!-- X-axis -->
+              <line x1="50" y1="150" x2="350" y2="150" stroke="#475569" stroke-width="2"/>
+              <text x="200" y="170" fill="#475569" font-size="12" text-anchor="middle">연도</text>
+              <text x="110" y="185" fill="#475569" font-size="10" text-anchor="middle">시뮬레이션 시대</text>
+              <text x="200" y="185" fill="#475569" font-size="10" text-anchor="middle">인간 데이터 시대</text>
+              <text x="290" y="185" fill="#475569" font-size="10" text-anchor="middle">경험의 시대</text>
+              
+              <!-- Data curve -->
+              <path d="M50,120 C80,100 110,40 140,110 C170,140 230,145 290,80 C320,30 350,30 350,30" fill="none" stroke="#F25C05" stroke-width="3"/>
+              
+              <!-- Era regions -->
+              <rect x="50" y="30" width="120" height="120" fill="#593C47" opacity="0.1"/>
+              <rect x="170" y="30" width="120" height="120" fill="#F2C53D" opacity="0.1"/>
+              <rect x="290" y="30" width="60" height="120" fill="#F24405" opacity="0.1"/>
+              
+              <!-- Data points -->
+              <circle cx="80" cy="90" r="5" fill="#593C47"/>
+              <text x="80" y="80" font-size="10" text-anchor="middle">Atari</text>
+              
+              <circle cx="120" cy="70" r="5" fill="#593C47"/>
+              <text x="120" y="60" font-size="10" text-anchor="middle">AlphaGo</text>
+              
+              <circle cx="150" cy="110" r="5" fill="#593C47"/>
+              <text x="150" y="100" font-size="10" text-anchor="middle">AlphaZero</text>
+              
+              <circle cx="200" cy="145" r="5" fill="#F2C53D"/>
+              <text x="200" y="135" font-size="10" text-anchor="middle">GPT3</text>
+              
+              <circle cx="250" cy="140" r="5" fill="#F2C53D"/>
+              <text x="250" y="130" font-size="10" text-anchor="middle">ChatGPT</text>
+              
+              <circle cx="300" cy="80" r="5" fill="#F24405"/>
+              <text x="300" y="70" font-size="10" text-anchor="middle">AlphaProof</text>
+              
+              <circle cx="330" cy="50" r="5" fill="#F24405"/>
+              <text x="330" y="40" font-size="10" text-anchor="middle">미래</text>
+            </svg>
+            <div class="figure-caption">그림 1: 주요 AI 패러다임의 대략적인 연대기</div>
+          </div>
+        </div>
+        
+        <!-- Consequences card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">🎯</span> 결과</h2>
+          <p>AI 에이전트가 세상과의 상호작용으로부터 학습하는 경험의 시대의 도래는 우리가 이전에 본 어떤 것과도 근본적으로 다른 미래를 약속합니다.</p>
+          
+          <div class="connection">
+            <h3>긍정적 영향</h3>
+            <p>경험적 학습은 <span class="marker">전례 없는 능력</span>을 열어줄 것입니다. 일상생활에서 개인화된 보조원은 지속적인 경험의 흐름을 활용하여 수개월 또는 수년에 걸쳐 장기적인 목표를 향해 개인의 건강, 교육 또는 전문적 요구에 적응할 것입니다.</p>
+            <p>아마도 가장 혁신적인 것은 <span class="highlight">과학적 발견의 가속화</span>일 것입니다. AI 에이전트는 재료 과학, 의학 또는 하드웨어 설계와 같은 분야에서 자율적으로 실험을 설계하고 수행할 것입니다.</p>
+          </div>
+          
+          <div class="connection">
+            <h3>도전 과제</h3>
+            <p>인간 능력의 자동화는 생산성 향상을 약속하지만, 이러한 개선은 <span class="marker">일자리 대체</span>로 이어질 수도 있습니다.</p>
+            <p>더욱이 모든 AI의 잠재적 오용에 대한 일반적인 우려가 있지만, 장기적인 목표를 달성하기 위해 장기간에 걸쳐 세상과 자율적으로 상호작용할 수 있는 에이전트로부터 더 높은 위험이 발생할 수 있습니다.</p>
+          </div>
+          
+          <div class="hand-drawn-box">
+            <p>그러나 경험적 학습은 <span class="highlight">특정 안전 위험</span>을 증가시킬 것이며 경험의 시대로 안전하게 전환하기 위해 추가 연구가 확실히 필요하다는 점을 인정하면서도, 몇 가지 중요한 <span class="highlight">안전상의 이점</span>을 제공할 수도 있다는 점을 인식해야 합니다.</p>
+          </div>
+        </div>
+        
+        <!-- Conclusion card -->
+        <div class="card">
+          <h2 class="section-title"><span class="icon">✨</span> 결론</h2>
+          <p>경험의 시대는 AI 진화의 <span class="marker">중추적인 순간</span>을 나타냅니다. 오늘날의 강력한 기반 위에 구축하되 인간 유래 데이터의 한계를 넘어서, 에이전트는 점점 더 <span class="highlight">세상과의 자체 상호작용</span>으로부터 학습할 것입니다.</p>
+          
+          <div class="bubble">
+            궁극적으로 경험적 데이터는 인간 생성 데이터의 <span class="marker">규모와 질</span>을 능가할 것입니다!
+          </div>
+          
+          <p>RL의 알고리즘 발전과 함께 이 패러다임 전환은 많은 영역에서 어떤 인간도 소유하지 못한 <span class="highlight">새로운 능력</span>을 열어줄 것입니다.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p>출처: 데이비드 실버, 리처드 S. 서튼 (2025) "경험의 시대에 오신 것을 환영합니다"</p>
+    </div>
+  </div>
+</body>
+</html>
